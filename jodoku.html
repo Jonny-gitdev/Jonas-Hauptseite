@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonas :: Hauptseite</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+  :root {
+    --soil-dark: #2b2118;
+    --soil: #4a3826;
+    --parchment: #f2e6c9;
+    --parchment-dim: #e4d3a8;
+    --wheat: #d4a949;
+    --barn-red: #a8402f;
+    --leaf: #5c7a4a;
+    --leaf-dark: #3f5934;
+    --sky: #8fb3a8;
+    --ink: #2b2118;
+    --line-thin: rgba(43,33,24,0.18);
+    --line-thick: rgba(43,33,24,0.55);
+    --given-bg: #e9dcb8;
+    --font-display: 'Georgia', 'Iowan Old Style', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at top, #6b8a5a 0%, var(--soil) 55%, var(--soil-dark) 100%);
+    font-family: var(--font-body);
+    color: var(--parchment);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px 60px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 22px;
+    max-width: 560px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0 0 6px;
+    letter-spacing: 0.5px;
+    color: var(--parchment);
+    text-shadow: 0 2px 0 rgba(0,0,0,0.35);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: var(--parchment-dim);
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  .layout {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* --- Board --- */
+  .board-wrap {
+    background: linear-gradient(160deg, #5a4530, #3a2c1e);
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4), inset 0 0 0 2px rgba(255,255,255,0.04);
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(44px, 64px));
+    grid-template-rows: repeat(6, minmax(44px, 64px));
+    background: var(--soil-dark);
+    border: 3px solid var(--soil-dark);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .cell {
+    position: relative;
+    background: var(--parchment);
+    border: 1px solid var(--line-thin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.12s ease;
+  }
+
+  .cell.given {
+    background: var(--given-bg);
+    cursor: default;
+  }
+
+  .cell:not(.given):hover {
+    background: #fbf3dc;
+  }
+
+  .cell.selected {
+    background: #fff3c9;
+    box-shadow: inset 0 0 0 3px var(--wheat);
+    z-index: 2;
+  }
+
+  .cell.region-border-right { border-right: 3px solid var(--soil-dark); }
+  .cell.region-border-bottom { border-bottom: 3px solid var(--soil-dark); }
+
+  .cell.conflict {
+    background: #f3d2c9;
+  }
+
+  .cell.hl-adjacency::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 2px dashed var(--barn-red);
+    border-radius: 6px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  /* --- Symbol picker --- */
+  .picker {
+    background: linear-gradient(160deg, #5a4530, #3a2c1e);
+    border-radius: 10px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 200px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .picker button {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 8px;
+    background: var(--parchment);
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.08s ease, background 0.12s ease;
+  }
+
+  .picker button:hover {
+    background: #fff3c9;
+    transform: translateY(-2px);
+  }
+
+  .picker button.erase {
+    grid-column: span 3;
+    background: var(--barn-red);
+    color: var(--parchment);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .picker button.erase:hover { background: #8c3325; }
+
+  /* --- Sidebar (goal tracker) --- */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 240px;
+  }
+
+  .board-plus-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .goal-board {
+    background: linear-gradient(160deg, #6b4a2f, #4a3320);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35), inset 0 0 0 2px rgba(255,255,255,0.05);
+  }
+
+  .goal-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin: 0 0 10px;
+    color: var(--wheat);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .goal-progress {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-display);
+    margin-bottom: 6px;
+  }
+
+  .goal-progress .count {
+    font-size: 2.4rem;
+    color: var(--parchment);
+    line-height: 1;
+  }
+  .goal-progress .of {
+    font-size: 1.1rem;
+    color: var(--parchment-dim);
+  }
+
+  .goal-desc {
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+    line-height: 1.5;
+  }
+
+  .goal-bar {
+    margin-top: 10px;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .goal-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--leaf), var(--wheat));
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .status-board {
+    background: linear-gradient(160deg, #6b4a2f, #4a3320);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--parchment-dim);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  }
+  .status-board strong { color: var(--parchment); }
+
+  .win-banner {
+    display: none;
+    margin-top: 18px;
+    background: var(--leaf-dark);
+    color: var(--parchment);
+    padding: 16px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+  .win-banner.show { display: block; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .controls button {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--soil);
+    color: var(--parchment);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .controls button:hover { background: #5c4630; }
+
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 12px;
+    font-size: 0.8rem;
+    color: var(--parchment-dim);
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+
+  @media (max-width: 640px) {
+    .layout { flex-direction: column; align-items: center; }
+    .sidebar { width: 100%; max-width: 320px; }
+    .board { grid-template-columns: repeat(6, minmax(40px, 1fr)); grid-template-rows: repeat(6, minmax(40px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="logo">jonas<span class="dot">.</span></a>
+    <nav>
+      <a href="index.html#projekte">Projekte</a>
+      <a href="index.html#playground">Playground</a>
+    </nav>
+  </header>
+<div class="layout">
+ 
+  <div class="board-plus-picker">
+    <div class="board-wrap">
+      <div class="board" id="board"></div>
+    </div>
+    <div class="picker" id="picker"></div>
+  </div>
+ 
+  <div class="sidebar">
+    <div class="goal-board">
+      <div class="goal-title">🪵 Sägewerk-Ziel</div>
+      <div class="goal-progress">
+        <span class="count" id="goalCount">0</span><span class="of">/ 4</span>
+      </div>
+      <div class="goal-desc">Anzahl der Stellen, an denen Wald 🌲 direkt (orthogonal) neben Sägewerk 🪚 liegt.</div>
+      <div class="goal-bar"><div class="goal-bar-fill" id="goalBar"></div></div>
+    </div>
+ 
+    <div class="status-board">
+      <strong>Legende</strong>
+      <div class="legend" id="legend"></div>
+    </div>
+ 
+    <div class="controls">
+      <button id="checkBtn">Prüfen</button>
+      <button id="resetBtn">Zurücksetzen</button>
+    </div>
+ 
+    <div class="win-banner" id="winBanner">🎉 Hof komplett! Alle Regeln erfüllt und 4 Sägewerke am Wald.</div>
+  </div>
+ 
+</div>
+ 
+<script>
+const SYMBOLS = [
+  { id: 'wald',      icon: '🌲', name: 'Wald' },
+  { id: 'saegewerk', icon: '🪚', name: 'Sägewerk' },
+  { id: 'feld',      icon: '🌾', name: 'Feld' },
+  { id: 'scheune',   icon: '🏚️', name: 'Scheune' },
+  { id: 'brunnen',   icon: '💧', name: 'Brunnen' },
+  { id: 'haus',      icon: '🏠', name: 'Haus' },
+];
+const SYM_BY_ID = Object.fromEntries(SYMBOLS.map(s => [s.id, s]));
+ 
+// Precomputed valid solution (6x6, 3x2 regions: 2 rows x 3 cols per region)
+// Verified by solver: this exact set of givens forces exactly ONE valid solution.
+const SOLUTION = [
+  ['haus','saegewerk','wald','brunnen','feld','scheune'],
+  ['brunnen','feld','scheune','haus','wald','saegewerk'],
+  ['scheune','haus','saegewerk','wald','brunnen','feld'],
+  ['wald','brunnen','feld','saegewerk','scheune','haus'],
+  ['feld','wald','haus','scheune','saegewerk','brunnen'],
+  ['saegewerk','scheune','brunnen','feld','haus','wald'],
+];
+ 
+// Given cells (puzzle clues) - verified via brute-force solver to yield a UNIQUE solution
+const GIVEN_COORDS = [
+  [1,0],[1,2],[1,3],[1,5],
+  [2,1],[2,3],
+  [3,0],[3,3],
+  [4,1],[4,5],
+  [5,1],[5,4],
+];
+const GIVEN_SET = new Set(GIVEN_COORDS.map(([r,c]) => r+'_'+c));
+ 
+const N = 6;
+let grid = []; // current player state, null = empty
+let selected = null; // {r,c}
+ 
+function init() {
+  grid = SOLUTION.map((row, r) => row.map((val, c) => GIVEN_SET.has(r+'_'+c) ? val : null));
+  selected = null;
+  renderBoard();
+  renderPicker();
+  renderLegend();
+  updateAll();
+  document.getElementById('winBanner').classList.remove('show');
+}
+ 
+function renderBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+      if (GIVEN_SET.has(r+'_'+c)) cell.classList.add('given');
+      if ((c+1) % 3 === 0 && c !== N-1) cell.classList.add('region-border-right');
+      if ((r+1) % 2 === 0 && r !== N-1) cell.classList.add('region-border-bottom');
+      cell.addEventListener('click', () => onCellClick(r, c));
+      board.appendChild(cell);
+    }
+  }
+  refreshCells();
+}
+ 
+function refreshCells() {
+  document.querySelectorAll('.cell').forEach(cellEl => {
+    const r = +cellEl.dataset.r, c = +cellEl.dataset.c;
+    const val = grid[r][c];
+    cellEl.textContent = val ? SYM_BY_ID[val].icon : '';
+    cellEl.classList.toggle('selected', selected && selected.r === r && selected.c === c);
+  });
+  markConflicts();
+}
+ 
+function onCellClick(r, c) {
+  if (GIVEN_SET.has(r+'_'+c)) return;
+  selected = { r, c };
+  refreshCells();
+}
+ 
+function renderPicker() {
+  const picker = document.getElementById('picker');
+  picker.innerHTML = '';
+  SYMBOLS.forEach(sym => {
+    const btn = document.createElement('button');
+    btn.textContent = sym.icon;
+    btn.title = sym.name;
+    btn.addEventListener('click', () => placeSymbol(sym.id));
+    picker.appendChild(btn);
+  });
+  const erase = document.createElement('button');
+  erase.className = 'erase';
+  erase.textContent = 'Löschen';
+  erase.addEventListener('click', () => placeSymbol(null));
+  picker.appendChild(erase);
+}
+ 
+function placeSymbol(symId) {
+  if (!selected) return;
+  const { r, c } = selected;
+  if (GIVEN_SET.has(r+'_'+c)) return;
+  grid[r][c] = symId;
+  refreshCells();
+  updateAll();
+}
+ 
+function renderLegend() {
+  const legend = document.getElementById('legend');
+  legend.innerHTML = '';
+  SYMBOLS.forEach(sym => {
+    const span = document.createElement('span');
+    span.textContent = `${sym.icon} ${sym.name}`;
+    legend.appendChild(span);
+  });
+}
+ 
+// --- Rule checking ---
+function markConflicts() {
+  const conflictCells = new Set();
+ 
+  for (let r = 0; r < N; r++) {
+    const seen = {};
+    for (let c = 0; c < N; c++) {
+      const v = grid[r][c];
+      if (!v) continue;
+      if (seen[v] !== undefined) { conflictCells.add(r+'_'+c); conflictCells.add(r+'_'+seen[v]); }
+      else seen[v] = c;
+    }
+  }
+  for (let c = 0; c < N; c++) {
+    const seen = {};
+    for (let r = 0; r < N; r++) {
+      const v = grid[r][c];
+      if (!v) continue;
+      if (seen[v] !== undefined) { conflictCells.add(r+'_'+c); conflictCells.add(seen[v]+'_'+c); }
+      else seen[v] = r;
+    }
+  }
+  for (let br = 0; br < N; br += 2) {
+    for (let bc = 0; bc < N; bc += 3) {
+      const seen = {};
+      for (let r = br; r < br+2; r++) {
+        for (let c = bc; c < bc+3; c++) {
+          const v = grid[r][c];
+          if (!v) continue;
+          if (seen[v]) { conflictCells.add(r+'_'+c); conflictCells.add(seen[v]); }
+          else seen[v] = r+'_'+c;
+        }
+      }
+    }
+  }
+ 
+  document.querySelectorAll('.cell').forEach(cellEl => {
+    const key = cellEl.dataset.r + '_' + cellEl.dataset.c;
+    cellEl.classList.toggle('conflict', conflictCells.has(key));
+  });
+}
+ 
+function countAdjacency() {
+  let count = 0;
+  const pairs = [];
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const v = grid[r][c];
+      if (!v) continue;
+      if (c+1 < N && grid[r][c+1]) {
+        if ((v === 'wald' && grid[r][c+1] === 'saegewerk') || (v === 'saegewerk' && grid[r][c+1] === 'wald')) {
+          count++; pairs.push([[r,c],[r,c+1]]);
+        }
+      }
+      if (r+1 < N && grid[r+1][c]) {
+        if ((v === 'wald' && grid[r+1][c] === 'saegewerk') || (v === 'saegewerk' && grid[r+1][c] === 'wald')) {
+          count++; pairs.push([[r,c],[r+1,c]]);
+        }
+      }
+    }
+  }
+  return { count, pairs };
+}
+ 
+function isFull() {
+  return grid.every(row => row.every(v => v !== null));
+}
+ 
+function hasAnyConflict() {
+  return document.querySelectorAll('.cell.conflict').length > 0;
+}
+ 
+function updateAll() {
+  const { count } = countAdjacency();
+  document.getElementById('goalCount').textContent = count;
+  document.getElementById('goalBar').style.width = Math.min(100, (count/4)*100) + '%';
+ 
+  const winBanner = document.getElementById('winBanner');
+  if (isFull() && !hasAnyConflict() && count === 4) {
+    winBanner.classList.add('show');
+  } else {
+    winBanner.classList.remove('show');
+  }
+}
+ 
+document.getElementById('checkBtn').addEventListener('click', () => {
+  refreshCells();
+  updateAll();
+  if (!isFull()) {
+    alert('Das Feld ist noch nicht komplett gefüllt.');
+  } else if (hasAnyConflict()) {
+    alert('Es gibt noch Wiederholungen in einer Zeile, Spalte oder Region (rot markiert).');
+  } else {
+    const { count } = countAdjacency();
+    if (count === 4) {
+      alert('Alles richtig! Der Hof ist fertig eingerichtet. 🎉');
+    } else {
+      alert(`Sudoku-Regeln erfüllt, aber das Sägewerk-Ziel stimmt noch nicht (${count}/4).`);
+    }
+  }
+});
+ 
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('Wirklich alle eigenen Eingaben zurücksetzen?')) init();
+});
+ 
+// keyboard support: number keys 1-6 to place symbol, backspace to erase
+document.addEventListener('keydown', (e) => {
+  if (!selected) return;
+  const num = parseInt(e.key, 10);
+  if (num >= 1 && num <= 6) placeSymbol(SYMBOLS[num-1].id);
+  if (e.key === 'Backspace' || e.key === 'Delete') placeSymbol(null);
+});
+ 
+init();
+</script>
+ 
+</body>
+</html>
