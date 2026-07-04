@@ -1,0 +1,175 @@
+{
+  "id": "level_02",
+  "title": "Der Mühlenhof (Mehrfachziel)",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#7a5c9e",
+      "abbr": "MU",
+      "icon": "⚙️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "feld",
+      "saegewerk",
+      "wald",
+      "scheune",
+      "muehle"
+    ],
+    [
+      "wald",
+      "muehle",
+      "scheune",
+      "feld",
+      "brunnen",
+      "saegewerk"
+    ],
+    [
+      "feld",
+      "brunnen",
+      "wald",
+      "muehle",
+      "saegewerk",
+      "scheune"
+    ],
+    [
+      "scheune",
+      "saegewerk",
+      "muehle",
+      "brunnen",
+      "feld",
+      "wald"
+    ],
+    [
+      "saegewerk",
+      "wald",
+      "feld",
+      "scheune",
+      "muehle",
+      "brunnen"
+    ],
+    [
+      "muehle",
+      "scheune",
+      "brunnen",
+      "saegewerk",
+      "wald",
+      "feld"
+    ]
+  ],
+  "givens": [
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "wald",
+        "saegewerk"
+      ],
+      "target_count": 4
+    },
+    {
+      "chain": [
+        "feld",
+        "scheune",
+        "brunnen"
+      ],
+      "target_count": 1
+    }
+  ],
+  "verified_unique": true
+}

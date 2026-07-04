@@ -20,8 +20,9 @@
     --line-thin: rgba(43,33,24,0.18);
     --line-thick: rgba(43,33,24,0.55);
     --given-bg: #e9dcb8;
-    --font-display: 'Georgia', 'Iowan Old Style', serif;
-    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-display: var(--font-sans);
+    --font-body: var(--font-sans);
   }
 
   * { box-sizing: border-box; }
@@ -36,14 +37,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 28px 16px 60px;
+    padding: 0 16px 60px;
   }
 
-  header {
-    text-align: center;
-    margin-bottom: 22px;
-    max-width: 560px;
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 12px;
+    padding: 1rem 1rem 0.75rem;
   }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--parchment);
+    font-family: var(--font-display);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+  }
+  .logo .dot { color: var(--wheat); }
+
+  .site-header nav a {
+    margin-left: 1.5rem;
+    color: var(--parchment-dim);
+    transition: color 0.15s ease;
+  }
+  .site-header nav a:hover { color: var(--parchment); }
 
   h1 {
     font-family: var(--font-display);
@@ -67,6 +89,73 @@
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .level-bar {
+    background: linear-gradient(160deg, #5a4530, #3a2c1e);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  .level-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+  }
+
+  .level-bar-row label[for="levelSelect"] {
+    font-weight: 600;
+    color: var(--parchment);
+  }
+
+  #levelSelect {
+    background: var(--parchment);
+    color: var(--ink);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    min-width: 180px;
+  }
+
+  #reloadLevelsBtn, .upload-btn {
+    background: var(--soil);
+    color: var(--parchment);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    cursor: pointer;
+  }
+  #reloadLevelsBtn:hover, .upload-btn:hover { background: #5c4630; }
+
+  .upload-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .upload-btn input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .level-bar-hint code {
+    background: rgba(0,0,0,0.25);
+    padding: 1px 5px;
+    border-radius: 4px;
   }
 
   /* --- Board --- */
@@ -100,6 +189,27 @@
     transition: background 0.12s ease;
   }
 
+  .cell .cell-icon {
+    width: 78%;
+    height: 78%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.85rem, 2.4vw, 1.1rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    pointer-events: none;
+  }
+
+  .cell .cell-icon.cell-icon-emoji {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: normal;
+    text-shadow: none;
+    color: initial;
+  }
+
   .cell.given {
     background: var(--given-bg);
     cursor: default;
@@ -122,13 +232,12 @@
     background: #f3d2c9;
   }
 
-  .cell.hl-adjacency::after {
-    content: "";
+  .cell .given-star {
     position: absolute;
-    inset: 4px;
-    border: 2px dashed var(--barn-red);
-    border-radius: 6px;
-    opacity: 0.55;
+    top: 2px;
+    right: 4px;
+    font-size: 0.6rem;
+    color: var(--wheat);
     pointer-events: none;
   }
 
@@ -155,11 +264,19 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.08s ease, background 0.12s ease;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .picker button.picker-btn-color {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    font-size: 0.9rem;
   }
 
   .picker button:hover {
-    background: #fff3c9;
     transform: translateY(-2px);
+    filter: brightness(1.08);
   }
 
   .picker button.erase {
@@ -177,7 +294,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    width: 240px;
+    width: 260px;
   }
 
   .board-plus-picker {
@@ -192,16 +309,45 @@
     border-radius: 10px;
     padding: 18px;
     box-shadow: 0 10px 24px rgba(0,0,0,0.35), inset 0 0 0 2px rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .goal-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .goal-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   .goal-title {
     font-family: var(--font-display);
-    font-size: 1.05rem;
-    margin: 0 0 10px;
+    font-size: 0.95rem;
+    margin: 0 0 8px;
     color: var(--wheat);
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .goal-chain-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .goal-chain-arrow {
+    color: var(--parchment-dim);
+    font-size: 0.8rem;
   }
 
   .goal-progress {
@@ -213,23 +359,23 @@
   }
 
   .goal-progress .count {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     color: var(--parchment);
     line-height: 1;
   }
   .goal-progress .of {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--parchment-dim);
   }
 
   .goal-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--parchment-dim);
     line-height: 1.5;
   }
 
   .goal-bar {
-    margin-top: 10px;
+    margin-top: 8px;
     height: 8px;
     border-radius: 4px;
     background: rgba(0,0,0,0.3);
@@ -240,6 +386,9 @@
     background: linear-gradient(90deg, var(--leaf), var(--wheat));
     width: 0%;
     transition: width 0.3s ease;
+  }
+  .goal-bar-fill.done {
+    background: linear-gradient(90deg, var(--leaf), #8fd66a);
   }
 
   .status-board {
@@ -293,6 +442,13 @@
     color: var(--parchment-dim);
   }
   .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend .legend-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex: none;
+  }
 
   @media (max-width: 640px) {
     .layout { flex-direction: column; align-items: center; }
@@ -308,79 +464,234 @@
     <nav>
       <a href="index.html#projekte">Projekte</a>
       <a href="index.html#playground">Playground</a>
+      <a href="jodoku.html">Jodoku</a>
     </nav>
   </header>
+  <h1>Jodoku</h1>
+  <p class="subtitle" id="subtitle">Fülle die Felder so aus, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt.</p>
+<div class="level-bar" id="levelBar">
+  <div class="level-bar-row">
+    <label for="levelSelect">Level:</label>
+    <select id="levelSelect"></select>
+    <!-- <button id="reloadLevelsBtn" title="Level-Ordner erneut einlesen">🔄 Ordner neu laden</button> -->
+  </div>
+  <div class="level-bar-row">
+    <!-- <span class="level-bar-hint">Level werden aus <code>levels/</code> geladen. Falls dein Browser lokale Dateien blockiert (file://):</span> -->
+    <!--<label class="upload-btn">
+      📂 Level-Datei hochladen…
+      <input type="file" id="levelFileInput" accept="application/json">
+    </label>-->
+  </div>
+</div>
+
 <div class="layout">
- 
+
   <div class="board-plus-picker">
     <div class="board-wrap">
       <div class="board" id="board"></div>
     </div>
     <div class="picker" id="picker"></div>
   </div>
- 
+
   <div class="sidebar">
-    <div class="goal-board">
-      <div class="goal-title">🪵 Sägewerk-Ziel</div>
-      <div class="goal-progress">
-        <span class="count" id="goalCount">0</span><span class="of">/ 4</span>
-      </div>
-      <div class="goal-desc">Anzahl der Stellen, an denen Wald 🌲 direkt (orthogonal) neben Sägewerk 🪚 liegt.</div>
-      <div class="goal-bar"><div class="goal-bar-fill" id="goalBar"></div></div>
+    <div class="goal-board" id="goalBoard">
+      <!-- wird dynamisch mit 1..n Zielen gefuellt -->
     </div>
- 
+
     <div class="status-board">
       <strong>Legende</strong>
       <div class="legend" id="legend"></div>
     </div>
- 
+
     <div class="controls">
       <button id="checkBtn">Prüfen</button>
       <button id="resetBtn">Zurücksetzen</button>
     </div>
- 
-    <div class="win-banner" id="winBanner">🎉 Hof komplett! Alle Regeln erfüllt und 4 Sägewerke am Wald.</div>
+
+    <div class="win-banner" id="winBanner">🎉 Hof komplett! Alle Regeln und Ziele erfüllt.</div>
   </div>
- 
+
 </div>
- 
+
 <script>
-const SYMBOLS = [
-  { id: 'wald',      icon: '🌲', name: 'Wald' },
-  { id: 'saegewerk', icon: '🪚', name: 'Sägewerk' },
-  { id: 'feld',      icon: '🌾', name: 'Feld' },
-  { id: 'scheune',   icon: '🏚️', name: 'Scheune' },
-  { id: 'brunnen',   icon: '💧', name: 'Brunnen' },
-  { id: 'haus',      icon: '🏠', name: 'Haus' },
+// --- Level-Verwaltung -------------------------------------------------
+const LEVEL_MANIFEST = [
+  'levels/level_01.json',
+  'levels/level_02.json',
 ];
-const SYM_BY_ID = Object.fromEntries(SYMBOLS.map(s => [s.id, s]));
- 
-// Precomputed valid solution (6x6, 3x2 regions: 2 rows x 3 cols per region)
-// Verified by solver: this exact set of givens forces exactly ONE valid solution.
-const SOLUTION = [
-  ['haus','saegewerk','wald','brunnen','feld','scheune'],
-  ['brunnen','feld','scheune','haus','wald','saegewerk'],
-  ['scheune','haus','saegewerk','wald','brunnen','feld'],
-  ['wald','brunnen','feld','saegewerk','scheune','haus'],
-  ['feld','wald','haus','scheune','saegewerk','brunnen'],
-  ['saegewerk','scheune','brunnen','feld','haus','wald'],
-];
- 
-// Given cells (puzzle clues) - verified via brute-force solver to yield a UNIQUE solution
-const GIVEN_COORDS = [
-  [1,0],[1,2],[1,3],[1,5],
-  [2,1],[2,3],
-  [3,0],[3,3],
-  [4,1],[4,5],
-  [5,1],[5,4],
-];
-const GIVEN_SET = new Set(GIVEN_COORDS.map(([r,c]) => r+'_'+c));
- 
-const N = 6;
-let grid = []; // current player state, null = empty
-let selected = null; // {r,c}
- 
-function init() {
+
+// Eingebautes Fallback-Level (altes Einzelziel-Format, wird beim Laden
+// automatisch in das neue goals[]-Format konvertiert).
+const FALLBACK_LEVEL = {
+  id: 'fallback',
+  title: 'Beispielhof (eingebaut)',
+  size: 6,
+  region_rows: 2,
+  region_cols: 3,
+  symbols: [
+    { id: 'wald',      name: 'Wald',      color: '#2f6b3a', abbr: 'WA', icon: '🌲' },
+    { id: 'saegewerk', name: 'Sägewerk',  color: '#8a5a2b', abbr: 'SW', icon: '🪚' },
+    { id: 'feld',      name: 'Feld',      color: '#c9a227', abbr: 'FE', icon: '🌾' },
+    { id: 'scheune',   name: 'Scheune',   color: '#a8402f', abbr: 'SC', icon: '🏚️' },
+    { id: 'brunnen',   name: 'Brunnen',   color: '#3d7a91', abbr: 'BR', icon: '💧' },
+    { id: 'haus',      name: 'Haus',      color: '#6b4a2f', abbr: 'HA', icon: '🏠' },
+  ],
+  solution: [
+    ['haus','saegewerk','wald','brunnen','feld','scheune'],
+    ['brunnen','feld','scheune','haus','wald','saegewerk'],
+    ['scheune','haus','saegewerk','wald','brunnen','feld'],
+    ['wald','brunnen','feld','saegewerk','scheune','haus'],
+    ['feld','wald','haus','scheune','saegewerk','brunnen'],
+    ['saegewerk','scheune','brunnen','feld','haus','wald'],
+  ],
+  givens: [
+    [1,0],[1,2],[1,3],[1,5],
+    [2,1],[2,3],
+    [3,0],[3,3],
+    [4,1],[4,5],
+    [5,1],[5,4],
+  ],
+  goals: [
+    { chain: ['wald','saegewerk'], target_count: 4 },
+  ],
+  verified_unique: true,
+};
+
+let N = 6;
+let REGION_ROWS = 2;
+let REGION_COLS = 3;
+let SOLUTION = [];
+let GIVEN_SET = new Set();
+let SYMBOLS = [];
+let SYM_BY_ID = {};
+let GOALS = [];         // Liste von { chain: [id,...], target_count }
+let currentLevel = null;
+
+let grid = [];
+let selected = null;
+
+// --- Level-Normalisierung ---------------------------------------------
+// Alte Level-Dateien hatten evtl. noch "goal" (Einzahl, ein Paar) statt
+// "goals" (Liste von Ketten). Wird hier transparent hochkonvertiert, damit
+// alte Level weiter funktionieren.
+function normalizeLevel(data) {
+  const normalized = { ...data };
+  if (!normalized.goals) {
+    if (normalized.goal) {
+      normalized.goals = [{ chain: [normalized.goal.symbol_a, normalized.goal.symbol_b], target_count: normalized.goal.target_count }];
+    } else {
+      normalized.goals = [];
+    }
+  }
+  if (!normalized.symbols) {
+    // Fallback auf die alten sechs Standard-Symbole mit Icon -> Farbe/Kuerzel ersetzt
+    normalized.symbols = FALLBACK_LEVEL.symbols;
+  }
+  return normalized;
+}
+
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
+
+async function discoverLevels() {
+  const found = [];
+  for (const path of LEVEL_MANIFEST) {
+    try {
+      const data = await fetchJson(path);
+      found.push({ path, data: normalizeLevel(data) });
+    } catch (e) {
+      console.warn('Level konnte nicht geladen werden:', path, e.message);
+    }
+  }
+  return found;
+}
+
+function populateLevelSelect(levels) {
+  const select = document.getElementById('levelSelect');
+  select.innerHTML = '';
+  if (levels.length === 0) {
+    const opt = document.createElement('option');
+    opt.textContent = 'Beispielhof (eingebaut) — kein Ordnerzugriff';
+    opt.value = 'fallback';
+    select.appendChild(opt);
+    return;
+  }
+  levels.forEach(({ path, data }) => {
+    const opt = document.createElement('option');
+    opt.value = path;
+    opt.textContent = data.title || path;
+    select.appendChild(opt);
+  });
+}
+
+// Bevorzugt das Emoji (icon), faellt sonst auf das Kuerzel (abbr) zurueck.
+// Spaeter kann hier zusaetzlich sym.image (Pixel-Art-Sprite) beruecksichtigt
+// werden, sobald das Feature gebaut ist.
+function symbolDisplay(sym) {
+  if (!sym) return '?';
+  return sym.icon || sym.abbr || '?';
+}
+
+function chainToLabelHtml(chain) {
+  return chain.map((sid, i) => {
+    const sym = SYM_BY_ID[sid];
+    const icon = `<span class="goal-chain-icon" style="background:${sym?.color || '#666'}">${symbolDisplay(sym)}</span>`;
+    return i < chain.length - 1 ? icon + '<span class="goal-chain-arrow">→</span>' : icon;
+  }).join('');
+}
+
+function chainToText(chain) {
+  return chain.map(sid => SYM_BY_ID[sid]?.name || sid).join(' → ');
+}
+
+function renderGoalBoard() {
+  const board = document.getElementById('goalBoard');
+  board.innerHTML = '';
+
+  if (GOALS.length === 0) {
+    board.innerHTML = '<div class="goal-desc">Für dieses Level sind keine Nachbarschafts-Ziele definiert.</div>';
+    return;
+  }
+
+  GOALS.forEach((goal, idx) => {
+    const item = document.createElement('div');
+    item.className = 'goal-item';
+    item.innerHTML = `
+      <div class="goal-title">${chainToLabelHtml(goal.chain)}</div>
+      <div class="goal-progress">
+        <span class="count" id="goalCount_${idx}">0</span><span class="of">/ ${goal.target_count}</span>
+      </div>
+      <div class="goal-desc">Kette ${chainToText(goal.chain)} muss ${goal.target_count}x im Grid vorkommen (Glieder jeweils orthogonal benachbart, darf sich schlängeln).</div>
+      <div class="goal-bar"><div class="goal-bar-fill" id="goalBar_${idx}"></div></div>
+    `;
+    board.appendChild(item);
+  });
+}
+
+function applyLevel(levelData) {
+  currentLevel = normalizeLevel(levelData);
+  N = currentLevel.size || 6;
+  REGION_ROWS = currentLevel.region_rows || 2;
+  REGION_COLS = currentLevel.region_cols || 3;
+  SOLUTION = currentLevel.solution;
+  GIVEN_SET = new Set(currentLevel.givens.map(([r,c]) => r+'_'+c));
+  SYMBOLS = currentLevel.symbols;
+  SYM_BY_ID = Object.fromEntries(SYMBOLS.map(s => [s.id, s]));
+  GOALS = currentLevel.goals;
+
+  const subtitleEl = document.getElementById('subtitle');
+  if (subtitleEl) {
+    const goalSummary = GOALS.map(g => `${chainToText(g.chain)} (${g.target_count}x)`).join(' · ');
+    subtitleEl.textContent = GOALS.length
+      ? `Fülle jedes Feld so ein, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt — und erreiche: ${goalSummary}.`
+      : 'Fülle jedes Feld so ein, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt.';
+  }
+
+  renderGoalBoard();
+
   grid = SOLUTION.map((row, r) => row.map((val, c) => GIVEN_SET.has(r+'_'+c) ? val : null));
   selected = null;
   renderBoard();
@@ -389,7 +700,55 @@ function init() {
   updateAll();
   document.getElementById('winBanner').classList.remove('show');
 }
- 
+
+async function initLevels() {
+  const levels = await discoverLevels();
+  populateLevelSelect(levels);
+
+  const select = document.getElementById('levelSelect');
+  if (levels.length > 0) {
+    select.value = levels[0].path;
+    applyLevel(levels[0].data);
+  } else {
+    applyLevel(FALLBACK_LEVEL);
+  }
+
+  select.addEventListener('change', () => {
+    const chosen = levels.find(l => l.path === select.value);
+    if (chosen) applyLevel(chosen.data);
+  });
+
+  document.getElementById('reloadLevelsBtn').addEventListener('click', async () => {
+    const refreshed = await discoverLevels();
+    populateLevelSelect(refreshed);
+    if (refreshed.length > 0) applyLevel(refreshed[0].data);
+  });
+
+  document.getElementById('levelFileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      try {
+        const data = JSON.parse(evt.target.result);
+        applyLevel(data);
+        const opt = document.createElement('option');
+        opt.value = 'uploaded:' + file.name;
+        opt.textContent = (data.title || file.name) + ' (hochgeladen)';
+        select.appendChild(opt);
+        select.value = opt.value;
+      } catch (err) {
+        alert('Diese Datei konnte nicht als Level gelesen werden: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  });
+}
+
+function init() {
+  initLevels();
+}
+
 function renderBoard() {
   const board = document.getElementById('board');
   board.innerHTML = '';
@@ -400,38 +759,60 @@ function renderBoard() {
       cell.dataset.r = r;
       cell.dataset.c = c;
       if (GIVEN_SET.has(r+'_'+c)) cell.classList.add('given');
-      if ((c+1) % 3 === 0 && c !== N-1) cell.classList.add('region-border-right');
-      if ((r+1) % 2 === 0 && r !== N-1) cell.classList.add('region-border-bottom');
+      if ((c+1) % REGION_COLS === 0 && c !== N-1) cell.classList.add('region-border-right');
+      if ((r+1) % REGION_ROWS === 0 && r !== N-1) cell.classList.add('region-border-bottom');
       cell.addEventListener('click', () => onCellClick(r, c));
       board.appendChild(cell);
     }
   }
   refreshCells();
 }
- 
+
 function refreshCells() {
   document.querySelectorAll('.cell').forEach(cellEl => {
     const r = +cellEl.dataset.r, c = +cellEl.dataset.c;
     const val = grid[r][c];
-    cellEl.textContent = val ? SYM_BY_ID[val].icon : '';
+    cellEl.innerHTML = '';
+    if (val) {
+      const sym = SYM_BY_ID[val];
+      const icon = document.createElement('div');
+      icon.className = 'cell-icon';
+      if (sym?.icon) {
+        // Emoji ist selbst schon farbig - Hintergrund dezent halten
+        icon.style.background = 'transparent';
+        icon.classList.add('cell-icon-emoji');
+      } else {
+        icon.style.background = sym?.color || '#888';
+      }
+      icon.textContent = symbolDisplay(sym);
+      cellEl.appendChild(icon);
+    }
+    if (GIVEN_SET.has(r+'_'+c)) {
+      const star = document.createElement('span');
+      star.className = 'given-star';
+      star.textContent = '★';
+      cellEl.appendChild(star);
+    }
     cellEl.classList.toggle('selected', selected && selected.r === r && selected.c === c);
   });
   markConflicts();
 }
- 
+
 function onCellClick(r, c) {
   if (GIVEN_SET.has(r+'_'+c)) return;
   selected = { r, c };
   refreshCells();
 }
- 
+
 function renderPicker() {
   const picker = document.getElementById('picker');
   picker.innerHTML = '';
   SYMBOLS.forEach(sym => {
     const btn = document.createElement('button');
-    btn.textContent = sym.icon;
+    btn.textContent = symbolDisplay(sym);
     btn.title = sym.name;
+    btn.style.background = sym.icon ? 'var(--parchment)' : sym.color;
+    if (!sym.icon) btn.classList.add('picker-btn-color');
     btn.addEventListener('click', () => placeSymbol(sym.id));
     picker.appendChild(btn);
   });
@@ -441,7 +822,7 @@ function renderPicker() {
   erase.addEventListener('click', () => placeSymbol(null));
   picker.appendChild(erase);
 }
- 
+
 function placeSymbol(symId) {
   if (!selected) return;
   const { r, c } = selected;
@@ -450,21 +831,26 @@ function placeSymbol(symId) {
   refreshCells();
   updateAll();
 }
- 
+
 function renderLegend() {
   const legend = document.getElementById('legend');
   legend.innerHTML = '';
   SYMBOLS.forEach(sym => {
     const span = document.createElement('span');
-    span.textContent = `${sym.icon} ${sym.name}`;
+    const swatch = document.createElement('span');
+    swatch.className = 'legend-swatch';
+    swatch.style.background = sym.color;
+    span.appendChild(swatch);
+    const label = sym.icon ? `${sym.icon} ${sym.name}` : sym.name;
+    span.appendChild(document.createTextNode(label));
     legend.appendChild(span);
   });
 }
- 
+
 // --- Rule checking ---
 function markConflicts() {
   const conflictCells = new Set();
- 
+
   for (let r = 0; r < N; r++) {
     const seen = {};
     for (let c = 0; c < N; c++) {
@@ -483,11 +869,11 @@ function markConflicts() {
       else seen[v] = r;
     }
   }
-  for (let br = 0; br < N; br += 2) {
-    for (let bc = 0; bc < N; bc += 3) {
+  for (let br = 0; br < N; br += REGION_ROWS) {
+    for (let bc = 0; bc < N; bc += REGION_COLS) {
       const seen = {};
-      for (let r = br; r < br+2; r++) {
-        for (let c = bc; c < bc+3; c++) {
+      for (let r = br; r < br+REGION_ROWS; r++) {
+        for (let c = bc; c < bc+REGION_COLS; c++) {
           const v = grid[r][c];
           if (!v) continue;
           if (seen[v]) { conflictCells.add(r+'_'+c); conflictCells.add(seen[v]); }
@@ -496,56 +882,93 @@ function markConflicts() {
       }
     }
   }
- 
+
   document.querySelectorAll('.cell').forEach(cellEl => {
     const key = cellEl.dataset.r + '_' + cellEl.dataset.c;
     cellEl.classList.toggle('conflict', conflictCells.has(key));
   });
 }
- 
-function countAdjacency() {
+
+// Zaehlt, wie oft eine Kette (Liste von Symbol-IDs) im Grid als
+// zusammenhaengender, orthogonal benachbarter Pfad vorkommt (darf sich
+// schlaengeln, muss keine gerade Linie sein). Analog zu chain_count in
+// sudoku_core.py.
+function neighborsOf(r, c) {
+  const result = [];
+  if (r > 0) result.push([r-1, c]);
+  if (r < N-1) result.push([r+1, c]);
+  if (c > 0) result.push([r, c-1]);
+  if (c < N-1) result.push([r, c+1]);
+  return result;
+}
+
+function countChain(chain) {
+  if (chain.length < 2) return 0;
   let count = 0;
-  const pairs = [];
-  for (let r = 0; r < N; r++) {
-    for (let c = 0; c < N; c++) {
-      const v = grid[r][c];
-      if (!v) continue;
-      if (c+1 < N && grid[r][c+1]) {
-        if ((v === 'wald' && grid[r][c+1] === 'saegewerk') || (v === 'saegewerk' && grid[r][c+1] === 'wald')) {
-          count++; pairs.push([[r,c],[r,c+1]]);
-        }
-      }
-      if (r+1 < N && grid[r+1][c]) {
-        if ((v === 'wald' && grid[r+1][c] === 'saegewerk') || (v === 'saegewerk' && grid[r+1][c] === 'wald')) {
-          count++; pairs.push([[r,c],[r+1,c]]);
-        }
+
+  function dfs(path, usedCells) {
+    const step = path.length;
+    if (step === chain.length) {
+      count++;
+      return;
+    }
+    const [lr, lc] = path[path.length - 1];
+    const neededSymbol = chain[step];
+    for (const [nr, nc] of neighborsOf(lr, lc)) {
+      const key = nr + '_' + nc;
+      if (usedCells.has(key)) continue;
+      if (grid[nr][nc] === neededSymbol) {
+        path.push([nr, nc]);
+        usedCells.add(key);
+        dfs(path, usedCells);
+        path.pop();
+        usedCells.delete(key);
       }
     }
   }
-  return { count, pairs };
+
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      if (grid[r][c] === chain[0]) {
+        dfs([[r, c]], new Set([r + '_' + c]));
+      }
+    }
+  }
+
+  return count;
 }
- 
+
 function isFull() {
   return grid.every(row => row.every(v => v !== null));
 }
- 
+
 function hasAnyConflict() {
   return document.querySelectorAll('.cell.conflict').length > 0;
 }
- 
+
 function updateAll() {
-  const { count } = countAdjacency();
-  document.getElementById('goalCount').textContent = count;
-  document.getElementById('goalBar').style.width = Math.min(100, (count/4)*100) + '%';
- 
+  let allGoalsMet = GOALS.length > 0;
+
+  GOALS.forEach((goal, idx) => {
+    const count = countChain(goal.chain);
+    const countEl = document.getElementById(`goalCount_${idx}`);
+    const barEl = document.getElementById(`goalBar_${idx}`);
+    if (countEl) countEl.textContent = count;
+    if (barEl) {
+      barEl.style.width = Math.min(100, (count / goal.target_count) * 100) + '%';
+      barEl.classList.toggle('done', count === goal.target_count);
+    }
+    if (count !== goal.target_count) allGoalsMet = false;
+  });
+
   const winBanner = document.getElementById('winBanner');
-  if (isFull() && !hasAnyConflict() && count === 4) {
+  if (isFull() && !hasAnyConflict() && allGoalsMet) {
     winBanner.classList.add('show');
   } else {
     winBanner.classList.remove('show');
   }
 }
- 
+
 document.getElementById('checkBtn').addEventListener('click', () => {
   refreshCells();
   updateAll();
@@ -554,29 +977,35 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   } else if (hasAnyConflict()) {
     alert('Es gibt noch Wiederholungen in einer Zeile, Spalte oder Region (rot markiert).');
   } else {
-    const { count } = countAdjacency();
-    if (count === 4) {
+    const unmet = GOALS
+      .map((goal, idx) => ({ goal, count: countChain(goal.chain) }))
+      .filter(({ goal, count }) => count !== goal.target_count);
+    if (unmet.length === 0) {
       alert('Alles richtig! Der Hof ist fertig eingerichtet. 🎉');
     } else {
-      alert(`Sudoku-Regeln erfüllt, aber das Sägewerk-Ziel stimmt noch nicht (${count}/4).`);
+      const details = unmet.map(({ goal, count }) => `${chainToText(goal.chain)}: ${count}/${goal.target_count}`).join('\n');
+      alert('Sudoku-Regeln erfüllt, aber diese Ziele stimmen noch nicht:\n' + details);
     }
   }
 });
- 
+
 document.getElementById('resetBtn').addEventListener('click', () => {
-  if (confirm('Wirklich alle eigenen Eingaben zurücksetzen?')) init();
+  if (confirm('Wirklich alle eigenen Eingaben zurücksetzen?')) {
+    if (currentLevel) applyLevel(currentLevel);
+  }
 });
- 
-// keyboard support: number keys 1-6 to place symbol, backspace to erase
+
+// Tastatur-Support: Zifferntasten 1-9 platzieren das jeweilige Symbol,
+// Backspace/Entf loescht.
 document.addEventListener('keydown', (e) => {
   if (!selected) return;
   const num = parseInt(e.key, 10);
-  if (num >= 1 && num <= 6) placeSymbol(SYMBOLS[num-1].id);
+  if (num >= 1 && num <= 9 && SYMBOLS[num-1]) placeSymbol(SYMBOLS[num-1].id);
   if (e.key === 'Backspace' || e.key === 'Delete') placeSymbol(null);
 });
- 
+
 init();
 </script>
- 
+
 </body>
 </html>
