@@ -14,19 +14,19 @@
       "image": null
     },
     {
-      "id": "saegewerk",
-      "name": "Sägewerk",
-      "color": "#8a5a2b",
-      "abbr": "SW",
-      "icon": "🪚",
-      "image": null
-    },
-    {
       "id": "feld",
       "name": "Feld",
       "color": "#c9a227",
       "abbr": "FE",
       "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
       "image": null
     },
     {
@@ -40,68 +40,68 @@
     {
       "id": "bergwerk",
       "name": "Bergwerk",
-      "color": "#1c1c1c",
+      "color": "#666666",
       "abbr": "BW",
       "icon": "⛰️",
       "image": null
     },
     {
-      "id": "schreinerei",
-      "name": "Schreinerei",
-      "color": "#60617d",
-      "abbr": "SC",
+      "id": "steinmetz",
+      "name": "Steinmetz",
+      "color": "#7d7886",
+      "abbr": "SM",
       "icon": "⚙️",
       "image": null
     }
   ],
   "solution": [
     [
-      "saegewerk",
-      "haus",
-      "schreinerei",
-      "wald",
-      "bergwerk",
-      "feld"
-    ],
-    [
-      "wald",
       "feld",
+      "steinmetz",
       "bergwerk",
-      "saegewerk",
-      "haus",
-      "schreinerei"
-    ],
-    [
-      "schreinerei",
+      "brunnen",
       "wald",
-      "feld",
-      "bergwerk",
-      "saegewerk",
       "haus"
     ],
     [
-      "bergwerk",
-      "saegewerk",
-      "haus",
-      "feld",
-      "schreinerei",
-      "wald"
-    ],
-    [
-      "feld",
-      "schreinerei",
-      "saegewerk",
       "haus",
       "wald",
+      "brunnen",
+      "bergwerk",
+      "steinmetz",
+      "feld"
+    ],
+    [
+      "steinmetz",
+      "brunnen",
+      "haus",
+      "wald",
+      "feld",
       "bergwerk"
     ],
     [
-      "haus",
       "bergwerk",
-      "wald",
-      "schreinerei",
       "feld",
-      "saegewerk"
+      "wald",
+      "haus",
+      "brunnen",
+      "steinmetz"
+    ],
+    [
+      "brunnen",
+      "bergwerk",
+      "steinmetz",
+      "feld",
+      "haus",
+      "wald"
+    ],
+    [
+      "wald",
+      "haus",
+      "feld",
+      "steinmetz",
+      "bergwerk",
+      "brunnen"
     ]
   ],
   "givens": [
@@ -111,19 +111,23 @@
     ],
     [
       0,
-      4
+      2
     ],
     [
-      1,
-      0
-    ],
-    [
-      1,
+      0,
       3
     ],
     [
-      3,
-      1
+      1,
+      5
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      5
     ],
     [
       3,
@@ -131,36 +135,32 @@
     ],
     [
       3,
-      3
-    ],
-    [
-      3,
       4
     ],
     [
       4,
-      0
+      1
     ],
     [
       4,
       4
-    ],
-    [
-      4,
-      5
     ],
     [
       5,
       0
+    ],
+    [
+      5,
+      4
     ]
   ],
   "goals": [
     {
       "chain": [
         "bergwerk",
-        "schreinerei"
+        "steinmetz"
       ],
-      "target_count": 3
+      "target_count": 6
     }
   ],
   "verified_unique": true
