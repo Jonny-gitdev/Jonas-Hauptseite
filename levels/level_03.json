@@ -1,6 +1,6 @@
 {
-  "id": "level_02",
-  "title": "Der Mühlenhof (Das erste Mehrfachziel)",
+  "id": "level_03",
+  "title": "In die Berge",
   "size": 6,
   "region_rows": 2,
   "region_cols": 3,
@@ -30,104 +30,100 @@
       "image": null
     },
     {
-      "id": "scheune",
-      "name": "Scheune",
-      "color": "#a8402f",
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "bergwerk",
+      "name": "Bergwerk",
+      "color": "#1c1c1c",
+      "abbr": "BW",
+      "icon": "⛰️",
+      "image": null
+    },
+    {
+      "id": "schreinerei",
+      "name": "Schreinerei",
+      "color": "#60617d",
       "abbr": "SC",
-      "icon": "🏚️",
-      "image": null
-    },
-    {
-      "id": "brunnen",
-      "name": "Brunnen",
-      "color": "#3d7a91",
-      "abbr": "BR",
-      "icon": "💧",
-      "image": null
-    },
-    {
-      "id": "muehle",
-      "name": "Mühle",
-      "color": "#7a5c9e",
-      "abbr": "MU",
       "icon": "⚙️",
       "image": null
     }
   ],
   "solution": [
     [
-      "brunnen",
-      "feld",
       "saegewerk",
+      "haus",
+      "schreinerei",
       "wald",
-      "scheune",
-      "muehle"
+      "bergwerk",
+      "feld"
     ],
     [
       "wald",
-      "muehle",
-      "scheune",
       "feld",
-      "brunnen",
-      "saegewerk"
+      "bergwerk",
+      "saegewerk",
+      "haus",
+      "schreinerei"
     ],
     [
-      "feld",
-      "brunnen",
+      "schreinerei",
       "wald",
-      "muehle",
+      "feld",
+      "bergwerk",
       "saegewerk",
-      "scheune"
+      "haus"
     ],
     [
-      "scheune",
+      "bergwerk",
       "saegewerk",
-      "muehle",
-      "brunnen",
+      "haus",
       "feld",
+      "schreinerei",
       "wald"
     ],
     [
-      "saegewerk",
-      "wald",
       "feld",
-      "scheune",
-      "muehle",
-      "brunnen"
+      "schreinerei",
+      "saegewerk",
+      "haus",
+      "wald",
+      "bergwerk"
     ],
     [
-      "muehle",
-      "scheune",
-      "brunnen",
-      "saegewerk",
+      "haus",
+      "bergwerk",
       "wald",
-      "feld"
+      "schreinerei",
+      "feld",
+      "saegewerk"
     ]
   ],
   "givens": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      4
+    ],
     [
       1,
       0
     ],
     [
       1,
-      2
-    ],
-    [
-      1,
       3
     ],
     [
-      1,
-      4
-    ],
-    [
-      2,
+      3,
       1
-    ],
-    [
-      2,
-      5
     ],
     [
       3,
@@ -135,40 +131,36 @@
     ],
     [
       3,
-      5
-    ],
-    [
-      4,
-      1
-    ],
-    [
-      4,
-      2
-    ],
-    [
-      5,
       3
     ],
     [
-      5,
+      3,
       4
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
     ]
   ],
   "goals": [
     {
       "chain": [
-        "wald",
-        "saegewerk"
+        "bergwerk",
+        "schreinerei"
       ],
-      "target_count": 4
-    },
-    {
-      "chain": [
-        "feld",
-        "scheune",
-        "brunnen"
-      ],
-      "target_count": 1
+      "target_count": 3
     }
   ],
   "verified_unique": true
