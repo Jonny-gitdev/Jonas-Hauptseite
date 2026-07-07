@@ -158,6 +158,24 @@
     border-radius: 4px;
   }
 
+  .difficulty-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: rgba(212,169,73,0.18);
+    color: var(--wheat);
+    border: 1px solid rgba(212,169,73,0.4);
+  }
+  .difficulty-badge.diff-easy   { background: rgba(143,214,106,0.15); color: #8fd66a; border-color: rgba(143,214,106,0.4); }
+  .difficulty-badge.diff-medium { background: rgba(212,169,73,0.18); color: var(--wheat); border-color: rgba(212,169,73,0.4); }
+  .difficulty-badge.diff-hard   { background: rgba(230,140,90,0.18); color: #e68c5a; border-color: rgba(230,140,90,0.4); }
+  .difficulty-badge.diff-expert { background: rgba(168,64,47,0.22); color: #e69a8c; border-color: rgba(168,64,47,0.5); }
+
   /* --- Board --- */
   .board-wrap {
     background: linear-gradient(160deg, #5a4530, #3a2c1e);
@@ -314,6 +332,10 @@
     gap: 14px;
   }
 
+  .goal-board.negative-goal-board {
+    background: linear-gradient(160deg, #5a3428, #3a231c);
+  }
+
   .goal-item {
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -334,6 +356,8 @@
     flex-wrap: wrap;
   }
 
+  .goal-title.negative-title { color: #e69a8c; }
+
   .goal-chain-icon {
     display: inline-flex;
     align-items: center;
@@ -346,6 +370,10 @@
     color: #fff;
   }
   .goal-chain-arrow {
+    color: var(--parchment-dim);
+    font-size: 0.8rem;
+  }
+  .goal-chain-plus {
     color: var(--parchment-dim);
     font-size: 0.8rem;
   }
@@ -363,6 +391,7 @@
     color: var(--parchment);
     line-height: 1;
   }
+  .goal-progress .count.exceeded { color: #e69a8c; }
   .goal-progress .of {
     font-size: 1rem;
     color: var(--parchment-dim);
@@ -389,6 +418,12 @@
   }
   .goal-bar-fill.done {
     background: linear-gradient(90deg, var(--leaf), #8fd66a);
+  }
+  .goal-bar-fill.negative {
+    background: linear-gradient(90deg, var(--leaf), var(--wheat));
+  }
+  .goal-bar-fill.negative.exceeded {
+    background: linear-gradient(90deg, var(--barn-red), #e69a8c);
   }
 
   .status-board {
@@ -494,6 +529,65 @@
     flex: none;
   }
 
+  /* --- Story-Popup --- */
+  .story-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 15, 10, 0.72);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .story-overlay.show { display: flex; }
+
+  .story-modal {
+    background: linear-gradient(160deg, #6b4a2f, #3a2c1e);
+    border-radius: 14px;
+    padding: 26px 28px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 0 0 2px rgba(255,255,255,0.06);
+    text-align: left;
+  }
+  .story-modal-kicker {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--wheat);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .story-modal-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+    color: var(--parchment);
+  }
+  .story-modal-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--parchment-dim);
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+  }
+  .story-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .story-modal-actions button {
+    background: var(--wheat);
+    color: var(--ink);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .story-modal-actions button:hover { background: #e0b95e; }
+
   @media (max-width: 640px) {
     .layout { flex-direction: column; align-items: center; }
     .sidebar { width: 100%; max-width: 320px; }
@@ -518,6 +612,7 @@
     <label for="levelSelect">Level:</label>
     <select id="levelSelect"></select>
     
+    <span class="difficulty-badge" id="difficultyBadge" style="display:none;"></span>
   </div>
   
 </div>
@@ -533,7 +628,11 @@
 
   <div class="sidebar">
     <div class="goal-board" id="goalBoard">
-      <!-- wird dynamisch mit 1..n Zielen gefuellt -->
+      <!-- wird dynamisch mit 1..n positiven Zielen gefuellt -->
+    </div>
+
+    <div class="goal-board negative-goal-board" id="negativeGoalBoard" style="display:none;">
+      <!-- wird dynamisch mit 1..n negativen Zielen gefuellt -->
     </div>
 
     <div class="status-board">
@@ -558,6 +657,17 @@
     <div class="win-banner" id="winBanner">🎉 Hof komplett! Alle Regeln und Ziele erfüllt.</div>
   </div>
 
+</div>
+
+<div class="story-overlay" id="storyOverlay">
+  <div class="story-modal">
+    <div class="story-modal-kicker" id="storyKicker">Hofgeflüster</div>
+    <h3 class="story-modal-title" id="storyTitle">Willkommen</h3>
+    <div class="story-modal-text" id="storyText"></div>
+    <div class="story-modal-actions">
+      <button id="storyContinueBtn">Weiter</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -602,6 +712,10 @@ const FALLBACK_LEVEL = {
   goals: [
     { chain: ['wald','saegewerk'], target_count: 4 },
   ],
+  negative_goals: [],
+  story_intro: 'Willkommen auf deinem neuen Hof! Richte alles so ein, dass Wege und Gebäude zusammenpassen.',
+  story_outro: 'Was für ein gelungener Hof! Die Tiere und Pflanzen fühlen sich sichtlich wohl.',
+  difficulty: 'easy',
   verified_unique: true,
 };
 
@@ -612,8 +726,10 @@ let SOLUTION = [];
 let GIVEN_SET = new Set();
 let SYMBOLS = [];
 let SYM_BY_ID = {};
-let GOALS = [];         // Liste von { chain: [id,...], target_count }
+let GOALS = [];            // Liste von { chain: [id,...], target_count }
+let NEGATIVE_GOALS = [];   // Liste von { symbols: [id,...], max_count }
 let currentLevel = null;
+let outroShown = false;
 
 let grid = [];
 let selected = null;
@@ -621,8 +737,8 @@ let hintsUsed = 0;
 
 // --- Level-Normalisierung ---------------------------------------------
 // Alte Level-Dateien hatten evtl. noch "goal" (Einzahl, ein Paar) statt
-// "goals" (Liste von Ketten). Wird hier transparent hochkonvertiert, damit
-// alte Level weiter funktionieren.
+// "goals" (Liste von Ketten), oder gar kein negative_goals/story-Feld.
+// Wird hier transparent hochkonvertiert, damit alte Level weiter funktionieren.
 function normalizeLevel(data) {
   const normalized = { ...data };
   if (!normalized.goals) {
@@ -632,10 +748,16 @@ function normalizeLevel(data) {
       normalized.goals = [];
     }
   }
+  if (!normalized.negative_goals) {
+    normalized.negative_goals = [];
+  }
   if (!normalized.symbols) {
     // Fallback auf die alten sechs Standard-Symbole mit Icon -> Farbe/Kuerzel ersetzt
     normalized.symbols = FALLBACK_LEVEL.symbols;
   }
+  normalized.story_intro = normalized.story_intro || null;
+  normalized.story_outro = normalized.story_outro || null;
+  normalized.difficulty = normalized.difficulty || null;
   return normalized;
 }
 
@@ -696,12 +818,24 @@ function chainToText(chain) {
   return chain.map(sid => SYM_BY_ID[sid]?.name || sid).join(' → ');
 }
 
+function symbolSetToLabelHtml(symbols) {
+  return symbols.map((sid, i) => {
+    const sym = SYM_BY_ID[sid];
+    const icon = `<span class="goal-chain-icon" style="background:${sym?.color || '#666'}">${symbolDisplay(sym)}</span>`;
+    return i < symbols.length - 1 ? icon + '<span class="goal-chain-plus">+</span>' : icon;
+  }).join('');
+}
+
+function symbolSetToText(symbols) {
+  return symbols.map(sid => SYM_BY_ID[sid]?.name || sid).join(' + ');
+}
+
 function renderGoalBoard() {
   const board = document.getElementById('goalBoard');
   board.innerHTML = '';
 
   if (GOALS.length === 0) {
-    board.innerHTML = '<div class="goal-desc">Für dieses Level sind keine Nachbarschafts-Ziele definiert.</div>';
+    board.innerHTML = '<div class="goal-desc">Für dieses Level sind keine positiven Nachbarschafts-Ziele definiert.</div>';
     return;
   }
 
@@ -720,6 +854,62 @@ function renderGoalBoard() {
   });
 }
 
+function renderNegativeGoalBoard() {
+  const board = document.getElementById('negativeGoalBoard');
+  board.innerHTML = '';
+
+  if (!NEGATIVE_GOALS || NEGATIVE_GOALS.length === 0) {
+    board.style.display = 'none';
+    return;
+  }
+  board.style.display = 'flex';
+
+  NEGATIVE_GOALS.forEach((ng, idx) => {
+    const item = document.createElement('div');
+    item.className = 'goal-item';
+    item.innerHTML = `
+      <div class="goal-title negative-title">🚫 ${symbolSetToLabelHtml(ng.symbols)}</div>
+      <div class="goal-progress">
+        <span class="count" id="negGoalCount_${idx}">0</span><span class="of">/ max. ${ng.max_count}</span>
+      </div>
+      <div class="goal-desc">${symbolSetToText(ng.symbols)} dürfen insgesamt höchstens ${ng.max_count}x orthogonal nebeneinander liegen.</div>
+      <div class="goal-bar"><div class="goal-bar-fill negative" id="negGoalBar_${idx}"></div></div>
+    `;
+    board.appendChild(item);
+  });
+}
+
+function renderDifficultyBadge() {
+  const badge = document.getElementById('difficultyBadge');
+  const diff = currentLevel?.difficulty;
+  if (!diff) {
+    badge.style.display = 'none';
+    return;
+  }
+  const labels = { easy: '🟢 Leicht', medium: '🟡 Mittel', hard: '🟠 Schwer', expert: '🔴 Experte' };
+  badge.textContent = labels[diff] || diff;
+  badge.className = 'difficulty-badge diff-' + diff;
+  badge.style.display = 'inline-flex';
+}
+
+// --- Story-Popup --------------------------------------------------------
+function showStoryModal(text, kicker) {
+  if (!text) return;
+  document.getElementById('storyKicker').textContent = kicker || 'Hofgeflüster';
+  document.getElementById('storyTitle').textContent = currentLevel?.title || 'Hofgeflüster';
+  document.getElementById('storyText').textContent = text;
+  document.getElementById('storyOverlay').classList.add('show');
+}
+
+function hideStoryModal() {
+  document.getElementById('storyOverlay').classList.remove('show');
+}
+
+document.getElementById('storyContinueBtn').addEventListener('click', hideStoryModal);
+document.getElementById('storyOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'storyOverlay') hideStoryModal();
+});
+
 function applyLevel(levelData) {
   currentLevel = normalizeLevel(levelData);
   N = currentLevel.size || 6;
@@ -730,16 +920,22 @@ function applyLevel(levelData) {
   SYMBOLS = currentLevel.symbols;
   SYM_BY_ID = Object.fromEntries(SYMBOLS.map(s => [s.id, s]));
   GOALS = currentLevel.goals;
+  NEGATIVE_GOALS = currentLevel.negative_goals;
+  outroShown = false;
 
   const subtitleEl = document.getElementById('subtitle');
   if (subtitleEl) {
     const goalSummary = GOALS.map(g => `${chainToText(g.chain)} (${g.target_count}x)`).join(' · ');
-    subtitleEl.textContent = GOALS.length
-      ? `Fülle jedes Feld so ein, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt — und erreiche: ${goalSummary}.`
-      : 'Fülle jedes Feld so ein, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt.';
+    const negSummary = NEGATIVE_GOALS.map(ng => `${symbolSetToText(ng.symbols)} (max. ${ng.max_count}x)`).join(' · ');
+    let text = 'Fülle jedes Feld so ein, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt.';
+    if (GOALS.length) text += ` Erreiche: ${goalSummary}.`;
+    if (NEGATIVE_GOALS.length) text += ` Vermeide: ${negSummary}.`;
+    subtitleEl.textContent = text;
   }
 
   renderGoalBoard();
+  renderNegativeGoalBoard();
+  renderDifficultyBadge();
 
   grid = SOLUTION.map((row, r) => row.map((val, c) => GIVEN_SET.has(r+'_'+c) ? val : null));
   selected = null;
@@ -750,6 +946,10 @@ function applyLevel(levelData) {
   renderLegend();
   updateAll();
   document.getElementById('winBanner').classList.remove('show');
+
+  if (currentLevel.story_intro) {
+    showStoryModal(currentLevel.story_intro, 'Zu Beginn');
+  }
 }
 
 async function initLevels() {
@@ -989,6 +1189,33 @@ function countChain(chain) {
   return count;
 }
 
+// Zaehlt orthogonale Nachbarschaften zwischen Zellen, die BEIDE ein Symbol
+// aus `symbols` enthalten (auch zweimal dasselbe Symbol) - Gegenstueck zu
+// count_negative_adjacency() in sudoku_core.py.
+function countNegativeAdjacency(symbols) {
+  return countNegativeAdjacencyOn(grid, symbols);
+}
+
+function countNegativeAdjacencyOn(g, symbols) {
+  const symset = new Set(symbols);
+  let count = 0;
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const v = g[r][c];
+      if (v === null || v === undefined || !symset.has(v)) continue;
+      if (c + 1 < N) {
+        const v2 = g[r][c+1];
+        if (v2 !== null && v2 !== undefined && symset.has(v2)) count++;
+      }
+      if (r + 1 < N) {
+        const v2 = g[r+1][c];
+        if (v2 !== null && v2 !== undefined && symset.has(v2)) count++;
+      }
+    }
+  }
+  return count;
+}
+
 function isFull() {
   return grid.every(row => row.every(v => v !== null));
 }
@@ -997,85 +1224,73 @@ function hasAnyConflict() {
   return document.querySelectorAll('.cell.conflict').length > 0;
 }
 
+function negativeGoalsExceeded() {
+  return NEGATIVE_GOALS.some(ng => countNegativeAdjacency(ng.symbols) > ng.max_count);
+}
+
 // ---------------------------------------------------------------------
 // Hinweis-Funktion: portiert dieselben "menschlichen" Logik-Techniken wie
-// sudoku_core.py (Naked Single, Hidden Single, Ziel-Deduktion), inklusive
-// derselben Einschraenkung: Ziel-Deduktion darf nur greifen, wenn wenige
-// leere Zellen uebrig sind (Endspiel-Faelle, die ein Mensch tatsaechlich
-// durchprobieren koennte) - sonst waere es verstecktes Brute-Force-Raten.
+// sudoku_core.py - Naked/Hidden Single, Locked Candidates (Pointing/
+// Claiming), Naked/Hidden Pair & Triple, X-Wing, Negative-Ziel-Pruning und
+// Ziel-Deduktion (inkl. derselben Einschraenkung: Ziel-Deduktion darf nur
+// greifen, wenn wenige leere Zellen uebrig sind - Endspiel-Faelle, die ein
+// Mensch tatsaechlich durchprobieren koennte, sonst waere es verstecktes
+// Brute-Force-Raten).
 // ---------------------------------------------------------------------
 
-function candidatesGrid() {
+function candidatesGridOn(g, eliminated) {
   const cands = {};
   const allIds = SYMBOLS.map(s => s.id);
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
-      if (grid[r][c] !== null) continue;
+      if (g[r][c] !== null) continue;
       const used = new Set();
-      for (let cc = 0; cc < N; cc++) if (grid[r][cc] !== null) used.add(grid[r][cc]);
-      for (let rr = 0; rr < N; rr++) if (grid[rr][c] !== null) used.add(grid[rr][c]);
+      for (let cc = 0; cc < N; cc++) if (g[r][cc] !== null) used.add(g[r][cc]);
+      for (let rr = 0; rr < N; rr++) if (g[rr][c] !== null) used.add(g[rr][c]);
       const br = Math.floor(r / REGION_ROWS) * REGION_ROWS;
       const bc = Math.floor(c / REGION_COLS) * REGION_COLS;
-      for (let rr = br; rr < br + REGION_ROWS; rr++) {
-        for (let cc = bc; cc < bc + REGION_COLS; cc++) {
-          if (grid[rr][cc] !== null) used.add(grid[rr][cc]);
-        }
-      }
-      cands[r + '_' + c] = allIds.filter(id => !used.has(id));
+      for (let rr = br; rr < br + REGION_ROWS; rr++)
+        for (let cc = bc; cc < bc + REGION_COLS; cc++)
+          if (g[rr][cc] !== null) used.add(g[rr][cc]);
+      const key = r + '_' + c;
+      cands[key] = allIds.filter(id => !used.has(id) && !(eliminated && eliminated.has(key + '_' + id)));
     }
   }
   return cands;
 }
 
-function findNakedSingleHint() {
-  const cands = candidatesGrid();
-  for (const key in cands) {
-    if (cands[key].length === 1) {
-      const [r, c] = key.split('_').map(Number);
-      return { r, c, value: cands[key][0] };
-    }
-  }
-  return null;
+// Bleibt fuer Abwaertskompatibilitaet/eigene Aufrufe erhalten.
+function candidatesGrid() {
+  return candidatesGridOn(grid, null);
 }
 
-function findHiddenSingleHint() {
-  const cands = candidatesGrid();
-  const symbolIds = SYMBOLS.map(s => s.id);
-
-  function tryUnit(cells) {
-    for (const v of symbolIds) {
-      const spots = cells.filter(([r, c]) => grid[r][c] === null && (cands[r+'_'+c] || []).includes(v));
-      if (spots.length === 1) {
-        const [r, c] = spots[0];
-        return { r, c, value: v };
-      }
-    }
-    return null;
-  }
-
-  for (let r = 0; r < N; r++) {
-    const cells = [];
-    for (let c = 0; c < N; c++) cells.push([r, c]);
-    const hint = tryUnit(cells);
-    if (hint) return hint;
-  }
-  for (let c = 0; c < N; c++) {
-    const cells = [];
-    for (let r = 0; r < N; r++) cells.push([r, c]);
-    const hint = tryUnit(cells);
-    if (hint) return hint;
-  }
+function allUnitsJS() {
+  const units = [];
+  for (let r = 0; r < N; r++) { const u = []; for (let c = 0; c < N; c++) u.push([r, c]); units.push(u); }
+  for (let c = 0; c < N; c++) { const u = []; for (let r = 0; r < N; r++) u.push([r, c]); units.push(u); }
   for (let br = 0; br < N; br += REGION_ROWS) {
     for (let bc = 0; bc < N; bc += REGION_COLS) {
-      const cells = [];
-      for (let r = br; r < br + REGION_ROWS; r++)
-        for (let c = bc; c < bc + REGION_COLS; c++)
-          cells.push([r, c]);
-      const hint = tryUnit(cells);
-      if (hint) return hint;
+      const u = [];
+      for (let r = br; r < br + REGION_ROWS; r++) for (let c = bc; c < bc + REGION_COLS; c++) u.push([r, c]);
+      units.push(u);
     }
   }
-  return null;
+  return units;
+}
+
+function combinationsOf(arr, k) {
+  const result = [];
+  const combo = [];
+  function rec(start) {
+    if (combo.length === k) { result.push(combo.slice()); return; }
+    for (let i = start; i < arr.length; i++) {
+      combo.push(arr[i]);
+      rec(i + 1);
+      combo.pop();
+    }
+  }
+  rec(0);
+  return result;
 }
 
 function rowOkOn(g, r) {
@@ -1127,30 +1342,289 @@ function countChainOn(g, chain) {
   return count;
 }
 
-function goalsSatisfiedOn(g, goals) {
-  return goals.every(goal => countChainOn(g, goal.chain) === goal.target_count);
+function goalsSatisfiedOn(g, goals, negativeGoals) {
+  const posOk = goals.every(goal => countChainOn(g, goal.chain) === goal.target_count);
+  if (!posOk) return false;
+  if (!negativeGoals) return true;
+  return negativeGoals.every(ng => countNegativeAdjacencyOn(g, ng.symbols) <= ng.max_count);
 }
 
-// Ziel-Deduktion: nur anwendbar, wenn hoechstens maxEmptyCells leere Zellen
-// uebrig sind (Endspiel-Faelle - siehe Kommentar oben). Probiert alle
-// gueltigen Vervollstaendigungen der leeren Zellen durch; wenn ALLE davon,
-// die zusaetzlich die Ziele erfuellen, eine Zelle auf denselben Wert
-// festlegen (waehrend das ohne Ziel-Bedingung nicht so waere), wird das als
-// Hinweis zurueckgegeben. Wird die Aufzaehlung durch maxCompletions
-// abgeschnitten, gilt das NICHT als verlaessliche Deduktion (analog zur
-// Python-Version).
-function findGoalDeductionHint(maxEmptyCells = 8, maxCompletions = 3000) {
+// --- Naked Single / Hidden Single (Stufe 1) ---
+function applyNakedSingleOn(g, eliminated) {
+  const cands = candidatesGridOn(g, eliminated);
+  for (const key in cands) {
+    const opts = cands[key];
+    if (opts.length === 1) {
+      const [r, c] = key.split('_').map(Number);
+      g[r][c] = opts[0];
+      return { r, c, value: opts[0] };
+    }
+    if (opts.length === 0) return 'contradiction';
+  }
+  return null;
+}
+
+function applyHiddenSingleOn(g, eliminated) {
+  const cands = candidatesGridOn(g, eliminated);
+  const symbolIds = SYMBOLS.map(s => s.id);
+  for (const cells of allUnitsJS()) {
+    for (const v of symbolIds) {
+      const spots = cells.filter(([r, c]) => g[r][c] === null && (cands[r + '_' + c] || []).includes(v));
+      if (spots.length === 1) {
+        const [r, c] = spots[0];
+        g[r][c] = v;
+        return { r, c, value: v };
+      }
+    }
+  }
+  return null;
+}
+
+// --- Locked Candidates: Pointing/Claiming (Stufe 2) ---
+function applyLockedCandidatesOn(g, eliminated) {
+  const cands = candidatesGridOn(g, eliminated);
+  const symbolIds = SYMBOLS.map(s => s.id);
+
+  const boxes = [];
+  for (let br = 0; br < N; br += REGION_ROWS) {
+    for (let bc = 0; bc < N; bc += REGION_COLS) {
+      const box = [];
+      for (let r = br; r < br + REGION_ROWS; r++) for (let c = bc; c < bc + REGION_COLS; c++) box.push([r, c]);
+      boxes.push(box);
+    }
+  }
+
+  for (const box of boxes) {
+    const bset = new Set(box.map(([r, c]) => r + '_' + c));
+    for (const v of symbolIds) {
+      const spots = box.filter(([r, c]) => g[r][c] === null && (cands[r + '_' + c] || []).includes(v));
+      if (spots.length < 2) continue;
+      const rows = new Set(spots.map(([r]) => r));
+      const cols = new Set(spots.map(([, c]) => c));
+      if (rows.size === 1) {
+        const r = [...rows][0];
+        for (let c = 0; c < N; c++) {
+          if (!bset.has(r + '_' + c) && g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) {
+            const key = r + '_' + c + '_' + v;
+            if (!eliminated.has(key)) { eliminated.add(key); return true; }
+          }
+        }
+      }
+      if (cols.size === 1) {
+        const c = [...cols][0];
+        for (let r = 0; r < N; r++) {
+          if (!bset.has(r + '_' + c) && g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) {
+            const key = r + '_' + c + '_' + v;
+            if (!eliminated.has(key)) { eliminated.add(key); return true; }
+          }
+        }
+      }
+    }
+  }
+
+  const lines = [];
+  for (let r = 0; r < N; r++) { const l = []; for (let c = 0; c < N; c++) l.push([r, c]); lines.push(l); }
+  for (let c = 0; c < N; c++) { const l = []; for (let r = 0; r < N; r++) l.push([r, c]); lines.push(l); }
+
+  for (const line of lines) {
+    const lineSet = new Set(line.map(([r, c]) => r + '_' + c));
+    for (const v of symbolIds) {
+      const spots = line.filter(([r, c]) => g[r][c] === null && (cands[r + '_' + c] || []).includes(v));
+      if (spots.length < 2) continue;
+      const boxesTouched = new Set(spots.map(([r, c]) => {
+        const br = Math.floor(r / REGION_ROWS) * REGION_ROWS;
+        const bc = Math.floor(c / REGION_COLS) * REGION_COLS;
+        return br + '_' + bc;
+      }));
+      if (boxesTouched.size === 1) {
+        const [br, bc] = [...boxesTouched][0].split('_').map(Number);
+        for (let r = br; r < br + REGION_ROWS; r++) {
+          for (let c = bc; c < bc + REGION_COLS; c++) {
+            if (!lineSet.has(r + '_' + c) && g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) {
+              const key = r + '_' + c + '_' + v;
+              if (!eliminated.has(key)) { eliminated.add(key); return true; }
+            }
+          }
+        }
+      }
+    }
+  }
+  return false;
+}
+
+// --- Naked Pair/Triple (Stufe 2/3) ---
+function applyNakedSubsetOn(g, eliminated, size) {
+  const cands = candidatesGridOn(g, eliminated);
+  for (const cells of allUnitsJS()) {
+    const emptyCells = cells.filter(([r, c]) => g[r][c] === null);
+    const candidateCells = emptyCells.filter(([r, c]) => {
+      const len = (cands[r + '_' + c] || []).length;
+      return len > 1 && len <= size;
+    });
+    if (candidateCells.length < size) continue;
+    for (const combo of combinationsOf(candidateCells, size)) {
+      const union = new Set();
+      for (const [r, c] of combo) (cands[r + '_' + c] || []).forEach(v => union.add(v));
+      if (union.size !== size) continue;
+      let changed = false;
+      const comboSet = new Set(combo.map(([r, c]) => r + '_' + c));
+      for (const [r, c] of emptyCells) {
+        const key0 = r + '_' + c;
+        if (comboSet.has(key0)) continue;
+        for (const v of (cands[key0] || [])) {
+          if (union.has(v)) {
+            const key = key0 + '_' + v;
+            if (!eliminated.has(key)) { eliminated.add(key); changed = true; }
+          }
+        }
+      }
+      if (changed) return true;
+    }
+  }
+  return false;
+}
+
+// --- Hidden Pair/Triple (Stufe 2/3) ---
+function applyHiddenSubsetOn(g, eliminated, size) {
+  const cands = candidatesGridOn(g, eliminated);
+  const symbolIds = SYMBOLS.map(s => s.id);
+  for (const cells of allUnitsJS()) {
+    const emptyCells = cells.filter(([r, c]) => g[r][c] === null);
+    if (emptyCells.length <= size) continue;
+    const valuePositions = {};
+    for (const v of symbolIds) {
+      const spots = emptyCells.filter(([r, c]) => (cands[r + '_' + c] || []).includes(v));
+      if (spots.length > 1 && spots.length <= size) valuePositions[v] = spots;
+    }
+    const candidateValues = Object.keys(valuePositions);
+    if (candidateValues.length < size) continue;
+    for (const combo of combinationsOf(candidateValues, size)) {
+      const unionCells = new Set();
+      combo.forEach(v => valuePositions[v].forEach(([r, c]) => unionCells.add(r + '_' + c)));
+      if (unionCells.size !== size) continue;
+      let changed = false;
+      for (const key0 of unionCells) {
+        for (const v of (cands[key0] || [])) {
+          if (!combo.includes(v)) {
+            const key = key0 + '_' + v;
+            if (!eliminated.has(key)) { eliminated.add(key); changed = true; }
+          }
+        }
+      }
+      if (changed) return true;
+    }
+  }
+  return false;
+}
+
+// --- X-Wing (Stufe 3) ---
+function applyXWingOn(g, eliminated) {
+  const cands = candidatesGridOn(g, eliminated);
+  const symbolIds = SYMBOLS.map(s => s.id);
+
+  for (const v of symbolIds) {
+    const rowSpots = {};
+    for (let r = 0; r < N; r++) {
+      const spots = [];
+      for (let c = 0; c < N; c++) if (g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) spots.push(c);
+      if (spots.length === 2) rowSpots[r] = spots;
+    }
+    const rows = Object.keys(rowSpots).map(Number);
+    for (let i = 0; i < rows.length; i++) {
+      for (let j = i + 1; j < rows.length; j++) {
+        const r1 = rows[i], r2 = rows[j];
+        if (rowSpots[r1][0] !== rowSpots[r2][0] || rowSpots[r1][1] !== rowSpots[r2][1]) continue;
+        const cols = rowSpots[r1];
+        let changed = false;
+        for (const c of cols) {
+          for (let r = 0; r < N; r++) {
+            if (r === r1 || r === r2) continue;
+            if (g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) {
+              const key = r + '_' + c + '_' + v;
+              if (!eliminated.has(key)) { eliminated.add(key); changed = true; }
+            }
+          }
+        }
+        if (changed) return true;
+      }
+    }
+  }
+
+  for (const v of symbolIds) {
+    const colSpots = {};
+    for (let c = 0; c < N; c++) {
+      const spots = [];
+      for (let r = 0; r < N; r++) if (g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) spots.push(r);
+      if (spots.length === 2) colSpots[c] = spots;
+    }
+    const cols = Object.keys(colSpots).map(Number);
+    for (let i = 0; i < cols.length; i++) {
+      for (let j = i + 1; j < cols.length; j++) {
+        const c1 = cols[i], c2 = cols[j];
+        if (colSpots[c1][0] !== colSpots[c2][0] || colSpots[c1][1] !== colSpots[c2][1]) continue;
+        const rows = colSpots[c1];
+        let changed = false;
+        for (const r of rows) {
+          for (let c = 0; c < N; c++) {
+            if (c === c1 || c === c2) continue;
+            if (g[r][c] === null && (cands[r + '_' + c] || []).includes(v)) {
+              const key = r + '_' + c + '_' + v;
+              if (!eliminated.has(key)) { eliminated.add(key); changed = true; }
+            }
+          }
+        }
+        if (changed) return true;
+      }
+    }
+  }
+  return false;
+}
+
+// --- Negative-Ziel-Pruning (Stufe 2) ---
+function applyNegativeGoalPruningOn(g, eliminated) {
+  if (!NEGATIVE_GOALS || NEGATIVE_GOALS.length === 0) return false;
+  const cands = candidatesGridOn(g, eliminated);
+  let changed = false;
+  for (const ng of NEGATIVE_GOALS) {
+    const symset = new Set(ng.symbols);
+    const fixedCount = countNegativeAdjacencyOn(g, ng.symbols);
+    if (fixedCount < ng.max_count) continue;
+    for (let r = 0; r < N; r++) {
+      for (let c = 0; c < N; c++) {
+        if (g[r][c] !== null) continue;
+        const hasFixedNeighbor = neighborsOf(r, c).some(([nr, nc]) => g[nr][nc] !== null && symset.has(g[nr][nc]));
+        if (!hasFixedNeighbor) continue;
+        for (const v of (cands[r + '_' + c] || [])) {
+          if (symset.has(v)) {
+            const key = r + '_' + c + '_' + v;
+            if (!eliminated.has(key)) { eliminated.add(key); changed = true; }
+          }
+        }
+      }
+    }
+  }
+  return changed;
+}
+
+// --- Ziel-Deduktion (Stufe 4, Hofgefluester-spezifisch) ---
+// Nur anwendbar, wenn hoechstens maxEmptyCells leere Zellen uebrig sind
+// (Endspiel-Faelle) - siehe Kommentar oben. Probiert alle gueltigen
+// Vervollstaendigungen der leeren Zellen durch; wenn ALLE davon, die
+// zusaetzlich alle Ziele (positiv + negativ) erfuellen, eine Zelle auf
+// denselben Wert festlegen (waehrend das ohne Ziel-Bedingung nicht so
+// waere), wird das als Hinweis zurueckgegeben. Wird die Aufzaehlung
+// abgeschnitten, gilt das NICHT als verlaessliche Deduktion.
+function applyGoalDeductionOn(g, eliminated, maxEmptyCells = 8, maxCompletions = 3000) {
   if (!GOALS || GOALS.length === 0) return null;
 
   const emptyCells = [];
   for (let r = 0; r < N; r++)
     for (let c = 0; c < N; c++)
-      if (grid[r][c] === null) emptyCells.push([r, c]);
+      if (g[r][c] === null) emptyCells.push([r, c]);
 
   if (emptyCells.length === 0 || emptyCells.length > maxEmptyCells) return null;
 
-  const cands = candidatesGrid();
-  const g = grid.map(row => row.slice());
+  const cands = candidatesGridOn(g, eliminated);
   const completions = [];
   let truncated = false;
 
@@ -1178,9 +1652,9 @@ function findGoalDeductionHint(maxEmptyCells = 8, maxCompletions = 3000) {
   if (truncated || completions.length === 0) return null;
 
   const validCompletions = completions.filter(comp => {
-    const temp = grid.map(row => row.slice());
+    const temp = g.map(row => row.slice());
     for (const [r, c] of emptyCells) temp[r][c] = comp[r + '_' + c];
-    return goalsSatisfiedOn(temp, GOALS);
+    return goalsSatisfiedOn(temp, GOALS, NEGATIVE_GOALS);
   });
 
   if (validCompletions.length === 0) return null;
@@ -1191,15 +1665,46 @@ function findGoalDeductionHint(maxEmptyCells = 8, maxCompletions = 3000) {
     if (goalValues.size === 1) {
       const allValues = new Set(completions.map(comp => comp[key]));
       if (allValues.size > 1) {
-        return { r, c, value: [...goalValues][0] };
+        const value = [...goalValues][0];
+        g[r][c] = value;
+        return { r, c, value };
       }
     }
   }
   return null;
 }
 
+// --- Gesamter Hinweis-Ablauf: simuliert den "menschlichen" Solver bis
+// entweder eine Zelle sicher gesetzt werden kann (der eigentliche Hinweis)
+// oder keine Technik mehr greift. ---
 function findHint() {
-  return findNakedSingleHint() || findHiddenSingleHint() || findGoalDeductionHint();
+  const g = grid.map(row => row.slice());
+  const eliminated = new Set();
+
+  for (let step = 0; step < 400; step++) {
+    if (g.every(row => row.every(v => v !== null))) return null;
+
+    let res = applyNakedSingleOn(g, eliminated);
+    if (res === 'contradiction') return null;
+    if (res) return res;
+
+    res = applyHiddenSingleOn(g, eliminated);
+    if (res) return res;
+
+    if (applyNegativeGoalPruningOn(g, eliminated)) continue;
+    if (applyLockedCandidatesOn(g, eliminated)) continue;
+    if (applyNakedSubsetOn(g, eliminated, 2)) continue;
+    if (applyHiddenSubsetOn(g, eliminated, 2)) continue;
+    if (applyNakedSubsetOn(g, eliminated, 3)) continue;
+    if (applyHiddenSubsetOn(g, eliminated, 3)) continue;
+    if (applyXWingOn(g, eliminated)) continue;
+
+    res = applyGoalDeductionOn(g, eliminated);
+    if (res) return res;
+
+    return null; // keine Technik greift mehr - nur durch Raten fortsetzbar
+  }
+  return null;
 }
 
 function updateHintCountDisplay() {
@@ -1222,11 +1727,32 @@ function updateAll() {
     if (count !== goal.target_count) allGoalsMet = false;
   });
 
+  let allNegativeGoalsMet = true;
+  NEGATIVE_GOALS.forEach((ng, idx) => {
+    const count = countNegativeAdjacency(ng.symbols);
+    const countEl = document.getElementById(`negGoalCount_${idx}`);
+    const barEl = document.getElementById(`negGoalBar_${idx}`);
+    const exceeded = count > ng.max_count;
+    if (countEl) {
+      countEl.textContent = count;
+      countEl.classList.toggle('exceeded', exceeded);
+    }
+    if (barEl) {
+      barEl.style.width = Math.min(100, (count / Math.max(ng.max_count, 1)) * 100) + '%';
+      barEl.classList.toggle('exceeded', exceeded);
+    }
+    if (exceeded) allNegativeGoalsMet = false;
+  });
+
   const winBanner = document.getElementById('winBanner');
-  const solved = isFull() && !hasAnyConflict() && allGoalsMet;
+  const solved = isFull() && !hasAnyConflict() && allGoalsMet && allNegativeGoalsMet;
   if (solved) {
     winBanner.innerHTML = `🎉 Hof komplett! Alle Regeln und Ziele erfüllt.<div class="win-banner-hints">💡 Du hast ${hintsUsed} Hinweis${hintsUsed === 1 ? '' : 'e'} genutzt.</div>`;
     winBanner.classList.add('show');
+    if (currentLevel?.story_outro && !outroShown) {
+      outroShown = true;
+      showStoryModal(currentLevel.story_outro, 'Hof abgeschlossen');
+    }
   } else {
     winBanner.classList.remove('show');
   }
@@ -1248,8 +1774,9 @@ document.getElementById('hintBtn').addEventListener('click', () => {
   if (!hint) {
     alert(
       'Für den aktuellen Stand gibt es keinen Hinweis über reine Logik (Naked/Hidden Single, ' +
-      'Ziel-Deduktion) - an dieser Stelle würde es Raten erfordern. Das kann auch daran liegen, ' +
-      'dass eine frühere eigene Eingabe zwar gültig, aber nicht die tatsächliche Lösung war.'
+      'Locked Candidates, Paare/Tripel, X-Wing, Ziel-Deduktion) - an dieser Stelle würde es Raten ' +
+      'erfordern. Das kann auch daran liegen, dass eine frühere eigene Eingabe zwar gültig, aber ' +
+      'nicht die tatsächliche Lösung war.'
     );
     return;
   }
@@ -1278,10 +1805,16 @@ document.getElementById('checkBtn').addEventListener('click', () => {
     const unmet = GOALS
       .map((goal, idx) => ({ goal, count: countChain(goal.chain) }))
       .filter(({ goal, count }) => count !== goal.target_count);
-    if (unmet.length === 0) {
+    const exceeded = NEGATIVE_GOALS
+      .map(ng => ({ ng, count: countNegativeAdjacency(ng.symbols) }))
+      .filter(({ ng, count }) => count > ng.max_count);
+    if (unmet.length === 0 && exceeded.length === 0) {
       alert('Alles richtig! Der Hof ist fertig eingerichtet. 🎉');
     } else {
-      const details = unmet.map(({ goal, count }) => `${chainToText(goal.chain)}: ${count}/${goal.target_count}`).join('\n');
+      const details = [
+        ...unmet.map(({ goal, count }) => `${chainToText(goal.chain)}: ${count}/${goal.target_count}`),
+        ...exceeded.map(({ ng, count }) => `🚫 ${symbolSetToText(ng.symbols)}: ${count}x (max. erlaubt: ${ng.max_count}x)`),
+      ].join('\n');
       alert('Sudoku-Regeln erfüllt, aber diese Ziele stimmen noch nicht:\n' + details);
     }
   }

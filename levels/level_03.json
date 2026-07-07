@@ -1,6 +1,6 @@
 {
   "id": "level_03",
-  "title": "In die Berge",
+  "title": "Das Rätsel der Waldarbeiter",
   "size": 6,
   "region_rows": 2,
   "region_cols": 3,
@@ -14,11 +14,27 @@
       "image": null
     },
     {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
       "id": "feld",
       "name": "Feld",
       "color": "#c9a227",
       "abbr": "FE",
       "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
       "image": null
     },
     {
@@ -36,72 +52,56 @@
       "abbr": "HA",
       "icon": "🏠",
       "image": null
-    },
-    {
-      "id": "bergwerk",
-      "name": "Bergwerk",
-      "color": "#666666",
-      "abbr": "BW",
-      "icon": "⛰️",
-      "image": null
-    },
-    {
-      "id": "steinmetz",
-      "name": "Steinmetz",
-      "color": "#7d7886",
-      "abbr": "SM",
-      "icon": "⚙️",
-      "image": null
     }
   ],
   "solution": [
     [
-      "feld",
-      "steinmetz",
-      "bergwerk",
-      "brunnen",
+      "saegewerk",
       "wald",
+      "haus",
+      "brunnen",
+      "scheune",
+      "feld"
+    ],
+    [
+      "feld",
+      "brunnen",
+      "scheune",
+      "haus",
+      "wald",
+      "saegewerk"
+    ],
+    [
+      "brunnen",
+      "scheune",
+      "feld",
+      "wald",
+      "saegewerk",
       "haus"
     ],
     [
       "haus",
+      "saegewerk",
       "wald",
-      "brunnen",
-      "bergwerk",
-      "steinmetz",
-      "feld"
+      "scheune",
+      "feld",
+      "brunnen"
     ],
     [
-      "steinmetz",
-      "brunnen",
-      "haus",
-      "wald",
-      "feld",
-      "bergwerk"
-    ],
-    [
-      "bergwerk",
-      "feld",
       "wald",
       "haus",
+      "saegewerk",
+      "feld",
       "brunnen",
-      "steinmetz"
+      "scheune"
     ],
     [
-      "brunnen",
-      "bergwerk",
-      "steinmetz",
+      "scheune",
       "feld",
+      "brunnen",
+      "saegewerk",
       "haus",
       "wald"
-    ],
-    [
-      "wald",
-      "haus",
-      "feld",
-      "steinmetz",
-      "bergwerk",
-      "brunnen"
     ]
   ],
   "givens": [
@@ -115,7 +115,11 @@
     ],
     [
       0,
-      3
+      5
+    ],
+    [
+      1,
+      2
     ],
     [
       1,
@@ -123,45 +127,37 @@
     ],
     [
       2,
+      3
+    ],
+    [
+      5,
       0
     ],
     [
-      2,
-      5
-    ],
-    [
-      3,
+      5,
       2
-    ],
-    [
-      3,
-      4
-    ],
-    [
-      4,
-      1
-    ],
-    [
-      4,
-      4
-    ],
-    [
-      5,
-      0
-    ],
-    [
-      5,
-      4
     ]
   ],
   "goals": [
     {
       "chain": [
-        "bergwerk",
-        "steinmetz"
+        "wald",
+        "saegewerk"
       ],
       "target_count": 6
     }
   ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "scheune",
+        "haus"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Ein hartnäckiges Rätsel: nur wer die Ketten aus Wald und Sägewerk mitdenkt, findet hier die Lösung.",
+  "story_outro": "Unglaublich - du hast es rein durch Kombination der Ziele gelöst, ganz ohne zu raten!",
+  "difficulty": "expert",
   "verified_unique": true
 }

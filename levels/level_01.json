@@ -4,60 +4,114 @@
   "size": 6,
   "region_rows": 2,
   "region_cols": 3,
+  "symbols": [
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    }
+  ],
   "solution": [
     [
+      "brunnen",
       "haus",
-      "saegewerk",
       "wald",
-      "brunnen",
-      "feld",
-      "scheune"
-    ],
-    [
-      "brunnen",
-      "feld",
       "scheune",
-      "haus",
-      "wald",
+      "feld",
       "saegewerk"
     ],
     [
       "scheune",
-      "haus",
       "saegewerk",
-      "wald",
+      "feld",
+      "haus",
       "brunnen",
-      "feld"
+      "wald"
+    ],
+    [
+      "saegewerk",
+      "brunnen",
+      "haus",
+      "feld",
+      "wald",
+      "scheune"
     ],
     [
       "wald",
-      "brunnen",
       "feld",
+      "scheune",
       "saegewerk",
+      "haus",
+      "brunnen"
+    ],
+    [
+      "feld",
+      "wald",
+      "saegewerk",
+      "brunnen",
       "scheune",
       "haus"
     ],
     [
-      "feld",
-      "wald",
       "haus",
-      "scheune",
-      "saegewerk",
-      "brunnen"
-    ],
-    [
-      "saegewerk",
       "scheune",
       "brunnen",
-      "feld",
-      "haus",
-      "wald"
+      "wald",
+      "saegewerk",
+      "feld"
     ]
   ],
   "givens": [
     [
-      1,
+      0,
       0
+    ],
+    [
+      0,
+      3
     ],
     [
       1,
@@ -65,49 +119,33 @@
     ],
     [
       1,
-      3
-    ],
-    [
-      1,
       5
     ],
     [
       2,
-      1
-    ],
-    [
-      2,
-      3
-    ],
-    [
-      3,
       0
     ],
     [
-      3,
-      3
-    ],
-    [
-      4,
-      1
-    ],
-    [
-      4,
+      2,
       5
     ],
     [
-      5,
-      1
+      4,
+      0
+    ],
+    [
+      4,
+      3
     ],
     [
       5,
       4
     ]
   ],
-  "goal": {
-    "symbol_a": "wald",
-    "symbol_b": "saegewerk",
-    "target_count": 4
-  },
+  "goals": [],
+  "negative_goals": [],
+  "story_intro": "Willkommen auf deinem allerersten Hof! Ordne Wald, Sägewerk, Feld, Scheune, Brunnen und Haus so an, dass alles zusammenpasst - die Grundregeln reichen hier schon aus.",
+  "story_outro": "Geschafft! Dein erster Hof steht. Die Nachbarn munkeln schon von deinem Geschick.",
+  "difficulty": "easy",
   "verified_unique": true
 }
