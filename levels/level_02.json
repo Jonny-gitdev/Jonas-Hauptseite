@@ -56,44 +56,20 @@
   ],
   "solution": [
     [
-      "saegewerk",
-      "muehle",
-      "feld",
       "brunnen",
       "wald",
-      "scheune"
-    ],
-    [
+      "feld",
       "scheune",
-      "brunnen",
-      "wald",
-      "feld",
       "saegewerk",
       "muehle"
     ],
     [
-      "muehle",
-      "feld",
-      "saegewerk",
-      "wald",
       "scheune",
-      "brunnen"
-    ],
-    [
+      "muehle",
+      "saegewerk",
       "brunnen",
       "wald",
-      "scheune",
-      "saegewerk",
-      "muehle",
       "feld"
-    ],
-    [
-      "feld",
-      "saegewerk",
-      "muehle",
-      "scheune",
-      "brunnen",
-      "wald"
     ],
     [
       "wald",
@@ -102,44 +78,68 @@
       "muehle",
       "feld",
       "saegewerk"
+    ],
+    [
+      "feld",
+      "saegewerk",
+      "muehle",
+      "wald",
+      "scheune",
+      "brunnen"
+    ],
+    [
+      "muehle",
+      "feld",
+      "scheune",
+      "saegewerk",
+      "brunnen",
+      "wald"
+    ],
+    [
+      "saegewerk",
+      "brunnen",
+      "wald",
+      "feld",
+      "muehle",
+      "scheune"
     ]
   ],
   "givens": [
     [
       0,
-      1
+      0
     ],
     [
       1,
+      0
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
       3
     ],
     [
       2,
-      2
-    ],
-    [
-      2,
-      4
+      5
     ],
     [
       3,
       2
     ],
     [
-      3,
-      4
-    ],
-    [
       4,
       3
-    ],
-    [
-      4,
-      4
     ],
     [
       5,
-      0
+      1
+    ],
+    [
+      5,
+      2
     ]
   ],
   "goals": [
@@ -148,14 +148,14 @@
         "wald",
         "saegewerk"
       ],
-      "target_count": 6
+      "target_count": 2
     },
     {
       "chain": [
         "feld",
         "muehle"
       ],
-      "target_count": 4
+      "target_count": 5
     }
   ],
   "negative_goals": [
@@ -169,5 +169,6 @@
   "story_intro": "Die Mühle ist eingetroffen! Verbinde Feld und Mühle sinnvoll, ohne dass sich die Scheunen zu sehr häufen.",
   "story_outro": "Die neue Mühle dreht sich im Wind - und dein Hof floriert mehr denn je.",
   "difficulty": "easy",
+  "requires_goal_logic": false,
   "verified_unique": true
 }

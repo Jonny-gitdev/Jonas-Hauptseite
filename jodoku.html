@@ -186,8 +186,6 @@
 
   .board {
     display: grid;
-    grid-template-columns: repeat(6, minmax(44px, 64px));
-    grid-template-rows: repeat(6, minmax(44px, 64px));
     background: var(--soil-dark);
     border: 3px solid var(--soil-dark);
     border-radius: 4px;
@@ -306,6 +304,53 @@
     letter-spacing: 0.5px;
   }
   .picker button.erase:hover { background: #8c3325; }
+
+  .picker button.fully-placed {
+    box-shadow: inset 0 0 0 3px var(--barn-red);
+  }
+
+  .picker button.notes-active {
+    box-shadow: inset 0 0 0 3px var(--wheat);
+  }
+
+  .cell.same-symbol {
+    outline: 3px solid var(--barn-red);
+    outline-offset: -3px;
+    z-index: 1;
+  }
+
+  .notes-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 3px;
+    pointer-events: none;
+  }
+  .notes-grid .note-icon {
+    font-size: 0.55rem;
+    line-height: 1;
+    color: var(--ink);
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .notes-grid .note-icon.note-icon-emoji {
+    font-size: 0.7rem;
+    font-weight: normal;
+  }
+
+  #notesBtn.active {
+    background: var(--wheat);
+    color: var(--ink);
+    font-weight: 600;
+  }
 
   /* --- Sidebar (goal tracker) --- */
   .sidebar {
@@ -591,7 +636,6 @@
   @media (max-width: 640px) {
     .layout { flex-direction: column; align-items: center; }
     .sidebar { width: 100%; max-width: 320px; }
-    .board { grid-template-columns: repeat(6, minmax(40px, 1fr)); grid-template-rows: repeat(6, minmax(40px, 1fr)); }
   }
 </style>
 </head>
@@ -647,6 +691,7 @@
     <div class="controls">
       <div class="controls-row">
         <button id="hintBtn">💡 Hinweis</button>
+        <button id="notesBtn" title="Notizen: Symbole klein als Kandidaten in eine Zelle eintragen, statt sie zu setzen">✏️ Notizen</button>
       </div>
       <div class="controls-row">
         <button id="checkBtn">Prüfen</button>
@@ -734,6 +779,9 @@ let outroShown = false;
 let grid = [];
 let selected = null;
 let hintsUsed = 0;
+let notes = [];            // notes[r][c] = Set von Symbol-IDs (nur fuer leere Zellen relevant)
+let notesMode = false;
+let highlightSymbol = null; // Symbol, dessen Vorkommen gerade rot umrandet werden
 
 // --- Level-Normalisierung ---------------------------------------------
 // Alte Level-Dateien hatten evtl. noch "goal" (Einzahl, ein Paar) statt
@@ -938,6 +986,11 @@ function applyLevel(levelData) {
   renderDifficultyBadge();
 
   grid = SOLUTION.map((row, r) => row.map((val, c) => GIVEN_SET.has(r+'_'+c) ? val : null));
+  notes = grid.map(row => row.map(() => new Set()));
+  notesMode = false;
+  highlightSymbol = null;
+  const notesBtnEl = document.getElementById('notesBtn');
+  if (notesBtnEl) notesBtnEl.classList.remove('active');
   selected = null;
   hintsUsed = 0;
   updateHintCountDisplay();
@@ -1003,6 +1056,8 @@ function init() {
 function renderBoard() {
   const board = document.getElementById('board');
   board.innerHTML = '';
+  board.style.gridTemplateColumns = `repeat(${N}, minmax(clamp(28px, 8vw, 64px), 1fr))`;
+  board.style.gridTemplateRows = `repeat(${N}, minmax(clamp(28px, 8vw, 64px), 1fr))`;
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
       const cell = document.createElement('div');
@@ -1037,6 +1092,8 @@ function refreshCells() {
       }
       icon.textContent = symbolDisplay(sym);
       cellEl.appendChild(icon);
+    } else if (notes[r] && notes[r][c] && notes[r][c].size > 0) {
+      cellEl.appendChild(renderNotesGrid(notes[r][c]));
     }
     if (GIVEN_SET.has(r+'_'+c)) {
       const star = document.createElement('span');
@@ -1045,12 +1102,65 @@ function refreshCells() {
       cellEl.appendChild(star);
     }
     cellEl.classList.toggle('selected', selected && selected.r === r && selected.c === c);
+    cellEl.classList.toggle('same-symbol', highlightSymbol !== null && val === highlightSymbol);
   });
   markConflicts();
+  updatePickerHighlights();
+}
+
+// Rendert die kleinen Kandidaten-Symbole ("Notizen") als Mini-Grid innerhalb
+// einer leeren Zelle - wie bei anderen Sudoku-Apps ueblich, um sich zu
+// markieren, welche Symbole in dieser Zelle noch moeglich sind.
+function renderNotesGrid(noteSet) {
+  const wrap = document.createElement('div');
+  wrap.className = 'notes-grid';
+  const cols = Math.ceil(Math.sqrt(SYMBOLS.length));
+  wrap.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  SYMBOLS.forEach(sym => {
+    const cellDiv = document.createElement('div');
+    if (noteSet.has(sym.id)) {
+      cellDiv.className = 'note-icon' + (sym.icon ? ' note-icon-emoji' : '');
+      if (!sym.icon) cellDiv.style.background = sym.color;
+      cellDiv.textContent = symbolDisplay(sym);
+    }
+    wrap.appendChild(cellDiv);
+  });
+  return wrap;
+}
+
+// Prueft, ob `symId` bereits in JEDER Region des Grids mindestens einmal
+// vorkommt (hat also seine maximal moegliche Anzahl an Vorkommen erreicht).
+function symbolFullyPlacedInEveryRegion(symId) {
+  for (let br = 0; br < N; br += REGION_ROWS) {
+    for (let bc = 0; bc < N; bc += REGION_COLS) {
+      let present = false;
+      for (let r = br; r < br + REGION_ROWS && !present; r++) {
+        for (let c = bc; c < bc + REGION_COLS; c++) {
+          if (grid[r][c] === symId) { present = true; break; }
+        }
+      }
+      if (!present) return false;
+    }
+  }
+  return true;
+}
+
+function updatePickerHighlights() {
+  document.querySelectorAll('#picker button[data-sym-id]').forEach(btn => {
+    const symId = btn.dataset.symId;
+    btn.classList.toggle('fully-placed', symbolFullyPlacedInEveryRegion(symId));
+  });
 }
 
 function onCellClick(r, c) {
-  if (GIVEN_SET.has(r+'_'+c)) return;
+  const val = grid[r][c];
+  highlightSymbol = val !== null ? val : null;
+  if (GIVEN_SET.has(r+'_'+c)) {
+    // Vorgaben sind nicht editierbar, aber anklickbar, um gleiche Symbole hervorzuheben
+    selected = null;
+    refreshCells();
+    return;
+  }
   selected = { r, c };
   refreshCells();
 }
@@ -1062,9 +1172,13 @@ function renderPicker() {
     const btn = document.createElement('button');
     btn.textContent = symbolDisplay(sym);
     btn.title = sym.name;
+    btn.dataset.symId = sym.id;
     btn.style.background = sym.icon ? 'var(--parchment)' : sym.color;
     if (!sym.icon) btn.classList.add('picker-btn-color');
-    btn.addEventListener('click', () => placeSymbol(sym.id));
+    btn.addEventListener('click', () => {
+      highlightSymbol = sym.id;
+      placeSymbol(sym.id);
+    });
     picker.appendChild(btn);
   });
   const erase = document.createElement('button');
@@ -1072,13 +1186,29 @@ function renderPicker() {
   erase.textContent = 'Löschen';
   erase.addEventListener('click', () => placeSymbol(null));
   picker.appendChild(erase);
+  updatePickerHighlights();
 }
 
 function placeSymbol(symId) {
   if (!selected) return;
   const { r, c } = selected;
   if (GIVEN_SET.has(r+'_'+c)) return;
+
+  if (notesMode) {
+    if (symId === null) {
+      // Löschen im Notizen-Modus: alle Notizen dieser Zelle entfernen
+      notes[r][c].clear();
+    } else if (grid[r][c] === null) {
+      // Kandidat toggeln, statt den tatsaechlichen Wert zu setzen
+      if (notes[r][c].has(symId)) notes[r][c].delete(symId);
+      else notes[r][c].add(symId);
+    }
+    refreshCells();
+    return;
+  }
+
   grid[r][c] = symId;
+  if (symId !== null) notes[r][c].clear();
   refreshCells();
   updateAll();
 }
@@ -1782,6 +1912,7 @@ document.getElementById('hintBtn').addEventListener('click', () => {
   }
 
   grid[hint.r][hint.c] = hint.value;
+  notes[hint.r][hint.c].clear();
   hintsUsed++;
   updateHintCountDisplay();
   refreshCells();
@@ -1826,12 +1957,20 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   }
 });
 
-// Tastatur-Support: Zifferntasten 1-9 platzieren das jeweilige Symbol,
-// Backspace/Entf loescht.
+document.getElementById('notesBtn').addEventListener('click', () => {
+  notesMode = !notesMode;
+  document.getElementById('notesBtn').classList.toggle('active', notesMode);
+});
+
+// Tastatur-Support: Zifferntasten 1-9 platzieren das jeweilige Symbol (bzw.
+// toggeln eine Notiz, wenn der Notizen-Modus aktiv ist), Backspace/Entf loescht.
 document.addEventListener('keydown', (e) => {
   if (!selected) return;
   const num = parseInt(e.key, 10);
-  if (num >= 1 && num <= 9 && SYMBOLS[num-1]) placeSymbol(SYMBOLS[num-1].id);
+  if (num >= 1 && num <= 9 && SYMBOLS[num-1]) {
+    highlightSymbol = SYMBOLS[num-1].id;
+    placeSymbol(SYMBOLS[num-1].id);
+  }
   if (e.key === 'Backspace' || e.key === 'Delete') placeSymbol(null);
 });
 

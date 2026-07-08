@@ -56,96 +56,97 @@
   ],
   "solution": [
     [
-      "brunnen",
-      "haus",
-      "wald",
+      "saegewerk",
       "scheune",
+      "wald",
+      "haus",
+      "brunnen",
+      "feld"
+    ],
+    [
+      "feld",
+      "haus",
+      "brunnen",
+      "scheune",
+      "saegewerk",
+      "wald"
+    ],
+    [
+      "scheune",
+      "wald",
+      "haus",
+      "brunnen",
       "feld",
       "saegewerk"
     ],
     [
-      "scheune",
-      "saegewerk",
-      "feld",
-      "haus",
       "brunnen",
-      "wald"
-    ],
-    [
       "saegewerk",
-      "brunnen",
-      "haus",
       "feld",
       "wald",
+      "haus",
       "scheune"
     ],
     [
       "wald",
-      "feld",
-      "scheune",
-      "saegewerk",
-      "haus",
-      "brunnen"
-    ],
-    [
-      "feld",
-      "wald",
-      "saegewerk",
       "brunnen",
+      "saegewerk",
+      "feld",
       "scheune",
       "haus"
     ],
     [
       "haus",
+      "feld",
       "scheune",
-      "brunnen",
-      "wald",
       "saegewerk",
-      "feld"
+      "wald",
+      "brunnen"
     ]
   ],
   "givens": [
     [
       0,
-      0
-    ],
-    [
-      0,
-      3
-    ],
-    [
-      1,
       2
     ],
     [
+      0,
+      4
+    ],
+    [
       1,
-      5
+      1
     ],
     [
-      2,
-      0
-    ],
-    [
-      2,
-      5
-    ],
-    [
-      4,
-      0
-    ],
-    [
-      4,
+      1,
       3
     ],
     [
-      5,
-      4
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      5
     ]
   ],
   "goals": [],
   "negative_goals": [],
-  "story_intro": "Willkommen auf deinem allerersten Hof! Ordne Wald, Sägewerk, Feld, Scheune, Brunnen und Haus so an, dass alles zusammenpasst - die Grundregeln reichen hier schon aus.",
+  "story_intro": "Willkommen auf deinem allerersten Hof! Ordne Wald, Sägewerk, Feld, Scheune, Brunnen und Haus so an, dass alles zusammenpasst - hier reicht schon die einfachste Grundtechnik.",
   "story_outro": "Geschafft! Dein erster Hof steht. Die Nachbarn munkeln schon von deinem Geschick.",
-  "difficulty": "easy",
+  "difficulty": "beginner",
+  "requires_goal_logic": false,
   "verified_unique": true
 }
