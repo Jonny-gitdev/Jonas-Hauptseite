@@ -158,7 +158,7 @@
   ],
   "story_intro": "Ein hartnäckiges Rätsel: nur wer die Ketten aus Wald und Sägewerk mitdenkt, findet hier die Lösung.",
   "story_outro": "Unglaublich - du hast es rein durch Kombination der Ziele gelöst, ganz ohne zu raten!",
-  "difficulty": "easy",
+  "difficulty": "expert",
   "requires_goal_logic": true,
   "verified_unique": true
 }

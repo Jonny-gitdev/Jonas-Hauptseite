@@ -168,7 +168,7 @@
   ],
   "story_intro": "Die Mühle ist eingetroffen! Verbinde Feld und Mühle sinnvoll, ohne dass sich die Scheunen zu sehr häufen.",
   "story_outro": "Die neue Mühle dreht sich im Wind - und dein Hof floriert mehr denn je.",
-  "difficulty": "easy",
+  "difficulty": "medium",
   "requires_goal_logic": false,
   "verified_unique": true
 }
