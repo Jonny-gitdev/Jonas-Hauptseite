@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ================================================
+       ANPASSEN: Titel & Meta
+  ================================================ -->
+  <title>App-Name :: Jonas</title>
+  <meta name="description" content="Kurze Beschreibung der App.">
+
+  <style>
+    /* -----------------------------------------------
+       Design-Tokens – identisch zur Hauptseite
+    ----------------------------------------------- */
+    :root {
+      --bg:          #0f1115;
+      --bg-elevated: #171a21;
+      --text:        #e8e8ea;
+      --text-muted:  #9a9ea8;
+      --accent:      #5cc8ff;
+      --border:      #262a33;
+
+      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --radius:    10px;
+      --max-width: 960px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background:  var(--bg);
+      color:       var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* -----------------------------------------------
+       Header
+    ----------------------------------------------- */
+    .site-header {
+      display:         flex;
+      justify-content: space-between;
+      align-items:     center;
+      max-width:  var(--max-width);
+      margin:     0 auto;
+      padding:    1.5rem 1rem;
+    }
+
+    .logo             { font-weight: 700; font-size: 1.2rem; }
+    .logo .dot        { color: var(--accent); }
+    .site-header nav a {
+      margin-left: 1.5rem;
+      color:       var(--text-muted);
+      transition:  color 0.15s ease;
+    }
+    .site-header nav a:hover { color: var(--text); }
+
+    /* -----------------------------------------------
+       Hero
+    ----------------------------------------------- */
+    .hero {
+      max-width: var(--max-width);
+      margin:    0 auto;
+      padding:   4rem 1rem 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size:      0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color:          var(--accent);
+      margin-bottom:  0.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin:    0 0 0.75rem;
+    }
+
+    .hero .tagline {
+      color:     var(--text-muted);
+      max-width: 48ch;
+      font-size: 1.05rem;
+      margin:    0 0 2rem;
+    }
+
+    /* CTA-Buttons */
+    .cta-group {
+      display:   flex;
+      flex-wrap: wrap;
+      gap:       0.75rem;
+    }
+
+    .btn {
+      display:       inline-flex;
+      align-items:   center;
+      gap:           0.4rem;
+      padding:       0.6rem 1.2rem;
+      border-radius: var(--radius);
+      font-size:     0.95rem;
+      font-weight:   600;
+      transition:    opacity 0.15s ease, transform 0.15s ease;
+      cursor:        pointer;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color:      #0f1115;
+    }
+
+    .btn-secondary {
+      background: var(--bg-elevated);
+      color:      var(--text);
+      border:     1px solid var(--border);
+    }
+
+    /* -----------------------------------------------
+       Screenshots
+    ----------------------------------------------- */
+    .screenshots {
+      max-width: var(--max-width);
+      margin:    0 auto;
+      padding:   2rem 1rem;
+    }
+
+    .section-label {
+      font-size:      0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color:          var(--text-muted);
+      margin-bottom:  1.25rem;
+    }
+
+    .screenshot-scroll {
+      display:          flex;
+      gap:              1rem;
+      overflow-x:       auto;
+      padding-bottom:   0.75rem;
+      scrollbar-width:  thin;
+      scrollbar-color:  var(--border) transparent;
+    }
+
+    /* ================================================
+       ANPASSEN: Seitenverhältnis der Screenshots
+       Standard: 9/19.5 (hochkant Android-Phone)
+       Für Tablet-App z.B. 4/3 nutzen
+    ================================================ */
+    .screenshot-frame {
+      flex:          0 0 auto;
+      width:         180px;
+      aspect-ratio:  9 / 19.5;
+      border-radius: 16px;
+      border:        1px solid var(--border);
+      overflow:      hidden;
+      background:    var(--bg-elevated);
+    }
+
+    .screenshot-frame img {
+      width:   100%;
+      height:  100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Leerer Platzhalter, wenn noch kein Screenshot da ist */
+    .screenshot-placeholder {
+      width:  100%;
+      height: 100%;
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      color:           var(--border);
+      font-size:       0.75rem;
+      text-align:      center;
+      padding:         0.5rem;
+    }
+
+    /* -----------------------------------------------
+       Features / Beschreibung
+    ----------------------------------------------- */
+    .features {
+      max-width: var(--max-width);
+      margin:    0 auto;
+      padding:   2rem 1rem;
+    }
+
+    .feature-grid {
+      display:               grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap:                   1rem;
+    }
+
+    .feature-card {
+      background:    var(--bg-elevated);
+      border:        1px solid var(--border);
+      border-radius: var(--radius);
+      padding:       1.25rem;
+    }
+
+    .feature-card .icon {
+      font-size:     1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card h3 {
+      margin:    0 0 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .feature-card p {
+      margin:    0;
+      color:     var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* -----------------------------------------------
+       Download-Bereich
+    ----------------------------------------------- */
+    .download-section {
+      max-width: var(--max-width);
+      margin:    0 auto;
+      padding:   2rem 1rem;
+    }
+
+    .download-box {
+      background:    var(--bg-elevated);
+      border:        1px solid var(--border);
+      border-radius: var(--radius);
+      padding:       1.5rem 1.75rem;
+      display:       flex;
+      align-items:   center;
+      justify-content: space-between;
+      flex-wrap:     wrap;
+      gap:           1rem;
+    }
+
+    .download-box .meta { color: var(--text-muted); font-size: 0.9rem; }
+    .download-box .meta strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+
+    /* -----------------------------------------------
+       Footer
+    ----------------------------------------------- */
+    .site-footer {
+      max-width: var(--max-width);
+      margin:    0 auto;
+      padding:   2rem 1rem 3rem;
+      color:     var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    /* -----------------------------------------------
+       Responsive
+    ----------------------------------------------- */
+    @media (max-width: 600px) {
+      .download-box { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header ======================================= -->
+  <header class="site-header">
+    <a href="../index.html" class="logo">jonas<span class="dot">.</span></a>
+    <nav>
+      <a href="#projekte">Projekte</a>
+      <a href="#playground">Playground</a>
+      <a href="jodoku.html">Jodoku</a>
+      <a href="https://github.com/Jonny-gitdev" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <!-- Hero ========================================= -->
+  <section class="hero">
+    <p class="hero-eyebrow">Android App</p>
+
+    <!-- ANPASSEN: App-Name und Tagline -->
+    <h1>App-Name</h1>
+    <p class="tagline">
+      Kurze, prägnante Beschreibung was die App macht. Ein oder zwei Sätze reichen.
+    </p>
+
+    <div class="cta-group">
+
+      <!-- ANPASSEN: Pfad zur APK-Datei -->
+      <a class="btn btn-primary" href="assets/app-name.apk" download>
+        ⬇ APK herunterladen
+      </a>
+
+      <!-- ANPASSEN: GitHub-Repo-URL -->
+      <a class="btn btn-secondary" href="https://github.com/dein-nutzername/app-repo" target="_blank" rel="noopener">
+        ⌥ GitHub Repo
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Screenshots ==================================== -->
+  <section class="screenshots">
+    <p class="section-label">Screenshots</p>
+    <div class="screenshot-scroll">
+
+      <!-- ANPASSEN: src-Attribut durch echte Screenshot-Pfade ersetzen.
+           Weitere Frames einfach duplizieren. -->
+
+      <div class="screenshot-frame">
+        <img src="assets/screenshots/screen-01.png" alt="Screenshot 1" loading="lazy">
+        <!-- Falls noch kein Bild vorhanden, img-Tag durch folgenden Platzhalter ersetzen:
+        <div class="screenshot-placeholder">Screenshot<br>kommt noch</div>
+        -->
+      </div>
+
+      <div class="screenshot-frame">
+        <img src="assets/screenshots/screen-02.png" alt="Screenshot 2" loading="lazy">
+      </div>
+
+      <div class="screenshot-frame">
+        <img src="assets/screenshots/screen-03.png" alt="Screenshot 3" loading="lazy">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features ====================================== -->
+  <section class="features">
+    <p class="section-label">Features</p>
+    <div class="feature-grid">
+
+      <!-- ANPASSEN: Icon (Emoji reicht), Titel und Beschreibung -->
+      <div class="feature-card">
+        <div class="icon">✦</div>
+        <h3>Feature 1</h3>
+        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">✦</div>
+        <h3>Feature 2</h3>
+        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon">✦</div>
+        <h3>Feature 3</h3>
+        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Download ====================================== -->
+  <section class="download-section">
+    <p class="section-label">Download</p>
+    <div class="download-box">
+      <div class="meta">
+        <!-- ANPASSEN: Versionsnummer, Mindest-Android-Version, Dateigröße -->
+        <strong>Version 1.0.0</strong>
+        Android 8.0+ &nbsp;·&nbsp; ~5 MB &nbsp;·&nbsp; APK (Sideload)
+      </div>
+      <a class="btn btn-primary" href="assets/app-name.apk" download>
+        ⬇ APK herunterladen
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer ======================================== -->
+  <footer class="site-footer">
+    <p>
+      &copy; <span id="year"></span> Jonas &nbsp;·&nbsp;
+      <a href="https://github.com/dein-nutzername/app-repo" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
