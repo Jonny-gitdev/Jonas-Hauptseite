@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Woellchen :: Jonas</title>
+  <meta name="description" content="Mit dieser App kannst du dein Trinkverhalten tracken und dich von einem süßen Schaf motivieren lassen. Work in Progress Download und Github Repo noch nicht verfügbar">
 
-  <!-- ================================================
-       ANPASSEN: Titel & Meta
-  ================================================ -->
-  <title>App-Name :: Jonas</title>
-  <meta name="description" content="Kurze Beschreibung der App.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* -----------------------------------------------
-       Design-Tokens – identisch zur Hauptseite
+       Design-Tokens – angelehnt an die Hauptseite
     ----------------------------------------------- */
     :root {
-      --bg:          #0f1115;
-      --bg-elevated: #171a21;
-      --text:        #e8e8ea;
-      --text-muted:  #9a9ea8;
-      --accent:      #5cc8ff;
-      --border:      #262a33;
+      --bg:          #faf8f5;
+      --bg-warm:     #f5f0e8;
+      --bg-card:     #ffffff;
+      --text:        #1a1a1a;
+      --text-muted:  #6b6b6b;
+      --text-light:  #9a9590;
 
-      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --radius:    10px;
-      --max-width: 960px;
+      --accent:      #e85d4c;
+      --accent-soft: rgba(232, 93, 76, 0.08);
+      --accent-glow: 0 0 40px rgba(232, 93, 76, 0.12);
+
+      --border:      rgba(0,0,0,0.06);
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md:   0 8px 30px rgba(0,0,0,0.06);
+      --shadow-lg:   0 20px 60px rgba(0,0,0,0.08);
+
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --radius-sm:   12px;
+      --radius-md:   20px;
+      --radius-lg:   28px;
+      --radius-xl:   40px;
+
+      --max-width:   960px;
+      --transition:  0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -33,14 +49,20 @@
     body {
       background:  var(--bg);
       color:       var(--text);
-      font-family: var(--font-sans);
-      line-height: 1.5;
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
 
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
     /* -----------------------------------------------
-       Header
+       Header – gleiche Sprache wie Hauptseite
     ----------------------------------------------- */
     .site-header {
       display:         flex;
@@ -51,14 +73,53 @@
       padding:    1.5rem 1rem;
     }
 
-    .logo             { font-weight: 700; font-size: 1.2rem; }
-    .logo .dot        { color: var(--accent); }
-    .site-header nav a {
-      margin-left: 1.5rem;
-      color:       var(--text-muted);
-      transition:  color 0.15s ease;
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
     }
-    .site-header nav a:hover { color: var(--text); }
+    .logo .dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    .site-header nav {
+      display: flex;
+      gap: 2rem;
+    }
+    .site-header nav a {
+      color:       var(--text-muted);
+      font-size:   0.9rem;
+      font-weight: 500;
+      position:    relative;
+      transition:  color var(--transition);
+    }
+    .site-header nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+    .site-header nav a:hover {
+      color: var(--text);
+    }
+    .site-header nav a:hover::after {
+      width: 100%;
+    }
 
     /* -----------------------------------------------
        Hero
@@ -70,22 +131,39 @@
     }
 
     .hero-eyebrow {
-      font-size:      0.8rem;
-      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
-      color:          var(--accent);
-      margin-bottom:  0.5rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin:    0 0 0.75rem;
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
     }
 
     .hero .tagline {
       color:     var(--text-muted);
       max-width: 48ch;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       margin:    0 0 2rem;
     }
 
@@ -100,24 +178,37 @@
       display:       inline-flex;
       align-items:   center;
       gap:           0.4rem;
-      padding:       0.6rem 1.2rem;
-      border-radius: var(--radius);
+      padding:       0.7rem 1.4rem;
+      border-radius: 100px;
       font-size:     0.95rem;
       font-weight:   600;
-      transition:    opacity 0.15s ease, transform 0.15s ease;
+      font-family:   var(--font-body);
+      transition:    all var(--transition);
       cursor:        pointer;
+      border:        none;
     }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
 
     .btn-primary {
       background: var(--accent);
-      color:      #0f1115;
+      color:      #fff;
+      box-shadow: var(--accent-glow);
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
     }
 
     .btn-secondary {
-      background: var(--bg-elevated);
+      background: var(--bg-card);
       color:      var(--text);
       border:     1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color:        var(--accent);
     }
 
     /* -----------------------------------------------
@@ -130,53 +221,54 @@
     }
 
     .section-label {
-      font-size:      0.85rem;
+      font-size:      0.75rem;
+      font-weight:    700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color:          var(--text-muted);
+      letter-spacing: 0.15em;
+      color:          var(--text-light);
       margin-bottom:  1.25rem;
     }
 
     .screenshot-scroll {
       display:          flex;
-      gap:              1rem;
+      gap:              1.25rem;
       overflow-x:       auto;
-      padding-bottom:   0.75rem;
+      padding-bottom:   1rem;
       scrollbar-width:  thin;
       scrollbar-color:  var(--border) transparent;
     }
 
-    /* ================================================
-       ANPASSEN: Seitenverhältnis der Screenshots
-       Standard: 9/19.5 (hochkant Android-Phone)
-       Für Tablet-App z.B. 4/3 nutzen
-    ================================================ */
     .screenshot-frame {
       flex:          0 0 auto;
       width:         180px;
       aspect-ratio:  9 / 19.5;
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       border:        1px solid var(--border);
       overflow:      hidden;
-      background:    var(--bg-elevated);
+      background:    var(--bg-card);
+      box-shadow:    var(--shadow-sm);
+      transition:    all var(--transition);
+    }
+    .screenshot-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
 
     .screenshot-frame img {
-      width:   100%;
-      height:  100%;
+      width:      100%;
+      height:     100%;
       object-fit: cover;
-      display: block;
+      display:    block;
     }
 
-    /* Leerer Platzhalter, wenn noch kein Screenshot da ist */
     .screenshot-placeholder {
       width:  100%;
       height: 100%;
       display:         flex;
       align-items:     center;
       justify-content: center;
-      color:           var(--border);
-      font-size:       0.75rem;
+      color:           var(--text-light);
+      font-size:       0.8rem;
       text-align:      center;
       padding:         0.5rem;
     }
@@ -192,31 +284,48 @@
 
     .feature-grid {
       display:               grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap:                   1rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap:                  1.25rem;
     }
 
     .feature-card {
-      background:    var(--bg-elevated);
+      background:    var(--bg-card);
       border:        1px solid var(--border);
-      border-radius: var(--radius);
-      padding:       1.25rem;
+      border-radius: var(--radius-md);
+      padding:       1.5rem;
+      box-shadow:    var(--shadow-sm);
+      transition:    all var(--transition);
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .feature-card .icon {
-      font-size:     1.4rem;
-      margin-bottom: 0.5rem;
+      width:         40px;
+      height:        40px;
+      border-radius: var(--radius-sm);
+      background:    var(--accent-soft);
+      color:         var(--accent);
+      display:       flex;
+      align-items:   center;
+      justify-content: center;
+      font-size:     1.2rem;
+      margin-bottom: 0.75rem;
     }
 
     .feature-card h3 {
-      margin:    0 0 0.3rem;
-      font-size: 0.95rem;
+      font-family: var(--font-heading);
+      margin:    0 0 0.4rem;
+      font-size: 1rem;
+      font-weight: 600;
     }
 
     .feature-card p {
       margin:    0;
       color:     var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     /* -----------------------------------------------
@@ -225,23 +334,34 @@
     .download-section {
       max-width: var(--max-width);
       margin:    0 auto;
-      padding:   2rem 1rem;
+      padding:   2rem 1rem 4rem;
     }
 
     .download-box {
-      background:    var(--bg-elevated);
+      background:    var(--bg-card);
       border:        1px solid var(--border);
-      border-radius: var(--radius);
-      padding:       1.5rem 1.75rem;
+      border-radius: var(--radius-lg);
+      padding:       2rem 2.5rem;
       display:       flex;
       align-items:   center;
       justify-content: space-between;
       flex-wrap:     wrap;
-      gap:           1rem;
+      gap:           1.5rem;
+      box-shadow:    var(--shadow-sm);
+      transition:    all var(--transition);
+    }
+    .download-box:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .download-box .meta { color: var(--text-muted); font-size: 0.9rem; }
-    .download-box .meta strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+    .download-box .meta strong {
+      font-family: var(--font-heading);
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
 
     /* -----------------------------------------------
        Footer
@@ -250,16 +370,27 @@
       max-width: var(--max-width);
       margin:    0 auto;
       padding:   2rem 1rem 3rem;
-      color:     var(--text-muted);
+      color:     var(--text-light);
       font-size: 0.85rem;
       text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .site-footer a {
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .site-footer a:hover {
+      color: var(--accent);
     }
 
     /* -----------------------------------------------
        Responsive
     ----------------------------------------------- */
     @media (max-width: 600px) {
+      .site-header nav { display: none; }
       .download-box { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 2rem; }
     }
   </style>
 </head>
@@ -267,10 +398,10 @@
 
   <!-- Header ======================================= -->
   <header class="site-header">
-    <a href="../index.html" class="logo">jonas<span class="dot">.</span></a>
+    <a href="../index.html" class="logo">jonas<span class="dot"></span></a>
     <nav>
-      <a href="#projekte">Projekte</a>
-      <a href="#playground">Playground</a>
+      <a href="../index.html#projekte">Projekte</a>
+      <a href="../index.html#playground">Playground</a>
       <a href="jodoku.html">Jodoku</a>
       <a href="https://github.com/Jonny-gitdev" target="_blank" rel="noopener">GitHub</a>
     </nav>
@@ -278,12 +409,12 @@
 
   <!-- Hero ========================================= -->
   <section class="hero">
-    <p class="hero-eyebrow">Android App</p>
+    <div class="hero-eyebrow">Android App</div>
 
-    <!-- ANPASSEN: App-Name und Tagline -->
-    <h1>App-Name</h1>
+    
+    <h1>Woellchen</h1>
     <p class="tagline">
-      Kurze, prägnante Beschreibung was die App macht. Ein oder zwei Sätze reichen.
+      Mit dieser App kannst du dein Trinkverhalten tracken und dich von einem süßen Schaf motivieren lassen.
     </p>
 
     <div class="cta-group">
@@ -306,22 +437,18 @@
     <p class="section-label">Screenshots</p>
     <div class="screenshot-scroll">
 
-      <!-- ANPASSEN: src-Attribut durch echte Screenshot-Pfade ersetzen.
-           Weitere Frames einfach duplizieren. -->
+      <!-- ANPASSEN: src-Attribut durch echte Screenshot-Pfade ersetzen. -->
 
       <div class="screenshot-frame">
-        <img src="assets/screenshots/screen-01.png" alt="Screenshot 1" loading="lazy">
-        <!-- Falls noch kein Bild vorhanden, img-Tag durch folgenden Platzhalter ersetzen:
-        <div class="screenshot-placeholder">Screenshot<br>kommt noch</div>
-        -->
+        <img src="Image1.jpeg" alt="Screenshot 1" loading="lazy">
       </div>
 
       <div class="screenshot-frame">
-        <img src="assets/screenshots/screen-02.png" alt="Screenshot 2" loading="lazy">
+        <img src="Image2.jpeg" alt="Screenshot 2" loading="lazy">
       </div>
 
       <div class="screenshot-frame">
-        <img src="assets/screenshots/screen-03.png" alt="Screenshot 3" loading="lazy">
+        <img src="Image3.jpeg" alt="Screenshot 3" loading="lazy">
       </div>
 
     </div>
@@ -335,20 +462,20 @@
       <!-- ANPASSEN: Icon (Emoji reicht), Titel und Beschreibung -->
       <div class="feature-card">
         <div class="icon">✦</div>
-        <h3>Feature 1</h3>
-        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+        <h3>Tracking</h3>
+        <p>Behalte einen Überblick über dein Trinkverhalten.</p>
       </div>
 
       <div class="feature-card">
         <div class="icon">✦</div>
-        <h3>Feature 2</h3>
-        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+        <h3>Glückliches Schaf</h3>
+        <p>Das Schaf schaut glücklicher aus, je mehr du trinkst.</p>
       </div>
 
       <div class="feature-card">
         <div class="icon">✦</div>
-        <h3>Feature 3</h3>
-        <p>Kurze Beschreibung, was dieses Feature macht.</p>
+        <h3>Datenschutz</h3>
+        <p>Alles läuft lokal auf dem Handy keine Cloud.</p>
       </div>
 
     </div>
@@ -357,7 +484,7 @@
   <!-- Download ====================================== -->
   <section class="download-section">
     <p class="section-label">Download</p>
-    <div class="download-box">
+    <div class="download-box">y
       <div class="meta">
         <!-- ANPASSEN: Versionsnummer, Mindest-Android-Version, Dateigröße -->
         <strong>Version 1.0.0</strong>
