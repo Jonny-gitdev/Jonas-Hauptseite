@@ -1,0 +1,167 @@
+{
+  "id": "level_12",
+  "title": "Der Markt der Wesen",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "markt",
+      "krieger",
+      "baeckerei",
+      "kobold",
+      "feld"
+    ],
+    [
+      "feld",
+      "kobold",
+      "baeckerei",
+      "krieger",
+      "markt",
+      "haus"
+    ],
+    [
+      "markt",
+      "feld",
+      "kobold",
+      "haus",
+      "baeckerei",
+      "krieger"
+    ],
+    [
+      "baeckerei",
+      "krieger",
+      "haus",
+      "kobold",
+      "feld",
+      "markt"
+    ],
+    [
+      "krieger",
+      "baeckerei",
+      "feld",
+      "markt",
+      "haus",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "haus",
+      "markt",
+      "feld",
+      "krieger",
+      "baeckerei"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      5
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      1
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "baeckerei",
+        "markt"
+      ],
+      "target_count": 2
+    },
+    {
+      "chain": [
+        "kobold",
+        "markt"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "krieger",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Ein Friedensmarkt auf deinem Hof! Kobolde tauschen Wurzeln und Pilze gegen Brot, und das halbe Dorf schaut zu. Bäckerei und Kobolde brauchen beide den Markt.\n\nAber diesmal darf kein Krieger neben einem Kobold stehen. Was früher Schutz war, wäre jetzt eine Kriegserklärung. Waffenruhe!",
+  "story_outro": "Der Markt ist ein Erfolg. Kobolde und Dorfbewohner lachen zusammen, und selbst Brand steht abseits mit verschränkten Armen und beobachtet. Er sieht nicht froh aus. Nachts siehst du, wie er mit einem Fremden im Schatten spricht.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

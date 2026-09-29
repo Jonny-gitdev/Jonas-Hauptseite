@@ -1,0 +1,164 @@
+{
+  "id": "level_06",
+  "title": "Die Diebe im Kornfeld",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "haus",
+      "feld",
+      "scheune",
+      "wald",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "scheune",
+      "wald",
+      "feld",
+      "brunnen",
+      "haus"
+    ],
+    [
+      "haus",
+      "kobold",
+      "scheune",
+      "brunnen",
+      "feld",
+      "wald"
+    ],
+    [
+      "wald",
+      "feld",
+      "brunnen",
+      "haus",
+      "kobold",
+      "scheune"
+    ],
+    [
+      "scheune",
+      "brunnen",
+      "kobold",
+      "wald",
+      "haus",
+      "feld"
+    ],
+    [
+      "feld",
+      "wald",
+      "haus",
+      "kobold",
+      "scheune",
+      "brunnen"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "haus",
+        "brunnen"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "feld"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Kleine Gestalten huschen durchs Korn, kaum größer als Katzen, mit spitzen Ohren und flinken Fingern. Kobolde! Sie stehlen nicht aus Bosheit, sondern aus Hunger.\n\nHalte sie von den Feldern fern. Und sorge dafür, dass Haus und Brunnen sicher verbunden bleiben, damit du in Ruhe planen kannst.",
+  "story_outro": "Die Kobolde ziehen ab. Nicht besiegt, nur ratlos, wie Kinder, die man ertappt hat. Einer bleibt am Waldrand stehen und sieht dich lange an. Dann legt er einen glänzenden Pilz auf den Zaunpfahl und verschwindet. Ein Geschenk?",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

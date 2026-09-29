@@ -1,0 +1,303 @@
+{
+  "id": "level_09",
+  "title": "Kerzen gegen die Dunkelheit",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "wald",
+      "krieger",
+      "haus",
+      "saegewerk",
+      "scheune",
+      "kobold",
+      "brunnen",
+      "kerze",
+      "feld"
+    ],
+    [
+      "saegewerk",
+      "kobold",
+      "feld",
+      "haus",
+      "kerze",
+      "brunnen",
+      "scheune",
+      "krieger",
+      "wald"
+    ],
+    [
+      "kerze",
+      "brunnen",
+      "scheune",
+      "wald",
+      "feld",
+      "krieger",
+      "haus",
+      "kobold",
+      "saegewerk"
+    ],
+    [
+      "brunnen",
+      "kerze",
+      "kobold",
+      "feld",
+      "wald",
+      "saegewerk",
+      "krieger",
+      "haus",
+      "scheune"
+    ],
+    [
+      "feld",
+      "haus",
+      "krieger",
+      "scheune",
+      "brunnen",
+      "kerze",
+      "wald",
+      "saegewerk",
+      "kobold"
+    ],
+    [
+      "scheune",
+      "wald",
+      "saegewerk",
+      "krieger",
+      "kobold",
+      "haus",
+      "kerze",
+      "feld",
+      "brunnen"
+    ],
+    [
+      "haus",
+      "feld",
+      "kerze",
+      "brunnen",
+      "saegewerk",
+      "wald",
+      "kobold",
+      "scheune",
+      "krieger"
+    ],
+    [
+      "kobold",
+      "scheune",
+      "brunnen",
+      "kerze",
+      "krieger",
+      "feld",
+      "saegewerk",
+      "wald",
+      "haus"
+    ],
+    [
+      "krieger",
+      "saegewerk",
+      "wald",
+      "kobold",
+      "haus",
+      "scheune",
+      "feld",
+      "brunnen",
+      "kerze"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "wald",
+        "saegewerk"
+      ],
+      "target_count": 8
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kerze",
+        "scheune"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Im Tagebuch steht ein Rezept: Bienenwachskerzen, geweiht am Brunnen, zünden das Licht der Grenze. Kerzen stärken die Wächter, und die Wächter halten die Wesen im Zaum.\n\nAber Vorsicht: Kerze und Scheune vertragen sich nicht. Ein Funke im Heu, und der halbe Hof brennt.",
+  "story_outro": "Das Licht der Kerzen ist sanft und golden, und die Kobolde im Wald werden ruhig. Doch als du die Scheune schließt, hörst du unter dem Boden ein tiefes Seufzen. Keine Angst. Eher Erleichterung, als hätte jemand lange auf dieses Licht gewartet.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

@@ -1,0 +1,299 @@
+{
+  "id": "level_14",
+  "title": "Belagerung von Birkenhain",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "brunnen",
+      "wald",
+      "eule",
+      "scheune",
+      "krieger",
+      "kerze",
+      "markt",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "eule",
+      "krieger",
+      "kerze",
+      "haus",
+      "markt",
+      "scheune",
+      "wald",
+      "brunnen"
+    ],
+    [
+      "scheune",
+      "kerze",
+      "markt",
+      "wald",
+      "brunnen",
+      "kobold",
+      "haus",
+      "krieger",
+      "eule"
+    ],
+    [
+      "wald",
+      "markt",
+      "haus",
+      "brunnen",
+      "kerze",
+      "eule",
+      "krieger",
+      "kobold",
+      "scheune"
+    ],
+    [
+      "kerze",
+      "kobold",
+      "scheune",
+      "krieger",
+      "wald",
+      "haus",
+      "eule",
+      "brunnen",
+      "markt"
+    ],
+    [
+      "brunnen",
+      "krieger",
+      "eule",
+      "markt",
+      "kobold",
+      "scheune",
+      "wald",
+      "haus",
+      "kerze"
+    ],
+    [
+      "markt",
+      "scheune",
+      "kerze",
+      "kobold",
+      "krieger",
+      "wald",
+      "brunnen",
+      "eule",
+      "haus"
+    ],
+    [
+      "krieger",
+      "haus",
+      "kobold",
+      "scheune",
+      "eule",
+      "brunnen",
+      "markt",
+      "kerze",
+      "wald"
+    ],
+    [
+      "eule",
+      "wald",
+      "brunnen",
+      "haus",
+      "markt",
+      "kerze",
+      "kobold",
+      "scheune",
+      "krieger"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      7
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "kerze",
+        "haus",
+        "brunnen"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wald",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Brand kehrt zurück, mit einem Heer aus Söldnern und Schatten. Der Hof wird belagert. Zum ersten Mal kämpfen deine Krieger und die Kobolde Seite an Seite.\n\nZiehe die Schutzlinie von der Kerze über das Haus zum Brunnen. Und halte die Kobolde vom dunklen Wald fern, dort lauert der Feind. Nur wer alle Regeln zusammen denkt, findet den Weg.",
+  "story_outro": "Die Belagerung bricht. Die Söldner fliehen, und die Kobolde jubeln, tanzen, werfen Pilze in die Luft. Der kleine Kobold reicht dir die Hand. Zum ersten Mal sind Mensch und Wesen Verbündete. Aber am Horizont steigt Nebel auf, dicker als je zuvor.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

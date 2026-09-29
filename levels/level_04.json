@@ -1,0 +1,169 @@
+{
+  "id": "level_04",
+  "title": "Brot für den Winter",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#6b5a8a",
+      "abbr": "MU",
+      "icon": "💨",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "muehle",
+      "baeckerei",
+      "scheune",
+      "haus",
+      "brunnen",
+      "feld"
+    ],
+    [
+      "feld",
+      "brunnen",
+      "haus",
+      "scheune",
+      "muehle",
+      "baeckerei"
+    ],
+    [
+      "brunnen",
+      "muehle",
+      "feld",
+      "baeckerei",
+      "haus",
+      "scheune"
+    ],
+    [
+      "scheune",
+      "haus",
+      "baeckerei",
+      "brunnen",
+      "feld",
+      "muehle"
+    ],
+    [
+      "haus",
+      "scheune",
+      "muehle",
+      "feld",
+      "baeckerei",
+      "brunnen"
+    ],
+    [
+      "baeckerei",
+      "feld",
+      "brunnen",
+      "muehle",
+      "scheune",
+      "haus"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "feld",
+        "muehle",
+        "baeckerei"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "brunnen",
+        "scheune"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Der Herbst geht, der Winter kommt, und die Speisekammer ist leer. Aus Korn wird Mehl, aus Mehl wird Brot. Feld, Mühle, Bäckerei: Diese drei müssen Hand in Hand arbeiten.\n\nUnd halte Brunnen und Scheune auseinander. Das Wasser soll das Heu nicht feucht machen.",
+  "story_outro": "Der Duft von frischem Brot zieht durchs Dorf. Zum ersten Mal kaufen die Nachbarn wieder in Birkenhain ein, und eine alte Bäuerin nickt dir zu: \"Du bist Ilses Erbe, das sieht man.\" Nachts hörst du etwas an der Scheune kratzen.",
+  "difficulty": "easy",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

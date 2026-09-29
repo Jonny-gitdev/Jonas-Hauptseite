@@ -56,52 +56,52 @@
   ],
   "solution": [
     [
+      "feld",
+      "muehle",
+      "wald",
+      "scheune",
+      "brunnen",
+      "saegewerk"
+    ],
+    [
+      "saegewerk",
+      "scheune",
       "brunnen",
       "wald",
       "feld",
-      "scheune",
-      "saegewerk",
       "muehle"
     ],
     [
-      "scheune",
+      "brunnen",
+      "feld",
       "muehle",
       "saegewerk",
-      "brunnen",
       "wald",
+      "scheune"
+    ],
+    [
+      "scheune",
+      "wald",
+      "saegewerk",
+      "brunnen",
+      "muehle",
       "feld"
     ],
     [
       "wald",
-      "scheune",
-      "brunnen",
-      "muehle",
-      "feld",
-      "saegewerk"
-    ],
-    [
-      "feld",
       "saegewerk",
+      "feld",
       "muehle",
-      "wald",
       "scheune",
       "brunnen"
     ],
     [
       "muehle",
-      "feld",
+      "brunnen",
       "scheune",
-      "saegewerk",
-      "brunnen",
-      "wald"
-    ],
-    [
-      "saegewerk",
-      "brunnen",
-      "wald",
       "feld",
-      "muehle",
-      "scheune"
+      "saegewerk",
+      "wald"
     ]
   ],
   "givens": [
@@ -111,15 +111,15 @@
     ],
     [
       1,
-      0
+      3
     ],
     [
       1,
-      4
+      5
     ],
     [
       2,
-      3
+      4
     ],
     [
       2,
@@ -131,11 +131,11 @@
     ],
     [
       4,
-      3
+      1
     ],
     [
-      5,
-      1
+      4,
+      3
     ],
     [
       5,
@@ -148,14 +148,14 @@
         "wald",
         "saegewerk"
       ],
-      "target_count": 2
+      "target_count": 6
     },
     {
       "chain": [
         "feld",
         "muehle"
       ],
-      "target_count": 5
+      "target_count": 6
     }
   ],
   "negative_goals": [
@@ -166,9 +166,9 @@
       "max_count": 2
     }
   ],
-  "story_intro": "Die Mühle ist eingetroffen! Verbinde Feld und Mühle sinnvoll, ohne dass sich die Scheunen zu sehr häufen.",
-  "story_outro": "Die neue Mühle dreht sich im Wind - und dein Hof floriert mehr denn je.",
-  "difficulty": "medium",
+  "story_intro": "Die alte Mühle am Bach ist verrostet, aber ihr Mahlwerk lässt sich retten. Wer Korn ernten will, braucht sie. Wer Bretter braucht, braucht das Sägewerk.\n\nReihe die Felder an die Mühle und den Wald ans Sägewerk. Und halte Abstand bei den Scheunen. Ilse hat sie nie dicht nebeneinander gebaut, und du ahnst noch nicht, warum.",
+  "story_outro": "Die Mühle dreht sich, zum ersten Mal seit zwanzig Jahren. Das Dorf hört das Klappern und schaut neugierig herüber. In der Werkstatt findest du an einem Balken eingeritzt: \"Nicht alles, was nachts kommt, ist ein Dieb.\"",
+  "difficulty": "easy",
   "requires_goal_logic": false,
   "verified_unique": true
 }

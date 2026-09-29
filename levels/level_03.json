@@ -56,62 +56,66 @@
   ],
   "solution": [
     [
+      "scheune",
+      "feld",
       "wald",
       "haus",
-      "scheune",
-      "feld",
-      "saegewerk",
-      "brunnen"
-    ],
-    [
-      "feld",
       "brunnen",
-      "saegewerk",
-      "scheune",
-      "wald",
-      "haus"
-    ],
-    [
-      "haus",
-      "wald",
-      "feld",
-      "brunnen",
-      "scheune",
       "saegewerk"
     ],
     [
-      "saegewerk",
-      "scheune",
       "brunnen",
-      "wald",
       "haus",
-      "feld"
-    ],
-    [
-      "brunnen",
       "saegewerk",
       "wald",
-      "haus",
       "feld",
       "scheune"
     ],
     [
+      "haus",
+      "brunnen",
       "scheune",
       "feld",
-      "haus",
       "saegewerk",
-      "brunnen",
       "wald"
+    ],
+    [
+      "wald",
+      "saegewerk",
+      "feld",
+      "scheune",
+      "haus",
+      "brunnen"
+    ],
+    [
+      "saegewerk",
+      "wald",
+      "haus",
+      "brunnen",
+      "scheune",
+      "feld"
+    ],
+    [
+      "feld",
+      "scheune",
+      "brunnen",
+      "saegewerk",
+      "wald",
+      "haus"
     ]
   ],
   "givens": [
     [
       0,
-      5
+      0
+    ],
+    [
+      0,
+      4
     ],
     [
       1,
-      0
+      2
     ],
     [
       1,
@@ -119,23 +123,15 @@
     ],
     [
       2,
-      1
+      2
     ],
     [
       3,
-      2
-    ],
-    [
-      4,
       4
     ],
     [
-      5,
-      0
-    ],
-    [
-      5,
-      2
+      4,
+      1
     ]
   ],
   "goals": [
@@ -144,7 +140,7 @@
         "wald",
         "saegewerk"
       ],
-      "target_count": 2
+      "target_count": 8
     }
   ],
   "negative_goals": [
@@ -156,9 +152,9 @@
       "max_count": 2
     }
   ],
-  "story_intro": "Ein hartnäckiges Rätsel: nur wer die Ketten aus Wald und Sägewerk mitdenkt, findet hier die Lösung.",
-  "story_outro": "Unglaublich - du hast es rein durch Kombination der Ziele gelöst, ganz ohne zu raten!",
-  "difficulty": "expert",
+  "story_intro": "Im Holzschuppen liegt ein Zettel in Ilses Handschrift: \"Wer Scheune und Haus zu eng stellt, lockt Unheil an. Wer Wald und Sägewerk verbindet, hält es fern.\"\n\nDu verstehst den Sinn nicht ganz, aber du vertraust ihrer Ordnung. Denk mit: Die Ketten verraten dir, wo die Lücken sitzen.",
+  "story_outro": "Ilses Regeln gehen auf, und ohne einmal raten zu müssen. Der Zettel in deiner Hand ist auf einmal warm, und unten am Rand steht eine neue Zeile, die vorher nicht da war: \"Gut gemacht. Aber das war erst der Anfang.\"",
+  "difficulty": "medium",
   "requires_goal_logic": true,
   "verified_unique": true
 }

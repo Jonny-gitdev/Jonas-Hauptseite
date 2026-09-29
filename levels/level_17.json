@@ -1,0 +1,307 @@
+{
+  "id": "level_17",
+  "title": "Der Kristall der Grenze",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "drache",
+      "geist",
+      "kobold",
+      "kerze",
+      "kristall",
+      "eule",
+      "krieger",
+      "haus"
+    ],
+    [
+      "eule",
+      "kristall",
+      "haus",
+      "geist",
+      "brunnen",
+      "krieger",
+      "kerze",
+      "drache",
+      "kobold"
+    ],
+    [
+      "kerze",
+      "krieger",
+      "kobold",
+      "haus",
+      "drache",
+      "eule",
+      "kristall",
+      "brunnen",
+      "geist"
+    ],
+    [
+      "kristall",
+      "brunnen",
+      "kerze",
+      "drache",
+      "eule",
+      "geist",
+      "kobold",
+      "haus",
+      "krieger"
+    ],
+    [
+      "geist",
+      "kobold",
+      "eule",
+      "brunnen",
+      "krieger",
+      "haus",
+      "drache",
+      "kristall",
+      "kerze"
+    ],
+    [
+      "drache",
+      "haus",
+      "krieger",
+      "kristall",
+      "kobold",
+      "kerze",
+      "geist",
+      "eule",
+      "brunnen"
+    ],
+    [
+      "haus",
+      "kerze",
+      "brunnen",
+      "eule",
+      "kristall",
+      "kobold",
+      "krieger",
+      "geist",
+      "drache"
+    ],
+    [
+      "kobold",
+      "geist",
+      "kristall",
+      "krieger",
+      "haus",
+      "drache",
+      "brunnen",
+      "kerze",
+      "eule"
+    ],
+    [
+      "krieger",
+      "eule",
+      "drache",
+      "kerze",
+      "geist",
+      "brunnen",
+      "haus",
+      "kobold",
+      "kristall"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      8,
+      1
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "brunnen",
+        "kristall"
+      ],
+      "target_count": 4
+    },
+    {
+      "chain": [
+        "kobold",
+        "kristall",
+        "kerze"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "eule",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "In einer Höhle unter dem Hof findest du den Kristall. Er ist die Grenze selbst, ein Kern aus Licht, der beide Welten trennt und verbindet. Wasser nährt ihn, und die Kobolde sind seine Hüter.\n\nJetzt begreifst du Ilses Brot: Sie hat die Hüter jahrzehntelang besänftigt, damit sie ihren Dienst tun. Stelle die Kette wieder her, vom Kobold über den Kristall zur Kerze. Aber die Eule scheut die Hüter.",
+  "story_outro": "Der Kristall pulsiert ruhig. Die Grenze hält. Du verstehst endlich, was Ilse dir hinterlassen hat: keinen Hof, sondern eine Aufgabe. Und du merkst, dass du sie gern übernimmst.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

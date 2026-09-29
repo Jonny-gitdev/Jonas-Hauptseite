@@ -1,0 +1,307 @@
+{
+  "id": "level_13",
+  "title": "Der Verrat",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "krieger",
+      "wald",
+      "brunnen",
+      "scheune",
+      "kerze",
+      "geist",
+      "markt",
+      "kobold",
+      "haus"
+    ],
+    [
+      "geist",
+      "markt",
+      "kobold",
+      "krieger",
+      "brunnen",
+      "haus",
+      "kerze",
+      "wald",
+      "scheune"
+    ],
+    [
+      "haus",
+      "kerze",
+      "scheune",
+      "markt",
+      "kobold",
+      "wald",
+      "brunnen",
+      "krieger",
+      "geist"
+    ],
+    [
+      "scheune",
+      "haus",
+      "kerze",
+      "kobold",
+      "markt",
+      "krieger",
+      "geist",
+      "brunnen",
+      "wald"
+    ],
+    [
+      "markt",
+      "brunnen",
+      "geist",
+      "kerze",
+      "wald",
+      "scheune",
+      "krieger",
+      "haus",
+      "kobold"
+    ],
+    [
+      "wald",
+      "kobold",
+      "krieger",
+      "haus",
+      "geist",
+      "brunnen",
+      "scheune",
+      "markt",
+      "kerze"
+    ],
+    [
+      "kerze",
+      "geist",
+      "markt",
+      "brunnen",
+      "haus",
+      "kobold",
+      "wald",
+      "scheune",
+      "krieger"
+    ],
+    [
+      "brunnen",
+      "krieger",
+      "haus",
+      "wald",
+      "scheune",
+      "kerze",
+      "kobold",
+      "geist",
+      "markt"
+    ],
+    [
+      "kobold",
+      "scheune",
+      "wald",
+      "geist",
+      "krieger",
+      "markt",
+      "haus",
+      "kerze",
+      "brunnen"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "krieger"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "geist",
+        "markt"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "scheune",
+        "geist"
+      ],
+      "max_count": 6
+    }
+  ],
+  "story_intro": "Am Morgen sind alle Kerzen erloschen, und im Markt wimmelt es von Geistern. Brand hat sie eingelassen. Er will die Grenzmagie für sich und hat ein Bündnis mit den Schatten geschlossen.\n\nIlse warnt dich im Traum: Halte die Krieger unter deinem Licht, und lass die Geister nicht zu tief in den Markt. Die Kobolde brauchen Abstand zu Scheune und Geistern.",
+  "story_outro": "Die Geister ziehen sich zurück. Brand ist geflohen, mit Ilses Pergament. Du erkennst: Es war die Karte zum Kern der Grenze. Er weiß jetzt, wo sie liegt, und er wird nicht ruhen.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

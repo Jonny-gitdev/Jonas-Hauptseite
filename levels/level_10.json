@@ -1,0 +1,163 @@
+{
+  "id": "level_10",
+  "title": "Der Geist in der Scheune",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "scheune",
+      "geist",
+      "kerze",
+      "kobold",
+      "haus",
+      "krieger"
+    ],
+    [
+      "haus",
+      "krieger",
+      "kobold",
+      "geist",
+      "scheune",
+      "kerze"
+    ],
+    [
+      "kobold",
+      "kerze",
+      "haus",
+      "krieger",
+      "geist",
+      "scheune"
+    ],
+    [
+      "geist",
+      "scheune",
+      "krieger",
+      "haus",
+      "kerze",
+      "kobold"
+    ],
+    [
+      "krieger",
+      "haus",
+      "scheune",
+      "kerze",
+      "kobold",
+      "geist"
+    ],
+    [
+      "kerze",
+      "kobold",
+      "geist",
+      "scheune",
+      "krieger",
+      "haus"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      5
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "geist"
+      ],
+      "target_count": 2
+    },
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "geist",
+        "haus"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Nachts öffnet sich die Falltür von selbst. Eine Gestalt steigt aus der Dunkelheit, durchscheinend, silbern, mit Ilses Augen. \"Endlich,\" flüstert sie. \"Ich konnte nicht gehen, bevor jemand den Hof versteht.\"\n\nKerzen bannen den Geist. Krieger halten die Kobolde. Aber das Haus muss geschützt bleiben. Und du spürst: Nur wer die Ziele mitdenkt, findet hier die Lösung.",
+  "story_outro": "Ilse erzählt die Wahrheit: Der Hof steht auf einer uralten Grenze zwischen der Welt der Menschen und der der Wesen. Sie hat sie ein Leben lang bewacht, und jetzt liegt es an dir. \"Der Nebel wird steigen,\" sagt sie, \"und nicht alle, die du für Freunde hältst, sind es.\" Die Tasse auf dem Küchentisch, das war sie. Sie wollte dich willkommen heißen.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

@@ -1,0 +1,168 @@
+{
+  "id": "level_08",
+  "title": "Ilses Tagebuch",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "krieger",
+      "kobold",
+      "saegewerk",
+      "haus",
+      "wald",
+      "brunnen"
+    ],
+    [
+      "haus",
+      "brunnen",
+      "wald",
+      "krieger",
+      "kobold",
+      "saegewerk"
+    ],
+    [
+      "wald",
+      "saegewerk",
+      "brunnen",
+      "kobold",
+      "krieger",
+      "haus"
+    ],
+    [
+      "kobold",
+      "krieger",
+      "haus",
+      "brunnen",
+      "saegewerk",
+      "wald"
+    ],
+    [
+      "saegewerk",
+      "haus",
+      "krieger",
+      "wald",
+      "brunnen",
+      "kobold"
+    ],
+    [
+      "brunnen",
+      "wald",
+      "kobold",
+      "saegewerk",
+      "haus",
+      "krieger"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 8
+    },
+    {
+      "chain": [
+        "wald",
+        "saegewerk",
+        "haus"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "haus"
+      ],
+      "max_count": 0
+    }
+  ],
+  "story_intro": "Hinter dem Küchenschrank versteckt sich ein Fach, und darin liegt Ilses Tagebuch. Die Einträge sind knapp: \"Die Kobolde sind keine Diebe. Sie sind Wächter der Schwelle. Das Brot ist unser Friedensangebot.\"\n\nDas ändert alles. Aber die Krieger sind schon gerufen. Halte die Kobolde vom Haus fern, und sichere die Kette Wald, Sägewerk und Haus.",
+  "story_outro": "Du klappst das Tagebuch zu und blickst zum Waldrand. Dort steht der kleine Kobold vom Zaunpfahl, mit einem weiteren Pilz in der Hand. Er wollte nie stehlen. Er wollte nur erinnern. An eine Abmachung, die du nicht kanntest.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

@@ -1,0 +1,319 @@
+{
+  "id": "level_18",
+  "title": "Rückkehr der Ahnen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "haus",
+      "kobold",
+      "krieger",
+      "kerze",
+      "kristall",
+      "geist",
+      "markt",
+      "eule"
+    ],
+    [
+      "geist",
+      "krieger",
+      "kerze",
+      "brunnen",
+      "markt",
+      "eule",
+      "kobold",
+      "haus",
+      "kristall"
+    ],
+    [
+      "kristall",
+      "eule",
+      "markt",
+      "geist",
+      "haus",
+      "kobold",
+      "brunnen",
+      "kerze",
+      "krieger"
+    ],
+    [
+      "kerze",
+      "kobold",
+      "krieger",
+      "haus",
+      "geist",
+      "brunnen",
+      "kristall",
+      "eule",
+      "markt"
+    ],
+    [
+      "markt",
+      "brunnen",
+      "eule",
+      "kobold",
+      "kristall",
+      "kerze",
+      "krieger",
+      "geist",
+      "haus"
+    ],
+    [
+      "haus",
+      "kristall",
+      "geist",
+      "eule",
+      "krieger",
+      "markt",
+      "kerze",
+      "kobold",
+      "brunnen"
+    ],
+    [
+      "eule",
+      "geist",
+      "haus",
+      "kristall",
+      "kobold",
+      "krieger",
+      "markt",
+      "brunnen",
+      "kerze"
+    ],
+    [
+      "krieger",
+      "markt",
+      "brunnen",
+      "kerze",
+      "eule",
+      "geist",
+      "haus",
+      "kristall",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "kerze",
+      "kristall",
+      "markt",
+      "brunnen",
+      "haus",
+      "eule",
+      "krieger",
+      "geist"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "geist",
+        "kristall"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "markt",
+        "haus"
+      ],
+      "target_count": 5
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "geist",
+        "kerze"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "In der Nacht erscheinen sie alle: die früheren Besitzer des Hofes, Dutzende Geister in altmodischer Kleidung. Sie wollen helfen. Die Eule geleitet sie zum Kristall, dort finden sie Ruhe.\n\nAber ihr Licht und das der Kerzen vertreiben sich gegenseitig. Halte sie getrennt. Und vergiss nicht: Der Markt muss weiter zum Haus führen, denn das Dorf braucht euch.",
+  "story_outro": "Die Ahnen verneigen sich vor dir, einer nach dem anderen. Ilse ist die Letzte. Sie lächelt und sagt leise: \"Ich bin stolz auf dich.\" Dann löst sie sich auf, und du weißt, dass sie nicht mehr an den Hof gebunden ist.",
+  "difficulty": "hard",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

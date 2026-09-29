@@ -1,0 +1,310 @@
+{
+  "id": "level_19",
+  "title": "Das Erwachen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "feld",
+      "haus",
+      "krieger",
+      "kobold",
+      "kristall",
+      "eule",
+      "drache",
+      "kerze",
+      "brunnen"
+    ],
+    [
+      "kerze",
+      "drache",
+      "kobold",
+      "krieger",
+      "brunnen",
+      "haus",
+      "eule",
+      "kristall",
+      "feld"
+    ],
+    [
+      "brunnen",
+      "kristall",
+      "eule",
+      "feld",
+      "kerze",
+      "drache",
+      "kobold",
+      "haus",
+      "krieger"
+    ],
+    [
+      "haus",
+      "feld",
+      "kerze",
+      "drache",
+      "eule",
+      "brunnen",
+      "kristall",
+      "krieger",
+      "kobold"
+    ],
+    [
+      "drache",
+      "eule",
+      "kristall",
+      "kerze",
+      "krieger",
+      "kobold",
+      "brunnen",
+      "feld",
+      "haus"
+    ],
+    [
+      "kobold",
+      "krieger",
+      "brunnen",
+      "kristall",
+      "haus",
+      "feld",
+      "kerze",
+      "eule",
+      "drache"
+    ],
+    [
+      "eule",
+      "kobold",
+      "haus",
+      "brunnen",
+      "feld",
+      "kerze",
+      "krieger",
+      "drache",
+      "kristall"
+    ],
+    [
+      "krieger",
+      "brunnen",
+      "feld",
+      "eule",
+      "drache",
+      "kristall",
+      "haus",
+      "kobold",
+      "kerze"
+    ],
+    [
+      "kristall",
+      "kerze",
+      "drache",
+      "haus",
+      "kobold",
+      "krieger",
+      "feld",
+      "brunnen",
+      "eule"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kobold",
+        "krieger"
+      ],
+      "target_count": 10
+    },
+    {
+      "chain": [
+        "kerze",
+        "kristall",
+        "drache"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "feld",
+        "kobold"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "krieger"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Der Drache erhebt sich. Vor dir stehen Kobolde, Krieger, das Licht der Kerzen und der Kristall. Alles, was du auf diesem Hof gelernt hast, kommt hier zusammen.\n\nDie Kobolde treten vor die Krieger, sie beschützen jetzt die, die sie einst jagten. Das Licht der Kerze fließt durch den Kristall zum Drachen. Und keine Waffe darf ihm zu nahe kommen.",
+  "story_outro": "Der Drache neigt den Kopf, ganz tief. Er hat dich geprüft, und du hast bestanden. Er spricht zum ersten Mal, mit einer Stimme wie Donner in der Ferne: \"Ein letztes Ritual. Dann bist du Hüter.\"",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

@@ -1,0 +1,309 @@
+{
+  "id": "level_16",
+  "title": "Der schlafende Drache",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "drache",
+      "kristall",
+      "haus",
+      "krieger",
+      "eule",
+      "kobold",
+      "brunnen",
+      "kerze",
+      "wald"
+    ],
+    [
+      "brunnen",
+      "wald",
+      "kobold",
+      "haus",
+      "kerze",
+      "drache",
+      "krieger",
+      "eule",
+      "kristall"
+    ],
+    [
+      "krieger",
+      "kerze",
+      "eule",
+      "kristall",
+      "wald",
+      "brunnen",
+      "drache",
+      "kobold",
+      "haus"
+    ],
+    [
+      "kristall",
+      "drache",
+      "krieger",
+      "wald",
+      "kobold",
+      "eule",
+      "kerze",
+      "haus",
+      "brunnen"
+    ],
+    [
+      "eule",
+      "kobold",
+      "wald",
+      "brunnen",
+      "haus",
+      "kerze",
+      "kristall",
+      "krieger",
+      "drache"
+    ],
+    [
+      "kerze",
+      "haus",
+      "brunnen",
+      "drache",
+      "krieger",
+      "kristall",
+      "kobold",
+      "wald",
+      "eule"
+    ],
+    [
+      "wald",
+      "brunnen",
+      "kerze",
+      "kobold",
+      "kristall",
+      "haus",
+      "eule",
+      "drache",
+      "krieger"
+    ],
+    [
+      "haus",
+      "eule",
+      "kristall",
+      "kerze",
+      "drache",
+      "krieger",
+      "wald",
+      "brunnen",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "krieger",
+      "drache",
+      "eule",
+      "brunnen",
+      "wald",
+      "haus",
+      "kristall",
+      "kerze"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      0
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "kristall"
+      ],
+      "target_count": 6
+    },
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "wald"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "drache",
+        "haus"
+      ],
+      "max_count": 0
+    }
+  ],
+  "story_intro": "Der Drache ist das eigentliche Siegel der Grenze. Er schläft seit tausend Jahren unter dem Nebelwald, und Brands Riss hat ihn geweckt. Du musst ihn beruhigen, nicht töten.\n\nSpeise die Kristalle mit dem Licht der Kerzen, das besänftigt ihn. Halte ihn vom Wald fern, und lass ihn niemals das Haus berühren.",
+  "story_outro": "Der Drache legt den Kopf ab und atmet tief aus. Er ist ruhig, aber nicht besiegt. Er sieht dich mit einem Auge an, alt und müde, und du verstehst: Er wartet auf etwas. Auf jemanden, der die Grenze wirklich versteht.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

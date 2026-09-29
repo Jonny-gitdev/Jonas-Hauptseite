@@ -1,0 +1,303 @@
+{
+  "id": "level_15",
+  "title": "Nebel über Birkenhain",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "haus",
+      "wald",
+      "geist",
+      "krieger",
+      "kerze",
+      "scheune",
+      "eule",
+      "kobold"
+    ],
+    [
+      "scheune",
+      "kobold",
+      "eule",
+      "brunnen",
+      "haus",
+      "wald",
+      "krieger",
+      "kerze",
+      "geist"
+    ],
+    [
+      "kerze",
+      "krieger",
+      "geist",
+      "kobold",
+      "eule",
+      "scheune",
+      "haus",
+      "wald",
+      "brunnen"
+    ],
+    [
+      "krieger",
+      "scheune",
+      "brunnen",
+      "wald",
+      "geist",
+      "kobold",
+      "kerze",
+      "haus",
+      "eule"
+    ],
+    [
+      "geist",
+      "wald",
+      "kobold",
+      "eule",
+      "kerze",
+      "haus",
+      "brunnen",
+      "scheune",
+      "krieger"
+    ],
+    [
+      "eule",
+      "kerze",
+      "haus",
+      "krieger",
+      "scheune",
+      "brunnen",
+      "kobold",
+      "geist",
+      "wald"
+    ],
+    [
+      "kobold",
+      "brunnen",
+      "scheune",
+      "haus",
+      "wald",
+      "eule",
+      "geist",
+      "krieger",
+      "kerze"
+    ],
+    [
+      "haus",
+      "eule",
+      "krieger",
+      "kerze",
+      "kobold",
+      "geist",
+      "wald",
+      "brunnen",
+      "scheune"
+    ],
+    [
+      "wald",
+      "geist",
+      "kerze",
+      "scheune",
+      "brunnen",
+      "krieger",
+      "eule",
+      "kobold",
+      "haus"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      5
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "kerze",
+        "geist"
+      ],
+      "target_count": 2
+    },
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "geist",
+        "haus"
+      ],
+      "max_count": 0
+    }
+  ],
+  "story_intro": "Brand hat einen Riss in die Grenze geschlagen, und der Nebel quillt heraus. Geister wandern durch die Felder, die Luft ist kalt. Ilse erscheint ein letztes Mal: \"Ich brauche dich für das Ritual.\"\n\nDie Eule trägt das Licht der Kerze zu den Geistern. Kein Geist darf das Haus berühren, Tabu! Und Krieger und Kobolde halten die Stellung.",
+  "story_outro": "Das Ritual gelingt, der Nebel weicht. Aber im Wald hebt sich etwas Riesiges aus der Erde, groß wie ein Berg, mit Augen wie Glut. Ilse flüstert: \"Er schläft nicht mehr. Der Drache.\"",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

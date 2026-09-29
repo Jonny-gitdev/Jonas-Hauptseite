@@ -721,6 +721,23 @@ const LEVEL_MANIFEST = [
   'levels/level_01.json',
   'levels/level_02.json',
   'levels/level_03.json',
+  'levels/level_04.json',
+  'levels/level_05.json',
+  'levels/level_06.json',
+  'levels/level_07.json',
+  'levels/level_08.json',
+  'levels/level_09.json',
+  'levels/level_10.json',
+  'levels/level_11.json',
+  'levels/level_12.json',
+  'levels/level_13.json',
+  'levels/level_14.json',
+  'levels/level_15.json',
+  'levels/level_16.json',
+  'levels/level_17.json',
+  'levels/level_18.json',
+  'levels/level_19.json',
+  'levels/level_20.json',
 ];
 
 // Eingebautes Fallback-Level (altes Einzelziel-Format, wird beim Laden
@@ -775,6 +792,8 @@ let GOALS = [];            // Liste von { chain: [id,...], target_count }
 let NEGATIVE_GOALS = [];   // Liste von { symbols: [id,...], max_count }
 let currentLevel = null;
 let outroShown = false;
+let availableLevels = [];
+const LEVEL_PROGRESS_KEY = 'jodoku-unlocked-level-count';
 
 let grid = [];
 let selected = null;
@@ -838,12 +857,31 @@ function populateLevelSelect(levels) {
     select.appendChild(opt);
     return;
   }
-  levels.forEach(({ path, data }) => {
+  const unlockedCount = getUnlockedLevelCount(levels.length);
+  levels.forEach(({ path, data }, index) => {
     const opt = document.createElement('option');
     opt.value = path;
     opt.textContent = data.title || path;
+    opt.disabled = index >= unlockedCount;
     select.appendChild(opt);
   });
+}
+
+function getUnlockedLevelCount(levelCount = availableLevels.length) {
+  const savedCount = Number.parseInt(localStorage.getItem(LEVEL_PROGRESS_KEY) || '1', 10);
+  return Math.min(levelCount, Math.max(1, Number.isInteger(savedCount) ? savedCount : 1));
+}
+
+function unlockNextLevel() {
+  const currentIndex = availableLevels.findIndex(level => level.data.id === currentLevel?.id);
+  const unlockedCount = getUnlockedLevelCount();
+  if (currentIndex !== unlockedCount - 1 || unlockedCount >= availableLevels.length) return;
+
+  localStorage.setItem(LEVEL_PROGRESS_KEY, String(unlockedCount + 1));
+  const nextLevel = availableLevels[unlockedCount];
+  const nextOption = [...document.getElementById('levelSelect').options]
+    .find(option => option.value === nextLevel.path);
+  if (nextOption) nextOption.disabled = false;
 }
 
 // Bevorzugt das Emoji (icon), faellt sonst auf das Kuerzel (abbr) zurueck.
@@ -1006,26 +1044,26 @@ function applyLevel(levelData) {
 }
 
 async function initLevels() {
-  const levels = await discoverLevels();
-  populateLevelSelect(levels);
+  availableLevels = await discoverLevels();
+  populateLevelSelect(availableLevels);
 
   const select = document.getElementById('levelSelect');
-  if (levels.length > 0) {
-    select.value = levels[0].path;
-    applyLevel(levels[0].data);
+  if (availableLevels.length > 0) {
+    select.value = availableLevels[0].path;
+    applyLevel(availableLevels[0].data);
   } else {
     applyLevel(FALLBACK_LEVEL);
   }
 
   select.addEventListener('change', () => {
-    const chosen = levels.find(l => l.path === select.value);
+    const chosen = availableLevels.find(l => l.path === select.value);
     if (chosen) applyLevel(chosen.data);
   });
 
   document.getElementById('reloadLevelsBtn').addEventListener('click', async () => {
-    const refreshed = await discoverLevels();
-    populateLevelSelect(refreshed);
-    if (refreshed.length > 0) applyLevel(refreshed[0].data);
+    availableLevels = await discoverLevels();
+    populateLevelSelect(availableLevels);
+    if (availableLevels.length > 0) applyLevel(availableLevels[0].data);
   });
 
   document.getElementById('levelFileInput').addEventListener('change', (e) => {
@@ -1843,7 +1881,7 @@ function updateHintCountDisplay() {
 }
 
 function updateAll() {
-  let allGoalsMet = GOALS.length > 0;
+  let allGoalsMet = true;
 
   GOALS.forEach((goal, idx) => {
     const count = countChain(goal.chain);
@@ -1879,6 +1917,7 @@ function updateAll() {
   if (solved) {
     winBanner.innerHTML = `🎉 Hof komplett! Alle Regeln und Ziele erfüllt.<div class="win-banner-hints">💡 Du hast ${hintsUsed} Hinweis${hintsUsed === 1 ? '' : 'e'} genutzt.</div>`;
     winBanner.classList.add('show');
+    unlockNextLevel();
     if (currentLevel?.story_outro && !outroShown) {
       outroShown = true;
       showStoryModal(currentLevel.story_outro, 'Hof abgeschlossen');

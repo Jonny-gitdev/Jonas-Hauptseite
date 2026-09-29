@@ -1,0 +1,306 @@
+{
+  "id": "level_07",
+  "title": "Der Krieger von Birkenhain",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#6b5a8a",
+      "abbr": "MU",
+      "icon": "💨",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "scheune",
+      "baeckerei",
+      "muehle",
+      "feld",
+      "wald",
+      "kobold",
+      "brunnen",
+      "haus",
+      "krieger"
+    ],
+    [
+      "brunnen",
+      "kobold",
+      "krieger",
+      "haus",
+      "scheune",
+      "muehle",
+      "wald",
+      "baeckerei",
+      "feld"
+    ],
+    [
+      "haus",
+      "feld",
+      "wald",
+      "krieger",
+      "brunnen",
+      "baeckerei",
+      "kobold",
+      "muehle",
+      "scheune"
+    ],
+    [
+      "baeckerei",
+      "wald",
+      "haus",
+      "kobold",
+      "feld",
+      "krieger",
+      "muehle",
+      "scheune",
+      "brunnen"
+    ],
+    [
+      "krieger",
+      "brunnen",
+      "kobold",
+      "muehle",
+      "baeckerei",
+      "scheune",
+      "haus",
+      "feld",
+      "wald"
+    ],
+    [
+      "feld",
+      "muehle",
+      "scheune",
+      "wald",
+      "haus",
+      "brunnen",
+      "krieger",
+      "kobold",
+      "baeckerei"
+    ],
+    [
+      "muehle",
+      "scheune",
+      "baeckerei",
+      "brunnen",
+      "kobold",
+      "wald",
+      "feld",
+      "krieger",
+      "haus"
+    ],
+    [
+      "kobold",
+      "haus",
+      "brunnen",
+      "baeckerei",
+      "krieger",
+      "feld",
+      "scheune",
+      "wald",
+      "muehle"
+    ],
+    [
+      "wald",
+      "krieger",
+      "feld",
+      "scheune",
+      "muehle",
+      "haus",
+      "baeckerei",
+      "brunnen",
+      "kobold"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "krieger",
+        "kobold"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "feld",
+        "muehle"
+      ],
+      "target_count": 3
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "scheune"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Ein narbiger Söldner steht am Tor. \"Man sagt, du hast Ärger mit Kobolden. Ich kann helfen.\" Sein Name ist Brand, und er weiß, was er tut: Ein Krieger neben jedem Kobold, und die Diebe kommen nicht mehr durch.\n\nStelle die Wachen dicht an die Kobolde. Und halte Kobolde von der Scheune fern. Der Hof ist jetzt groß genug, dass du Feld und Mühle nebenbei weiter im Blick behalten musst.",
+  "story_outro": "Die Kobolde ziehen sich zurück, und Brand nickt zufrieden. Aber du bemerkst, wie er beim Abmarsch ein Stück Pergament einsteckt, das aus Ilses Nachlass stammt. Dein Blick bleibt daran hängen. Hat er dich gefragt, ob er es mitnehmen darf?",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

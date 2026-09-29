@@ -1,0 +1,306 @@
+{
+  "id": "level_05",
+  "title": "Nächtliche Schritte",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#6b5a8a",
+      "abbr": "MU",
+      "icon": "💨",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "scheune",
+      "name": "Scheune",
+      "color": "#a8402f",
+      "abbr": "SC",
+      "icon": "🏚️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "scheune",
+      "feld",
+      "brunnen",
+      "saegewerk",
+      "baeckerei",
+      "wald",
+      "eule",
+      "muehle"
+    ],
+    [
+      "eule",
+      "saegewerk",
+      "baeckerei",
+      "haus",
+      "wald",
+      "muehle",
+      "feld",
+      "brunnen",
+      "scheune"
+    ],
+    [
+      "muehle",
+      "brunnen",
+      "wald",
+      "eule",
+      "scheune",
+      "feld",
+      "haus",
+      "baeckerei",
+      "saegewerk"
+    ],
+    [
+      "scheune",
+      "haus",
+      "eule",
+      "baeckerei",
+      "feld",
+      "wald",
+      "muehle",
+      "saegewerk",
+      "brunnen"
+    ],
+    [
+      "brunnen",
+      "feld",
+      "saegewerk",
+      "muehle",
+      "eule",
+      "scheune",
+      "baeckerei",
+      "haus",
+      "wald"
+    ],
+    [
+      "baeckerei",
+      "wald",
+      "muehle",
+      "saegewerk",
+      "haus",
+      "brunnen",
+      "eule",
+      "scheune",
+      "feld"
+    ],
+    [
+      "wald",
+      "muehle",
+      "brunnen",
+      "scheune",
+      "baeckerei",
+      "haus",
+      "saegewerk",
+      "feld",
+      "eule"
+    ],
+    [
+      "saegewerk",
+      "baeckerei",
+      "scheune",
+      "feld",
+      "muehle",
+      "eule",
+      "brunnen",
+      "wald",
+      "haus"
+    ],
+    [
+      "feld",
+      "eule",
+      "haus",
+      "wald",
+      "brunnen",
+      "saegewerk",
+      "scheune",
+      "muehle",
+      "baeckerei"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "feld",
+        "muehle"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "muehle",
+        "baeckerei"
+      ],
+      "target_count": 6
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wald",
+        "scheune"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Drei Nächte in Folge fehlen Brotlaibe. Keine Spuren im Schnee, kein aufgebrochenes Schloss. Im Nebelwald am Hofrand schimmern manchmal Augen zwischen den Stämmen.\n\nDer Hof ist größer, als du dachtest: Hinter der Scheune öffnen sich Felder, die du noch nie betreten hast. Baue deine Ketten sorgfältig auf, aber lass den Wald nicht zu dicht an die Scheune heran.",
+  "story_outro": "Die Vorräte sind gesichert, und trotzdem schläfst du schlecht. Beim Kontrollgang bemerkst du, dass der Boden in der Scheune hohl klingt. Unter dem Stroh liegt eine Falltür, alt, mit Ilses Zeichen darauf. Sie steht einen Spalt offen.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

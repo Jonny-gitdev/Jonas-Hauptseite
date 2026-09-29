@@ -1,0 +1,311 @@
+{
+  "id": "level_20",
+  "title": "Das Erbe von Birkenhain",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "wald",
+      "kerze",
+      "eule",
+      "drache",
+      "brunnen",
+      "kristall",
+      "krieger",
+      "kobold"
+    ],
+    [
+      "brunnen",
+      "eule",
+      "krieger",
+      "haus",
+      "kobold",
+      "kristall",
+      "kerze",
+      "drache",
+      "wald"
+    ],
+    [
+      "drache",
+      "kobold",
+      "kristall",
+      "kerze",
+      "krieger",
+      "wald",
+      "eule",
+      "brunnen",
+      "haus"
+    ],
+    [
+      "kobold",
+      "drache",
+      "eule",
+      "wald",
+      "kristall",
+      "haus",
+      "brunnen",
+      "kerze",
+      "krieger"
+    ],
+    [
+      "wald",
+      "krieger",
+      "brunnen",
+      "drache",
+      "kerze",
+      "kobold",
+      "haus",
+      "eule",
+      "kristall"
+    ],
+    [
+      "kerze",
+      "kristall",
+      "haus",
+      "krieger",
+      "brunnen",
+      "eule",
+      "kobold",
+      "wald",
+      "drache"
+    ],
+    [
+      "krieger",
+      "haus",
+      "kobold",
+      "brunnen",
+      "wald",
+      "kerze",
+      "drache",
+      "kristall",
+      "eule"
+    ],
+    [
+      "eule",
+      "brunnen",
+      "drache",
+      "kristall",
+      "haus",
+      "krieger",
+      "wald",
+      "kobold",
+      "kerze"
+    ],
+    [
+      "kristall",
+      "kerze",
+      "wald",
+      "kobold",
+      "eule",
+      "drache",
+      "krieger",
+      "haus",
+      "brunnen"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "kerze",
+        "kristall",
+        "drache"
+      ],
+      "target_count": 0
+    },
+    {
+      "chain": [
+        "kobold",
+        "haus"
+      ],
+      "target_count": 7
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "haus"
+      ],
+      "max_count": 0
+    },
+    {
+      "symbols": [
+        "kobold",
+        "kerze"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Das letzte Ritual. Die Eule trägt die Botschaft zur Kerze, die Kerze entzündet den Kristall, der Kristall weckt den Drachen. Eine Kette aus vier Gliedern, so lang wie die Geschichte dieses Hofes.\n\nDie Kobolde gehören ins Haus, sie sind jetzt Familie. Der Drache darf es nie berühren. Und halte die Kobolde vom Kerzenlicht fern, sie sind zu neugierig.",
+  "story_outro": "Das Ritual ist vollendet. Die Grenze leuchtet ruhig und stark. Kobolde tanzen im Hof, der Drache schläft wieder, diesmal ohne Angst, und im Haus brennt Licht. Du bist nicht mehr Ilses Erbe. Du bist Hüter von Birkenhain. Und in der Küche steht eine Tasse, noch warm.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}
