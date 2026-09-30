@@ -490,78 +490,6 @@
     .tag-wip { background: rgba(212, 163, 115, 0.12); color: var(--accent-amber); }
 
     /* ========================================
-       PLAYGROUND SECTION
-    ======================================== */
-    .playground-section {
-      background: var(--bg-warm);
-    }
-
-    .playground-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .playground-text h3 {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .playground-text p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Interactive canvas */
-    .playground-canvas-wrapper {
-      position: relative;
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      overflow: hidden;
-    }
-
-    .playground-canvas-wrapper::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: conic-gradient(from 0deg, transparent, var(--accent-coral), transparent, var(--accent-sage), transparent, var(--accent-sky), transparent);
-      animation: rotate 8s linear infinite;
-      opacity: 0.03;
-    }
-
-    @keyframes rotate {
-      to { transform: rotate(360deg); }
-    }
-
-    #playgroundCanvas {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, #faf8f5, #f0ece5);
-      cursor: crosshair;
-      z-index: 1;
-    }
-
-    .canvas-hint {
-      position: absolute;
-      bottom: 1rem; left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      color: var(--text-light);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* ========================================
        MARQUEE / TICKER
     ======================================== */
     .marquee-section {
@@ -663,7 +591,6 @@
       .bento-card.large { grid-column: span 2; grid-row: span 2; }
       .bento-card.wide { grid-column: span 2; }
       .bento-card.tall { grid-row: span 1; }
-      .playground-container { grid-template-columns: 1fr; }
       .hero-stats { gap: 2rem; }
       .nav-links { display: none; }
     }
@@ -721,7 +648,6 @@
     <ul class="nav-links">
       <li><a href="#projekte">Projekte</a></li>
       <li><a href="#apps">Apps</a></li>
-      <li><a href="#playground">Playground</a></li>
       <li><a href="jodoku.html">Jodoku</a></li>
       <li><a href="https://github.com/Jonny-gitdev" target="_blank" rel="noopener" class="nav-cta">GitHub</a></li>
     </ul>
@@ -731,8 +657,7 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">Willkommen auf meiner Seite</div>
-      <h1>Ich baue <span class="highlight">Webtools & Android Apps</span></h1>
-      <p>Hier findest du eine Übersicht über meine Projekte, Apps und Experimente. Alles, woran ich gerade arbeite oder schon fertig habe.</p>
+      <h1>Hier findet man eine Übersicht meiner <span class="highlight">Webtools & Android Apps</span></h1>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-number" data-count="4">0</div>
@@ -762,7 +687,7 @@
         <div class="section-label">Projekte</div>
         <h2 class="section-title">Web-Projekte</h2>
       </div>
-      <p class="section-desc">Eine Sammlung meiner Web-Apps und Tools, die ich im Browser gebaut habe.</p>
+      <p class="section-desc">Eine Sammlung meiner Web-Apps und Tools, die ich für den Browser gebaut habe.</p>
     </div>
 
     <div class="bento-grid">
@@ -820,12 +745,10 @@
       <span class="marquee-item">TrinkApp<span class="dot">.</span></span>
       <span class="marquee-item">Jodoku<span class="dot">.</span></span>
       <span class="marquee-item">Android<span class="dot">.</span></span>
-      <span class="marquee-item">Playground<span class="dot">.</span></span>
       <span class="marquee-item">StudyDesk<span class="dot">.</span></span>
       <span class="marquee-item">TrinkApp<span class="dot">.</span></span>
       <span class="marquee-item">Jodoku<span class="dot">.</span></span>
       <span class="marquee-item">Android<span class="dot">.</span></span>
-      <span class="marquee-item">Playground<span class="dot">.</span></span>
     </div>
   </div>
 
@@ -870,22 +793,6 @@
     </div>
   </section>
 
-  <!-- Playground Section -->
-  <section id="playground" class="playground-section">
-    <div class="playground-container">
-      <div class="playground-text reveal">
-        <div class="section-label">Experimente</div>
-        <h3>Playground</h3>
-        <p>Baustelle. Hier kommt hin, woran ich gerade rumbastle. Klick und zieh auf das Feld rechts — ein kleines interaktives Experiment.</p>
-        <p style="font-size: 0.85rem; color: var(--text-light);">Test Test — mehr folgt.</p>
-      </div>
-      <div class="playground-canvas-wrapper reveal reveal-delay-2">
-        <canvas id="playgroundCanvas"></canvas>
-        <span class="canvas-hint">Klicken & Ziehen zum Malen</span>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-links">
@@ -894,7 +801,7 @@
       <a href="jodoku.html">Jodoku</a>
       <a href="https://github.com/Jonny-gitdev" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <p class="footer-copy">&copy; <span id="year"></span> Jonas — Mit Liebe gebaut.</p>
+    <p class="footer-copy">&copy; <span id="year"></span> Jonas.</p>
   </footer>
 
   <script>
@@ -968,89 +875,6 @@
       requestAnimationFrame(animateGlow);
     }
     animateGlow();
-
-    /* ========================================
-       PLAYGROUND CANVAS — PARTICLE DRAWING
-    ======================================== */
-    const canvas = document.getElementById('playgroundCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let isDrawing = false;
-    const colors = ['#e85d4c', '#7fb069', '#5b9bd5', '#9b8ec7', '#d4a373', '#ffaaa0'];
-
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    class Particle {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.size = Math.random() * 4 + 2;
-        this.speedX = (Math.random() - 0.5) * 3;
-        this.speedY = (Math.random() - 0.5) * 3;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.life = 1;
-        this.decay = Math.random() * 0.015 + 0.008;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.speedX *= 0.98;
-        this.speedY *= 0.98;
-        this.life -= this.decay;
-        this.size *= 0.98;
-      }
-      draw() {
-        ctx.globalAlpha = this.life;
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
-      };
-    }
-
-    function addParticles(x, y, count = 3) {
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle(x + (Math.random() - 0.5) * 10, y + (Math.random() - 0.5) * 10));
-      }
-    }
-
-    canvas.addEventListener('mousedown', (e) => { isDrawing = true; const p = getPos(e); addParticles(p.x, p.y, 8); });
-    canvas.addEventListener('mousemove', (e) => { if (isDrawing) { const p = getPos(e); addParticles(p.x, p.y, 2); } });
-    canvas.addEventListener('mouseup', () => { isDrawing = false; });
-    canvas.addEventListener('mouseleave', () => { isDrawing = false; });
-
-    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); isDrawing = true; const p = getPos(e); addParticles(p.x, p.y, 8); });
-    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (isDrawing) { const p = getPos(e); addParticles(p.x, p.y, 2); } });
-    canvas.addEventListener('touchend', () => { isDrawing = false; });
-
-    function animateCanvas() {
-      ctx.fillStyle = 'rgba(250, 248, 245, 0.15)';
-      ctx.fillRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-
-      particles = particles.filter(p => p.life > 0);
-      particles.forEach(p => { p.update(); p.draw(); });
-
-      requestAnimationFrame(animateCanvas);
-    }
-    animateCanvas();
 
     /* ========================================
        YEAR
