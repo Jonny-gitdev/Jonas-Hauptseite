@@ -514,7 +514,6 @@
     60%  { box-shadow: 0 0 0 10px rgba(212,169,73,0); }
     100% { box-shadow: 0 0 0 0 rgba(212,169,73,0); }
   }
-
   .win-banner {
     display: none;
     margin-top: 18px;
@@ -1909,7 +1908,6 @@ function updateAll() {
     }
     if (count !== goal.target_count) allGoalsMet = false;
   });
-
   let allNegativeGoalsMet = true;
   NEGATIVE_GOALS.forEach((ng, idx) => {
     const count = countNegativeAdjacency(ng.symbols);
