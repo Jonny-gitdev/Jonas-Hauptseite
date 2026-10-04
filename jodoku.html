@@ -113,11 +113,12 @@
     color: var(--parchment-dim);
   }
 
-  .level-bar-row label[for="levelSelect"] {
+  .level-bar-row label {
     font-weight: 600;
     color: var(--parchment);
   }
 
+  #collectionSelect,
   #levelSelect {
     background: var(--parchment);
     color: var(--ink);
@@ -677,6 +678,8 @@
   <p class="subtitle" id="subtitle">Fülle die Felder so aus, dass jede Figur genau einmal pro Zeile, Spalte und Region vorkommt.</p>
 <div class="level-bar" id="levelBar">
   <div class="level-bar-row">
+    <label for="collectionSelect">Sammlung:</label>
+    <select id="collectionSelect"></select>
     <label for="levelSelect">Level:</label>
     <select id="levelSelect"></select>
     
@@ -745,26 +748,20 @@
 <script>
 // --- Level-Verwaltung -------------------------------------------------
 const LEVEL_MANIFEST = [
-  'levels/level_01.json',
-  'levels/level_02.json',
-  'levels/level_03.json',
-  'levels/level_04.json',
-  'levels/level_05.json',
-  'levels/level_06.json',
-  'levels/level_07.json',
-  'levels/level_08.json',
-  'levels/level_09.json',
-  'levels/level_10.json',
-  'levels/level_11.json',
-  'levels/level_12.json',
-  'levels/level_13.json',
-  'levels/level_14.json',
-  'levels/level_15.json',
-  'levels/level_16.json',
-  'levels/level_17.json',
-  'levels/level_18.json',
-  'levels/level_19.json',
-  'levels/level_20.json',
+  {
+    id: 'chapter1',
+    title: 'Hauptstory - Chapter 1',
+    levels: Array.from({ length: 20 }, (_, index) =>
+      `levels/Chapter1Levels/level_${String(index + 1).padStart(2, '0')}.json`
+    ),
+  },
+  {
+    id: 'chapter2',
+    title: 'Hauptstory - Chapter 2',
+    levels: Array.from({ length: 20 }, (_, index) =>
+      `levels/Chapter2Levels/level_${String(index + 21).padStart(2, '0')}.json`
+    ),
+  },
 ];
 
 // Eingebautes Fallback-Level (altes Einzelziel-Format, wird beim Laden
@@ -820,6 +817,7 @@ let NEGATIVE_GOALS = [];   // Liste von { symbols: [id,...], max_count }
 let currentLevel = null;
 let outroShown = false;
 let availableLevels = [];
+let currentCollection = null;
 const LEVEL_PROGRESS_KEY = 'jodoku-unlocked-level-count';
 let hintedCell = null;
 let showIncorrectCells = false;
@@ -865,9 +863,9 @@ async function fetchJson(path) {
   return res.json();
 }
 
-async function discoverLevels() {
+async function discoverLevels(collection) {
   const found = [];
-  for (const path of LEVEL_MANIFEST) {
+  for (const path of collection.levels) {
     try {
       const data = await fetchJson(path);
       found.push({ path, data: normalizeLevel(data) });
@@ -899,7 +897,10 @@ function populateLevelSelect(levels) {
 }
 
 function getUnlockedLevelCount(levelCount = availableLevels.length) {
-  const savedCount = Number.parseInt(localStorage.getItem(LEVEL_PROGRESS_KEY) || '1', 10);
+  const progressKey = currentCollection?.id === 'chapter1'
+    ? LEVEL_PROGRESS_KEY
+    : `${LEVEL_PROGRESS_KEY}-${currentCollection?.id || 'default'}`;
+  const savedCount = Number.parseInt(localStorage.getItem(progressKey) || '1', 10);
   return Math.min(levelCount, Math.max(1, Number.isInteger(savedCount) ? savedCount : 1));
 }
 
@@ -908,7 +909,10 @@ function unlockNextLevel() {
   const unlockedCount = getUnlockedLevelCount();
   if (currentIndex !== unlockedCount - 1 || unlockedCount >= availableLevels.length) return;
 
-  localStorage.setItem(LEVEL_PROGRESS_KEY, String(unlockedCount + 1));
+  const progressKey = currentCollection?.id === 'chapter1'
+    ? LEVEL_PROGRESS_KEY
+    : `${LEVEL_PROGRESS_KEY}-${currentCollection?.id || 'default'}`;
+  localStorage.setItem(progressKey, String(unlockedCount + 1));
   const nextLevel = availableLevels[unlockedCount];
   const nextOption = [...document.getElementById('levelSelect').options]
     .find(option => option.value === nextLevel.path);
@@ -1078,48 +1082,79 @@ function applyLevel(levelData) {
   }
 }
 
-async function initLevels() {
-  availableLevels = await discoverLevels();
-  populateLevelSelect(availableLevels);
+function populateCollectionSelect() {
+  const select = document.getElementById('collectionSelect');
+  select.innerHTML = '';
+  LEVEL_MANIFEST.forEach(collection => {
+    const option = document.createElement('option');
+    option.value = collection.id;
+    option.textContent = collection.title;
+    select.appendChild(option);
+  });
+}
 
+async function loadCollection(collection, selectedPath = null) {
+  currentCollection = collection;
+  const levels = await discoverLevels(collection);
+  if (currentCollection !== collection) return;
+
+  availableLevels = levels;
+  populateLevelSelect(availableLevels);
   const select = document.getElementById('levelSelect');
   if (availableLevels.length > 0) {
-    select.value = availableLevels[0].path;
-    applyLevel(availableLevels[0].data);
+    const chosen = availableLevels.find(level => level.path === selectedPath) || availableLevels[0];
+    select.value = chosen.path;
+    applyLevel(chosen.data);
   } else {
     applyLevel(FALLBACK_LEVEL);
   }
+}
 
-  select.addEventListener('change', () => {
-    const chosen = availableLevels.find(l => l.path === select.value);
+async function initLevels() {
+  const collectionSelect = document.getElementById('collectionSelect');
+  const levelSelect = document.getElementById('levelSelect');
+  populateCollectionSelect();
+  collectionSelect.value = LEVEL_MANIFEST[0].id;
+
+  collectionSelect.addEventListener('change', () => {
+    const collection = LEVEL_MANIFEST.find(item => item.id === collectionSelect.value);
+    if (collection) loadCollection(collection);
+  });
+
+  levelSelect.addEventListener('change', () => {
+    const chosen = availableLevels.find(l => l.path === levelSelect.value);
     if (chosen) applyLevel(chosen.data);
   });
 
-  document.getElementById('reloadLevelsBtn').addEventListener('click', async () => {
-    availableLevels = await discoverLevels();
-    populateLevelSelect(availableLevels);
-    if (availableLevels.length > 0) applyLevel(availableLevels[0].data);
-  });
+  await loadCollection(LEVEL_MANIFEST[0]);
 
-  document.getElementById('levelFileInput').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      try {
-        const data = JSON.parse(evt.target.result);
-        applyLevel(data);
-        const opt = document.createElement('option');
-        opt.value = 'uploaded:' + file.name;
-        opt.textContent = (data.title || file.name) + ' (hochgeladen)';
-        select.appendChild(opt);
-        select.value = opt.value;
-      } catch (err) {
-        alert('Diese Datei konnte nicht als Level gelesen werden: ' + err.message);
-      }
-    };
-    reader.readAsText(file);
-  });
+  const reloadButton = document.getElementById('reloadLevelsBtn');
+  if (reloadButton) {
+    reloadButton.addEventListener('click', () => loadCollection(currentCollection, levelSelect.value));
+  }
+
+  const levelFileInput = document.getElementById('levelFileInput');
+  if (levelFileInput) {
+    levelFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const data = JSON.parse(evt.target.result);
+          applyLevel(data);
+          const option = document.createElement('option');
+          option.value = 'uploaded:' + file.name;
+          option.textContent = (data.title || file.name) + ' (hochgeladen)';
+          levelSelect.appendChild(option);
+          levelSelect.value = option.value;
+        } catch (err) {
+          alert('Diese Datei konnte nicht als Level gelesen werden: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
 }
 
 function init() {

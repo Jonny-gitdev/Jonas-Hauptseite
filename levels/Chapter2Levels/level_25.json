@@ -1,0 +1,306 @@
+{
+  "id": "level_25",
+  "title": "Murmels Warnung",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "pilz",
+      "name": "Pilzring",
+      "color": "#a8584a",
+      "abbr": "PI",
+      "icon": "🍄",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "krieger",
+      "pilz",
+      "kobold",
+      "brunnen",
+      "kerze",
+      "glocke",
+      "haus",
+      "eule",
+      "wald"
+    ],
+    [
+      "haus",
+      "wald",
+      "kerze",
+      "pilz",
+      "krieger",
+      "eule",
+      "glocke",
+      "brunnen",
+      "kobold"
+    ],
+    [
+      "eule",
+      "brunnen",
+      "glocke",
+      "kobold",
+      "haus",
+      "wald",
+      "kerze",
+      "krieger",
+      "pilz"
+    ],
+    [
+      "brunnen",
+      "kobold",
+      "haus",
+      "krieger",
+      "wald",
+      "pilz",
+      "eule",
+      "glocke",
+      "kerze"
+    ],
+    [
+      "pilz",
+      "krieger",
+      "wald",
+      "eule",
+      "glocke",
+      "kerze",
+      "kobold",
+      "haus",
+      "brunnen"
+    ],
+    [
+      "kerze",
+      "glocke",
+      "eule",
+      "haus",
+      "brunnen",
+      "kobold",
+      "pilz",
+      "wald",
+      "krieger"
+    ],
+    [
+      "glocke",
+      "eule",
+      "krieger",
+      "kerze",
+      "kobold",
+      "brunnen",
+      "wald",
+      "pilz",
+      "haus"
+    ],
+    [
+      "kobold",
+      "haus",
+      "pilz",
+      "wald",
+      "eule",
+      "krieger",
+      "brunnen",
+      "kerze",
+      "glocke"
+    ],
+    [
+      "wald",
+      "kerze",
+      "brunnen",
+      "glocke",
+      "pilz",
+      "haus",
+      "krieger",
+      "kobold",
+      "eule"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "glocke"
+      ],
+      "target_count": 8
+    },
+    {
+      "chain": [
+        "pilz",
+        "kobold"
+      ],
+      "target_count": 5
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wald",
+        "kobold"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Kaum hinter der Hofgrenze bleibt Murmel stehen. Der Weg rieche nach Kälte, sagt er, nach etwas, das lange nicht mehr gesprochen hat. Er legt dir eine Karte aus Pilzringen in den Boden, damit du dich nicht verirrst.\n\nDie Pilzringe führen zu den Kobolden, die Eule zur Glocke. Und halte Wald und Kobolde auseinander, im Wald wacht etwas.",
+  "story_outro": "Murmel läuft doch mit. Ein Kobold lässt seinen Hüter nicht allein, sagt er, auch wenn der Weg ins Ungewisse führt. Hinter euch schließt sich der Nebel, und die Hofglocke läutet zum Abschied: dreimal, dann nichts mehr.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

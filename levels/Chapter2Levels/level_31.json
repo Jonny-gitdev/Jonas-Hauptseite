@@ -1,0 +1,298 @@
+{
+  "id": "level_31",
+  "title": "Die Wanderin",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "kobold",
+      "brunnen",
+      "kerze",
+      "eule",
+      "haus",
+      "wald",
+      "mond",
+      "krieger",
+      "hexe"
+    ],
+    [
+      "krieger",
+      "hexe",
+      "wald",
+      "mond",
+      "kerze",
+      "kobold",
+      "brunnen",
+      "haus",
+      "eule"
+    ],
+    [
+      "mond",
+      "haus",
+      "eule",
+      "brunnen",
+      "hexe",
+      "krieger",
+      "kerze",
+      "wald",
+      "kobold"
+    ],
+    [
+      "brunnen",
+      "krieger",
+      "kobold",
+      "kerze",
+      "mond",
+      "eule",
+      "wald",
+      "hexe",
+      "haus"
+    ],
+    [
+      "eule",
+      "wald",
+      "haus",
+      "kobold",
+      "brunnen",
+      "hexe",
+      "krieger",
+      "kerze",
+      "mond"
+    ],
+    [
+      "kerze",
+      "mond",
+      "hexe",
+      "krieger",
+      "wald",
+      "haus",
+      "kobold",
+      "eule",
+      "brunnen"
+    ],
+    [
+      "haus",
+      "kerze",
+      "brunnen",
+      "hexe",
+      "krieger",
+      "mond",
+      "eule",
+      "kobold",
+      "wald"
+    ],
+    [
+      "wald",
+      "eule",
+      "krieger",
+      "haus",
+      "kobold",
+      "brunnen",
+      "hexe",
+      "mond",
+      "kerze"
+    ],
+    [
+      "hexe",
+      "kobold",
+      "mond",
+      "wald",
+      "eule",
+      "kerze",
+      "haus",
+      "brunnen",
+      "krieger"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      5
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "hexe"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "kerze",
+        "mond"
+      ],
+      "target_count": 6
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "hexe",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Eine Frau in grauem Mantel sitzt auf der Dorfmauer und wartet auf dich. Sie sagt nicht, wer sie ist, aber die Eule setzt sich zutraulich auf ihre Schulter. Zu zutraulich. Murmel knurrt, was er sonst nie tut.\n\nDie Eule gehört zu ihr, die Kerze zum Mond. Halte die Kobolde auf Abstand zu der Fremden, bis du ihr traust.",
+  "story_outro": "Sie nennt ihren Namen nicht, aber sie kennt deinen. Sie kennt Ilses Namen, Ilses Eule, sogar das Rezept für die Kerzen. Als sie geht, bleibt auf der Mauer ein Mondstein zurück, eingewickelt in ein Taschentuch mit gesticktem O. Du steckst ihn ein. Murmel sieht dir dabei nicht in die Augen.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

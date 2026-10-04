@@ -1,0 +1,312 @@
+{
+  "id": "level_39",
+  "title": "Die Nacht der Laternen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "laterne",
+      "name": "Laterne",
+      "color": "#d9703a",
+      "abbr": "LA",
+      "icon": "🏮",
+      "image": null
+    },
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "glocke",
+      "geist",
+      "hexe",
+      "mond",
+      "laterne",
+      "kristall",
+      "drache",
+      "kobold",
+      "eule"
+    ],
+    [
+      "eule",
+      "kobold",
+      "kristall",
+      "drache",
+      "hexe",
+      "glocke",
+      "mond",
+      "laterne",
+      "geist"
+    ],
+    [
+      "mond",
+      "laterne",
+      "drache",
+      "eule",
+      "kobold",
+      "geist",
+      "glocke",
+      "hexe",
+      "kristall"
+    ],
+    [
+      "kristall",
+      "hexe",
+      "glocke",
+      "kobold",
+      "drache",
+      "eule",
+      "geist",
+      "mond",
+      "laterne"
+    ],
+    [
+      "kobold",
+      "eule",
+      "geist",
+      "laterne",
+      "kristall",
+      "mond",
+      "hexe",
+      "glocke",
+      "drache"
+    ],
+    [
+      "laterne",
+      "drache",
+      "mond",
+      "glocke",
+      "geist",
+      "hexe",
+      "eule",
+      "kristall",
+      "kobold"
+    ],
+    [
+      "hexe",
+      "kristall",
+      "eule",
+      "geist",
+      "mond",
+      "laterne",
+      "kobold",
+      "drache",
+      "glocke"
+    ],
+    [
+      "geist",
+      "mond",
+      "kobold",
+      "kristall",
+      "glocke",
+      "drache",
+      "laterne",
+      "eule",
+      "hexe"
+    ],
+    [
+      "drache",
+      "glocke",
+      "laterne",
+      "hexe",
+      "eule",
+      "kobold",
+      "kristall",
+      "geist",
+      "mond"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "laterne",
+        "geist",
+        "mond"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "glocke",
+        "eule",
+        "hexe"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "geist"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "In dieser Nacht entzünden alle Höfe zugleich ihre Laternen. Geister folgen dem Licht zum Mond, wo sie Ruhe finden, und die Glocke ruft die Eule zur Wanderin, damit der Pakt auch in der Dunkelheit hält. Doch der Drache wird unruhig, wenn Geister ihn reizen.\n\nHalte Drache und Geister auseinander, so gut es geht.",
+  "story_outro": "Die Laternen brennen bis zum Morgen, und kein einziger Geist bleibt zurück. Aber im Licht der letzten Laterne siehst du eine Gestalt, die nicht zu den Vergessenen gehört: groß, durchscheinend, mit Ilses Haltung. Sie hebt die Hand, nicht zum Abschied, sondern zum Gruß.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

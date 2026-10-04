@@ -1,0 +1,306 @@
+{
+  "id": "level_36",
+  "title": "Die Vergessenen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "color": "#6a6a72",
+      "abbr": "WO",
+      "icon": "🐺",
+      "image": null
+    },
+    {
+      "id": "hirsch",
+      "name": "Hirsch",
+      "color": "#9a6a3a",
+      "abbr": "HI",
+      "icon": "🦌",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "laterne",
+      "name": "Laterne",
+      "color": "#d9703a",
+      "abbr": "LA",
+      "icon": "🏮",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "laterne",
+      "hirsch",
+      "eule",
+      "glocke",
+      "geist",
+      "kobold",
+      "wolf",
+      "krieger",
+      "mond"
+    ],
+    [
+      "krieger",
+      "glocke",
+      "kobold",
+      "mond",
+      "laterne",
+      "wolf",
+      "eule",
+      "geist",
+      "hirsch"
+    ],
+    [
+      "wolf",
+      "mond",
+      "geist",
+      "krieger",
+      "eule",
+      "hirsch",
+      "kobold",
+      "laterne",
+      "glocke"
+    ],
+    [
+      "mond",
+      "geist",
+      "krieger",
+      "wolf",
+      "kobold",
+      "laterne",
+      "glocke",
+      "hirsch",
+      "eule"
+    ],
+    [
+      "hirsch",
+      "laterne",
+      "wolf",
+      "eule",
+      "glocke",
+      "geist",
+      "krieger",
+      "mond",
+      "kobold"
+    ],
+    [
+      "eule",
+      "kobold",
+      "glocke",
+      "hirsch",
+      "krieger",
+      "mond",
+      "geist",
+      "wolf",
+      "laterne"
+    ],
+    [
+      "glocke",
+      "wolf",
+      "hirsch",
+      "kobold",
+      "mond",
+      "krieger",
+      "laterne",
+      "eule",
+      "geist"
+    ],
+    [
+      "geist",
+      "eule",
+      "mond",
+      "laterne",
+      "wolf",
+      "glocke",
+      "hirsch",
+      "kobold",
+      "krieger"
+    ],
+    [
+      "kobold",
+      "krieger",
+      "laterne",
+      "geist",
+      "hirsch",
+      "eule",
+      "mond",
+      "glocke",
+      "wolf"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "laterne",
+        "geist"
+      ],
+      "target_count": 8
+    },
+    {
+      "chain": [
+        "eule",
+        "mond",
+        "hirsch"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wolf",
+        "geist"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "krieger",
+        "kobold"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Auf den Feldern stehen sie schweigend im Mondlicht: Geister, Wölfe, Hirsche, Kobolde ohne Hof. Die Vergessenen. Sie wollen nichts stehlen, nur bleiben. Laternen sollen den Geistern den Heimweg zeigen, und die Eule führt Mond und Hirsch zueinander.\n\nWölfe und Geister dürfen nicht aneinandergeraten. Und Krieger sollen die Kobolde nur beobachten, nicht bedrängen.",
+  "story_outro": "Aus der Menge tritt ein Mann mit grauem Bart und Magnus' Mantel. Er sei nicht fortgelaufen, sagt er, er sei gegangen, um denen zu helfen, die keinen Hof hatten. Seine Stimme bricht. Sie haben mich gerufen, und ich habe geantwortet. Jetzt können wir nicht mehr zurück.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

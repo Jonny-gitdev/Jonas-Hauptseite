@@ -1,0 +1,161 @@
+{
+  "id": "level_21",
+  "title": "Ein Jahr danach",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#6b5a8a",
+      "abbr": "MU",
+      "icon": "💨",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "kobold",
+      "baeckerei",
+      "feld",
+      "muehle",
+      "glocke",
+      "haus"
+    ],
+    [
+      "glocke",
+      "haus",
+      "muehle",
+      "kobold",
+      "feld",
+      "baeckerei"
+    ],
+    [
+      "muehle",
+      "feld",
+      "glocke",
+      "baeckerei",
+      "haus",
+      "kobold"
+    ],
+    [
+      "baeckerei",
+      "kobold",
+      "haus",
+      "glocke",
+      "muehle",
+      "feld"
+    ],
+    [
+      "haus",
+      "muehle",
+      "kobold",
+      "feld",
+      "baeckerei",
+      "glocke"
+    ],
+    [
+      "feld",
+      "glocke",
+      "baeckerei",
+      "haus",
+      "kobold",
+      "muehle"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      0
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "feld",
+        "muehle",
+        "baeckerei"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "glocke",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Ein Jahr ist vergangen, seit du Hüter von Birkenhain wurdest. Der Hof blüht, und die Kobolde sitzen sonntags mit am Tisch, allen voran der kleine mit den Pilzen, den alle nur Murmel nennen. Doch heute Morgen läutet eine Glocke, die niemand je aufgehängt hat.\n\nBaue die Brotkette wie gewohnt auf. Aber halte die Kobolde von der Glocke fern, sie erschrecken sich zu Tode.",
+  "story_outro": "Die Glocke verstummt, so plötzlich, wie sie begonnen hat. Murmel zupft an deinem Ärmel und zeigt zum Waldrand. Dort, wo die Grenze immer golden schimmerte, flackert das Licht. Nur ein bisschen. Aber du hast es gesehen.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

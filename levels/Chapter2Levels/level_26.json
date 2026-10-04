@@ -1,0 +1,171 @@
+{
+  "id": "level_26",
+  "title": "Der Weg nach Eichenfeld",
+  "size": 6,
+  "region_rows": 2,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "color": "#6a6a72",
+      "abbr": "WO",
+      "icon": "🐺",
+      "image": null
+    },
+    {
+      "id": "hirsch",
+      "name": "Hirsch",
+      "color": "#9a6a3a",
+      "abbr": "HI",
+      "icon": "🦌",
+      "image": null
+    },
+    {
+      "id": "bruecke",
+      "name": "Brücke",
+      "color": "#8a7a6a",
+      "abbr": "BK",
+      "icon": "🌉",
+      "image": null
+    },
+    {
+      "id": "laterne",
+      "name": "Laterne",
+      "color": "#d9703a",
+      "abbr": "LA",
+      "icon": "🏮",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "laterne",
+      "bruecke",
+      "hirsch",
+      "wald",
+      "kobold",
+      "wolf"
+    ],
+    [
+      "wald",
+      "wolf",
+      "kobold",
+      "hirsch",
+      "laterne",
+      "bruecke"
+    ],
+    [
+      "bruecke",
+      "wald",
+      "wolf",
+      "kobold",
+      "hirsch",
+      "laterne"
+    ],
+    [
+      "kobold",
+      "hirsch",
+      "laterne",
+      "wolf",
+      "bruecke",
+      "wald"
+    ],
+    [
+      "hirsch",
+      "laterne",
+      "wald",
+      "bruecke",
+      "wolf",
+      "kobold"
+    ],
+    [
+      "wolf",
+      "kobold",
+      "bruecke",
+      "laterne",
+      "wald",
+      "hirsch"
+    ]
+  ],
+  "givens": [
+    [
+      1,
+      4
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "laterne",
+        "bruecke"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "wald",
+        "hirsch"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wolf",
+        "hirsch"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Der Grenzweg schlängelt sich durch Wälder, über Bäche und an alten Laternen vorbei. Hirsche äsen am Waldrand, doch zwischen den Stämmen glühen gelbe Augen. Wölfe.\n\nVerbinde die Laternen mit den Brücken und die Wälder mit den Hirschen. Und lass die Wölfe nicht zu dicht an die Hirsche heran.",
+  "story_outro": "Die Wölfe ziehen vorbei, ohne zu knurren. Der Anführer bleibt stehen und senkt den Kopf, als würde er dich kennen. Murmel flüstert: Sie haben Ilse auch so gegrüßt. Du gehst weiter, mit einem Kribbeln im Nacken und dem Gefühl, erwartet zu werden.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

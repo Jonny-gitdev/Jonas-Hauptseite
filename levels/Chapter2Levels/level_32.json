@@ -1,0 +1,303 @@
+{
+  "id": "level_32",
+  "title": "Mondstein und Mühle",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "muehle",
+      "name": "Mühle",
+      "color": "#6b5a8a",
+      "abbr": "MU",
+      "icon": "💨",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "muehle",
+      "feld",
+      "markt",
+      "glocke",
+      "haus",
+      "mond",
+      "kristall",
+      "baeckerei",
+      "hexe"
+    ],
+    [
+      "baeckerei",
+      "haus",
+      "hexe",
+      "feld",
+      "muehle",
+      "kristall",
+      "glocke",
+      "mond",
+      "markt"
+    ],
+    [
+      "mond",
+      "glocke",
+      "kristall",
+      "baeckerei",
+      "markt",
+      "hexe",
+      "haus",
+      "muehle",
+      "feld"
+    ],
+    [
+      "feld",
+      "mond",
+      "glocke",
+      "kristall",
+      "hexe",
+      "markt",
+      "muehle",
+      "haus",
+      "baeckerei"
+    ],
+    [
+      "kristall",
+      "baeckerei",
+      "muehle",
+      "mond",
+      "feld",
+      "haus",
+      "markt",
+      "hexe",
+      "glocke"
+    ],
+    [
+      "markt",
+      "hexe",
+      "haus",
+      "muehle",
+      "glocke",
+      "baeckerei",
+      "feld",
+      "kristall",
+      "mond"
+    ],
+    [
+      "glocke",
+      "kristall",
+      "mond",
+      "markt",
+      "baeckerei",
+      "muehle",
+      "hexe",
+      "feld",
+      "haus"
+    ],
+    [
+      "haus",
+      "muehle",
+      "feld",
+      "hexe",
+      "mond",
+      "glocke",
+      "baeckerei",
+      "markt",
+      "kristall"
+    ],
+    [
+      "hexe",
+      "markt",
+      "baeckerei",
+      "haus",
+      "kristall",
+      "feld",
+      "mond",
+      "glocke",
+      "muehle"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "feld",
+        "muehle",
+        "baeckerei"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "mond",
+        "kristall"
+      ],
+      "target_count": 6
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "hexe",
+        "glocke"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Der Mondstein ist schwer vom Licht und leuchtet nur nachts. Im Dorf bittet man dich um etwas Einfaches: Die Mühle muss wieder mahlen, damit das Brot nicht ausgeht. Du erledigst es gern. Es lenkt ab.\n\nBaue die Brotkette, und lege den Mondstein neben einen Kristall, dort lädt er sich auf. Die Glocke soll der Fremden fernbleiben, ihr Klang tut ihr weh.",
+  "story_outro": "Nachts liegt der Mondstein auf dem Fensterbrett und schimmert im Takt des Kristalls. Im Schlaf hörst du die Glocke von Birkenhain, weit entfernt, aber klar. Sie läutet in einem anderen Rhythmus als sonst. Wer ruft da nach dir?",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

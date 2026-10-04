@@ -1,0 +1,307 @@
+{
+  "id": "level_27",
+  "title": "Die Brücke im Nebel",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "bruecke",
+      "name": "Brücke",
+      "color": "#8a7a6a",
+      "abbr": "BK",
+      "icon": "🌉",
+      "image": null
+    },
+    {
+      "id": "fluss",
+      "name": "Fluss",
+      "color": "#3a7ab0",
+      "abbr": "FL",
+      "icon": "🌊",
+      "image": null
+    },
+    {
+      "id": "laterne",
+      "name": "Laterne",
+      "color": "#d9703a",
+      "abbr": "LA",
+      "icon": "🏮",
+      "image": null
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "color": "#6a6a72",
+      "abbr": "WO",
+      "icon": "🐺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "krieger",
+      "bruecke",
+      "laterne",
+      "kobold",
+      "haus",
+      "wolf",
+      "fluss",
+      "wald",
+      "eule"
+    ],
+    [
+      "fluss",
+      "eule",
+      "wolf",
+      "bruecke",
+      "wald",
+      "laterne",
+      "haus",
+      "kobold",
+      "krieger"
+    ],
+    [
+      "kobold",
+      "wald",
+      "haus",
+      "eule",
+      "krieger",
+      "fluss",
+      "wolf",
+      "bruecke",
+      "laterne"
+    ],
+    [
+      "laterne",
+      "kobold",
+      "fluss",
+      "wald",
+      "wolf",
+      "eule",
+      "krieger",
+      "haus",
+      "bruecke"
+    ],
+    [
+      "wald",
+      "krieger",
+      "bruecke",
+      "haus",
+      "laterne",
+      "kobold",
+      "eule",
+      "fluss",
+      "wolf"
+    ],
+    [
+      "wolf",
+      "haus",
+      "eule",
+      "fluss",
+      "bruecke",
+      "krieger",
+      "kobold",
+      "laterne",
+      "wald"
+    ],
+    [
+      "bruecke",
+      "wolf",
+      "wald",
+      "krieger",
+      "fluss",
+      "haus",
+      "laterne",
+      "eule",
+      "kobold"
+    ],
+    [
+      "haus",
+      "laterne",
+      "kobold",
+      "wolf",
+      "eule",
+      "bruecke",
+      "wald",
+      "krieger",
+      "fluss"
+    ],
+    [
+      "eule",
+      "fluss",
+      "krieger",
+      "laterne",
+      "kobold",
+      "wald",
+      "bruecke",
+      "wolf",
+      "haus"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      8,
+      5
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "fluss",
+        "bruecke"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "laterne",
+        "bruecke",
+        "haus"
+      ],
+      "target_count": 2
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wolf",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Ein reißender Fluss trennt dich von Eichenfeld, und die alte Brücke hängt halb im Nebel. Jemand hat die Laternen gelöscht. Ihre Spur führt über die Brücke bis zum ersten Haus am anderen Ufer.\n\nDie Wölfe sind Murmel unheimlich: Halte sie von den Kobolden fern. Denk alle Regeln zusammen, nur dann ergibt sich die Lösung.",
+  "story_outro": "Du stehst auf der anderen Seite, nass bis auf die Knochen, und blickst zurück. Die Brücke hat dich getragen, als hätte sie gewartet. In einer Planke steckt ein Zettel: Weiter, aber leise. Das Haus am Ufer ist leer, der Tisch gedeckt. Für zwei.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

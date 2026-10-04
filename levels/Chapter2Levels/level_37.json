@@ -1,0 +1,314 @@
+{
+  "id": "level_37",
+  "title": "Sturm über Eichenfeld",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "turm",
+      "name": "Mondturm",
+      "color": "#5a6a9a",
+      "abbr": "TU",
+      "icon": "🗼",
+      "image": null
+    },
+    {
+      "id": "bruecke",
+      "name": "Brücke",
+      "color": "#8a7a6a",
+      "abbr": "BK",
+      "icon": "🌉",
+      "image": null
+    },
+    {
+      "id": "fluss",
+      "name": "Fluss",
+      "color": "#3a7ab0",
+      "abbr": "FL",
+      "icon": "🌊",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "color": "#6a6a72",
+      "abbr": "WO",
+      "icon": "🐺",
+      "image": null
+    },
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "kerze",
+      "kristall",
+      "bruecke",
+      "fluss",
+      "drache",
+      "turm",
+      "hexe",
+      "wolf",
+      "krieger"
+    ],
+    [
+      "drache",
+      "krieger",
+      "turm",
+      "hexe",
+      "kristall",
+      "wolf",
+      "fluss",
+      "kerze",
+      "bruecke"
+    ],
+    [
+      "wolf",
+      "fluss",
+      "hexe",
+      "krieger",
+      "bruecke",
+      "kerze",
+      "drache",
+      "kristall",
+      "turm"
+    ],
+    [
+      "krieger",
+      "hexe",
+      "kristall",
+      "bruecke",
+      "turm",
+      "fluss",
+      "kerze",
+      "drache",
+      "wolf"
+    ],
+    [
+      "turm",
+      "bruecke",
+      "wolf",
+      "kerze",
+      "hexe",
+      "drache",
+      "kristall",
+      "krieger",
+      "fluss"
+    ],
+    [
+      "fluss",
+      "kerze",
+      "drache",
+      "kristall",
+      "wolf",
+      "krieger",
+      "bruecke",
+      "turm",
+      "hexe"
+    ],
+    [
+      "bruecke",
+      "wolf",
+      "krieger",
+      "drache",
+      "kerze",
+      "hexe",
+      "turm",
+      "fluss",
+      "kristall"
+    ],
+    [
+      "hexe",
+      "drache",
+      "fluss",
+      "turm",
+      "krieger",
+      "kristall",
+      "wolf",
+      "bruecke",
+      "kerze"
+    ],
+    [
+      "kristall",
+      "turm",
+      "kerze",
+      "wolf",
+      "fluss",
+      "bruecke",
+      "krieger",
+      "hexe",
+      "drache"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      4
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "krieger",
+        "bruecke",
+        "turm"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "kerze",
+        "kristall"
+      ],
+      "target_count": 5
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "bruecke"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "wolf",
+        "hexe"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Die Vergessenen stehen nicht zufällig am Fluss. Hinter ihnen braut sich ein Sturm aus Mondlicht zusammen, und ein Drache kreist über dem Turm. Die Brücke muss halten, damit sie Odiles Seite erreichen, doch der Drache zerschlägt, was er berührt.\n\nKrieger sichern die Brücke bis zum Turm, Kerzen speisen den Kristall. Der Drache darf der Brücke nicht zu nahe kommen.",
+  "story_outro": "Der Sturm legt sich, die Brücke steht. Der Drache lässt sich neben dem Turm nieder und schnaubt, dass die Funken stieben. Magnus sieht ihn an, dann dich. Er habe die Grenze nie öffnen wollen, sagt er. Er wollte nur, dass sie jemand wieder zu einem Zuhause macht.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

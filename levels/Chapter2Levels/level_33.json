@@ -1,0 +1,311 @@
+{
+  "id": "level_33",
+  "title": "Das Gesicht im Brunnen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "schluessel",
+      "name": "Schlüssel",
+      "color": "#b8a040",
+      "abbr": "SL",
+      "icon": "🔑",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "eule",
+      "geist",
+      "kerze",
+      "schluessel",
+      "mond",
+      "kobold",
+      "hexe",
+      "brunnen"
+    ],
+    [
+      "mond",
+      "schluessel",
+      "brunnen",
+      "eule",
+      "kobold",
+      "hexe",
+      "geist",
+      "kerze",
+      "haus"
+    ],
+    [
+      "kerze",
+      "kobold",
+      "hexe",
+      "geist",
+      "brunnen",
+      "haus",
+      "eule",
+      "mond",
+      "schluessel"
+    ],
+    [
+      "kobold",
+      "geist",
+      "eule",
+      "hexe",
+      "haus",
+      "schluessel",
+      "kerze",
+      "brunnen",
+      "mond"
+    ],
+    [
+      "schluessel",
+      "haus",
+      "mond",
+      "brunnen",
+      "eule",
+      "kerze",
+      "hexe",
+      "geist",
+      "kobold"
+    ],
+    [
+      "brunnen",
+      "hexe",
+      "kerze",
+      "kobold",
+      "mond",
+      "geist",
+      "haus",
+      "schluessel",
+      "eule"
+    ],
+    [
+      "geist",
+      "brunnen",
+      "schluessel",
+      "haus",
+      "hexe",
+      "eule",
+      "mond",
+      "kobold",
+      "kerze"
+    ],
+    [
+      "eule",
+      "kerze",
+      "kobold",
+      "mond",
+      "geist",
+      "brunnen",
+      "schluessel",
+      "haus",
+      "hexe"
+    ],
+    [
+      "hexe",
+      "mond",
+      "haus",
+      "schluessel",
+      "kerze",
+      "kobold",
+      "brunnen",
+      "eule",
+      "geist"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      7
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "brunnen",
+        "mond"
+      ],
+      "target_count": 2
+    },
+    {
+      "chain": [
+        "schluessel",
+        "haus"
+      ],
+      "target_count": 8
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "geist",
+        "schluessel"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Im Brunnen von Eichenfeld spiegelt sich nicht dein Gesicht, sondern das einer alten Frau mit Ilses Augen und einem fremden Lächeln. Sie flüstert, du sollst den Schlüssel finden, der in einem der Häuser liegt. Dann verschwindet sie im Wasser.\n\nKerze, Brunnen und Mond bilden eine Linie des Lichts. Der Schlüssel gehört zu einem Haus, und kein Geist darf ihn bedrängen.",
+  "story_outro": "Der Schlüssel liegt kalt in deiner Hand, und auf seinem Griff stehen zwei Namen: Ilse und Odile. Murmel starrt darauf, dann auf dich. Schwestern, flüstert er. Der graue Mantel, der Mondstein, das gestickte O. Du hast es längst geahnt, und jetzt ist es Gewissheit.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

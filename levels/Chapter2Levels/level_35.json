@@ -1,0 +1,314 @@
+{
+  "id": "level_35",
+  "title": "Zwei Grenzen",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    },
+    {
+      "id": "turm",
+      "name": "Mondturm",
+      "color": "#5a6a9a",
+      "abbr": "TU",
+      "icon": "🗼",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "haus",
+      "kristall",
+      "kobold",
+      "mond",
+      "glocke",
+      "hexe",
+      "turm",
+      "drache",
+      "kerze"
+    ],
+    [
+      "glocke",
+      "turm",
+      "drache",
+      "kobold",
+      "haus",
+      "kerze",
+      "kristall",
+      "mond",
+      "hexe"
+    ],
+    [
+      "mond",
+      "hexe",
+      "kerze",
+      "drache",
+      "turm",
+      "kristall",
+      "haus",
+      "glocke",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "drache",
+      "turm",
+      "kristall",
+      "hexe",
+      "haus",
+      "glocke",
+      "kerze",
+      "mond"
+    ],
+    [
+      "kerze",
+      "glocke",
+      "hexe",
+      "turm",
+      "kobold",
+      "mond",
+      "drache",
+      "haus",
+      "kristall"
+    ],
+    [
+      "kristall",
+      "haus",
+      "mond",
+      "kerze",
+      "drache",
+      "glocke",
+      "kobold",
+      "hexe",
+      "turm"
+    ],
+    [
+      "drache",
+      "mond",
+      "kristall",
+      "glocke",
+      "kerze",
+      "kobold",
+      "hexe",
+      "turm",
+      "haus"
+    ],
+    [
+      "turm",
+      "kobold",
+      "haus",
+      "hexe",
+      "mond",
+      "drache",
+      "kerze",
+      "kristall",
+      "glocke"
+    ],
+    [
+      "hexe",
+      "kerze",
+      "glocke",
+      "haus",
+      "kristall",
+      "turm",
+      "mond",
+      "kobold",
+      "drache"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "kristall",
+        "mond"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "glocke",
+        "turm"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "hexe"
+      ],
+      "max_count": 2
+    },
+    {
+      "symbols": [
+        "drache",
+        "haus"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Odile zeigt dir, was Ilse verschwiegen hat: Die Grenze hat zwei Seiten, und jede braucht einen Hüter. Seit Ilses Tod trägt Odile ihre Seite allein, und sie wird müde. Der Kristall im Turm flackert, der Drache regt sich im Schlaf.\n\nLeite das Licht von der Kerze über den Kristall zum Mond und läute die Glocke am Turm. Der Drache soll weder Odile noch das Haus bedrängen.",
+  "story_outro": "Zusammen halten sie das Licht, bis der Drache wieder ruhig atmet. Odile lehnt sich an die Turmmauer und lacht, kurz und trocken. Du seist stur wie Ilse, sagt sie. Dann wird sie ernst: Die Vergessenen sammeln sich, und einer von ihnen trägt Magnus' Stimme.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

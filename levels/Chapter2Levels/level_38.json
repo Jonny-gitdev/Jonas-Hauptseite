@@ -1,0 +1,314 @@
+{
+  "id": "level_38",
+  "title": "Der Pakt der Hüter",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "bienenstock",
+      "name": "Bienenstock",
+      "color": "#e0a82e",
+      "abbr": "BI",
+      "icon": "🐝",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "baeckerei",
+      "haus",
+      "markt",
+      "kobold",
+      "bienenstock",
+      "mond",
+      "hexe",
+      "kerze",
+      "eule"
+    ],
+    [
+      "kobold",
+      "hexe",
+      "eule",
+      "kerze",
+      "baeckerei",
+      "markt",
+      "mond",
+      "bienenstock",
+      "haus"
+    ],
+    [
+      "mond",
+      "bienenstock",
+      "kerze",
+      "haus",
+      "hexe",
+      "eule",
+      "kobold",
+      "baeckerei",
+      "markt"
+    ],
+    [
+      "markt",
+      "mond",
+      "haus",
+      "baeckerei",
+      "kerze",
+      "kobold",
+      "eule",
+      "hexe",
+      "bienenstock"
+    ],
+    [
+      "bienenstock",
+      "kerze",
+      "hexe",
+      "mond",
+      "eule",
+      "haus",
+      "markt",
+      "kobold",
+      "baeckerei"
+    ],
+    [
+      "eule",
+      "kobold",
+      "baeckerei",
+      "bienenstock",
+      "markt",
+      "hexe",
+      "kerze",
+      "haus",
+      "mond"
+    ],
+    [
+      "kerze",
+      "baeckerei",
+      "mond",
+      "eule",
+      "kobold",
+      "bienenstock",
+      "haus",
+      "markt",
+      "hexe"
+    ],
+    [
+      "hexe",
+      "eule",
+      "bienenstock",
+      "markt",
+      "haus",
+      "kerze",
+      "baeckerei",
+      "mond",
+      "kobold"
+    ],
+    [
+      "haus",
+      "markt",
+      "kobold",
+      "hexe",
+      "mond",
+      "baeckerei",
+      "bienenstock",
+      "eule",
+      "kerze"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "baeckerei",
+        "markt",
+        "haus"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "bienenstock",
+        "kobold"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "kobold",
+        "hexe"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kerze",
+        "mond"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Du rufst Odile, Magnus und Murmel an den Tisch im Gasthaus. Zum ersten Mal sitzen Hüter, Wanderin und Kobold gemeinsam an einer Tafel. Die Vergessenen sollen Plätze bekommen, Brot, Honig und ein Dach.\n\nBäckerei, Markt und Haus bilden die Versorgung, Bienen helfen den Kobolden, und diesmal sollen Kobolde direkt neben der Wanderin sitzen, kein Misstrauen mehr. Nur Kerze und Mond dürfen sich nicht überstrahlen.",
+  "story_outro": "Der Pakt wird mit Brot und Honig besiegelt, und niemand streitet. Odile zerreißt das gestickte Taschentuch, ein Fetzen für jeden am Tisch. Murmel hält seinen fest wie einen Schatz. In der Ferne, dort, wo Ilses Grab liegt, beginnt der Himmel zu leuchten, ohne dass die Sonne untergeht.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

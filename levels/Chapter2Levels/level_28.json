@@ -1,0 +1,313 @@
+{
+  "id": "level_28",
+  "title": "Gasthaus am Grenzweg",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "bienenstock",
+      "name": "Bienenstock",
+      "color": "#e0a82e",
+      "abbr": "BI",
+      "icon": "🐝",
+      "image": null
+    },
+    {
+      "id": "hirsch",
+      "name": "Hirsch",
+      "color": "#9a6a3a",
+      "abbr": "HI",
+      "icon": "🦌",
+      "image": null
+    },
+    {
+      "id": "wolf",
+      "name": "Wolf",
+      "color": "#6a6a72",
+      "abbr": "WO",
+      "icon": "🐺",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "hirsch",
+      "haus",
+      "brunnen",
+      "kerze",
+      "baeckerei",
+      "wolf",
+      "bienenstock",
+      "markt",
+      "feld"
+    ],
+    [
+      "kerze",
+      "wolf",
+      "feld",
+      "markt",
+      "hirsch",
+      "bienenstock",
+      "haus",
+      "brunnen",
+      "baeckerei"
+    ],
+    [
+      "bienenstock",
+      "markt",
+      "baeckerei",
+      "haus",
+      "feld",
+      "brunnen",
+      "wolf",
+      "kerze",
+      "hirsch"
+    ],
+    [
+      "feld",
+      "bienenstock",
+      "hirsch",
+      "brunnen",
+      "haus",
+      "markt",
+      "baeckerei",
+      "wolf",
+      "kerze"
+    ],
+    [
+      "wolf",
+      "kerze",
+      "markt",
+      "hirsch",
+      "bienenstock",
+      "baeckerei",
+      "brunnen",
+      "feld",
+      "haus"
+    ],
+    [
+      "baeckerei",
+      "brunnen",
+      "haus",
+      "wolf",
+      "kerze",
+      "feld",
+      "hirsch",
+      "bienenstock",
+      "markt"
+    ],
+    [
+      "haus",
+      "baeckerei",
+      "bienenstock",
+      "feld",
+      "wolf",
+      "kerze",
+      "markt",
+      "hirsch",
+      "brunnen"
+    ],
+    [
+      "brunnen",
+      "feld",
+      "wolf",
+      "baeckerei",
+      "markt",
+      "hirsch",
+      "kerze",
+      "haus",
+      "bienenstock"
+    ],
+    [
+      "markt",
+      "hirsch",
+      "kerze",
+      "bienenstock",
+      "brunnen",
+      "haus",
+      "feld",
+      "baeckerei",
+      "wolf"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "baeckerei",
+        "markt"
+      ],
+      "target_count": 4
+    },
+    {
+      "chain": [
+        "bienenstock",
+        "markt"
+      ],
+      "target_count": 4
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "wolf",
+        "hirsch"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "wolf",
+        "markt"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Das Gasthaus am Grenzweg ist die letzte Rast vor Eichenfeld. Die Wirtin schenkt dir Honigmet und erzählt, dass der Markt seit Wochen halb leer bleibt, weil sich die Händler nicht mehr herwagen. Sie braucht Brot und Honig, um ihn wieder zu füllen.\n\nBäckerei und Bienenstock gehören beide an den Markt. Die Wölfe sollen weder Hirsche noch Marktstände bedrängen.",
+  "story_outro": "Der Markt füllt sich, und die Wirtin erzählt, was sie weiß: Eichenfelds Hüter Magnus sei nicht krank, er sei verschwunden. In einer einzigen Nacht. Sie lächelt dünn: Und vor drei Nächten hat jemand in der Ferne wieder geläutet.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}

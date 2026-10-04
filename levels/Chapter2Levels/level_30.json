@@ -1,0 +1,309 @@
+{
+  "id": "level_30",
+  "title": "Eichenfeld schweigt",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "geist",
+      "name": "Geist",
+      "color": "#9aa5b8",
+      "abbr": "GE",
+      "icon": "👻",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "krieger",
+      "haus",
+      "brunnen",
+      "kerze",
+      "glocke",
+      "wald",
+      "geist",
+      "kobold",
+      "eule"
+    ],
+    [
+      "wald",
+      "glocke",
+      "kerze",
+      "geist",
+      "eule",
+      "kobold",
+      "krieger",
+      "brunnen",
+      "haus"
+    ],
+    [
+      "geist",
+      "kobold",
+      "eule",
+      "brunnen",
+      "krieger",
+      "haus",
+      "wald",
+      "kerze",
+      "glocke"
+    ],
+    [
+      "glocke",
+      "kerze",
+      "haus",
+      "wald",
+      "geist",
+      "krieger",
+      "kobold",
+      "eule",
+      "brunnen"
+    ],
+    [
+      "brunnen",
+      "krieger",
+      "wald",
+      "glocke",
+      "kobold",
+      "eule",
+      "haus",
+      "geist",
+      "kerze"
+    ],
+    [
+      "eule",
+      "geist",
+      "kobold",
+      "haus",
+      "kerze",
+      "brunnen",
+      "glocke",
+      "krieger",
+      "wald"
+    ],
+    [
+      "kerze",
+      "wald",
+      "geist",
+      "kobold",
+      "brunnen",
+      "glocke",
+      "eule",
+      "haus",
+      "krieger"
+    ],
+    [
+      "haus",
+      "brunnen",
+      "krieger",
+      "eule",
+      "wald",
+      "geist",
+      "kerze",
+      "glocke",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "eule",
+      "glocke",
+      "krieger",
+      "haus",
+      "kerze",
+      "brunnen",
+      "wald",
+      "geist"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      8,
+      0
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "kerze",
+        "glocke"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "eule",
+        "geist"
+      ],
+      "target_count": 3
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "geist",
+        "haus"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "geist",
+        "glocke"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Eichenfeld. Kein Rauch aus den Schornsteinen, kein Hundegebell, nur ein leises Läuten aus dem Nichts. Die Häuser stehen offen, die Betten sind ungemacht. Dazwischen wandern Geister, die niemand gerufen hat.\n\nKerzen gehören zur Glocke, die Eule führt die Geister heim. Doch Geister dürfen weder Haus noch Glocke bedrängen, sonst bleibt alles stumm.",
+  "story_outro": "Die Geister folgen der Eule hinaus ins Feld, einer nach dem anderen, und verschwinden im Morgen. Im größten Haus liegt Magnus' Tagebuch, die letzte Seite aufgeschlagen: Sie nennt sich Odile. Sie sagt, die Grenze brauche zwei Hüter. Dann bricht der Eintrag ab.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

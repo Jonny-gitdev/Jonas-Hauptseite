@@ -1,0 +1,303 @@
+{
+  "id": "level_29",
+  "title": "Die Schmiede der Hüter",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "schmiede",
+      "name": "Schmiede",
+      "color": "#7a6a5a",
+      "abbr": "SM",
+      "icon": "🔨",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "saegewerk",
+      "name": "Sägewerk",
+      "color": "#8a5a2b",
+      "abbr": "SW",
+      "icon": "🪚",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "laterne",
+      "name": "Laterne",
+      "color": "#d9703a",
+      "abbr": "LA",
+      "icon": "🏮",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "saegewerk",
+      "haus",
+      "schmiede",
+      "laterne",
+      "kristall",
+      "kobold",
+      "wald",
+      "krieger",
+      "kerze"
+    ],
+    [
+      "kristall",
+      "laterne",
+      "wald",
+      "schmiede",
+      "kerze",
+      "krieger",
+      "kobold",
+      "saegewerk",
+      "haus"
+    ],
+    [
+      "kobold",
+      "kerze",
+      "krieger",
+      "haus",
+      "saegewerk",
+      "wald",
+      "laterne",
+      "kristall",
+      "schmiede"
+    ],
+    [
+      "kerze",
+      "kobold",
+      "saegewerk",
+      "wald",
+      "laterne",
+      "kristall",
+      "haus",
+      "schmiede",
+      "krieger"
+    ],
+    [
+      "haus",
+      "schmiede",
+      "laterne",
+      "kobold",
+      "krieger",
+      "kerze",
+      "saegewerk",
+      "wald",
+      "kristall"
+    ],
+    [
+      "wald",
+      "krieger",
+      "kristall",
+      "saegewerk",
+      "schmiede",
+      "haus",
+      "kerze",
+      "laterne",
+      "kobold"
+    ],
+    [
+      "krieger",
+      "wald",
+      "kobold",
+      "kristall",
+      "haus",
+      "laterne",
+      "schmiede",
+      "kerze",
+      "saegewerk"
+    ],
+    [
+      "schmiede",
+      "kristall",
+      "haus",
+      "kerze",
+      "wald",
+      "saegewerk",
+      "krieger",
+      "kobold",
+      "laterne"
+    ],
+    [
+      "laterne",
+      "saegewerk",
+      "kerze",
+      "krieger",
+      "kobold",
+      "schmiede",
+      "kristall",
+      "haus",
+      "wald"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "wald",
+        "saegewerk",
+        "schmiede"
+      ],
+      "target_count": 1
+    },
+    {
+      "chain": [
+        "schmiede",
+        "krieger"
+      ],
+      "target_count": 6
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "schmiede"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Am Wegesrand steht eine verlassene Schmiede, noch warm vom letzten Feuer. Holz muss geschlagen und gesägt werden, bevor der Amboss wieder klingt, und aus dem Eisen sollen Krieger Waffen bekommen, die nur Hüter führen dürfen.\n\nHalte die Kobolde von der Schmiede fern, die Funken sind nichts für sie. Nur wer Ketten und Tabus zusammen denkt, findet den Weg.",
+  "story_outro": "Der Amboss klingt über das Tal. Im Glutbett findest du eine Klinge aus Mondsilber, zu leicht für Stahl, zu scharf für Glas. Sie trägt eine Gravur: Für Ilses Erben. Murmel schluckt. Jemand hat gewusst, dass du kommen würdest, noch bevor du es selbst wusstest.",
+  "difficulty": "easy",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

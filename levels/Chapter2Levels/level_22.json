@@ -1,0 +1,306 @@
+{
+  "id": "level_22",
+  "title": "Das Läuten",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "glocke",
+      "name": "Glocke",
+      "color": "#c9a24a",
+      "abbr": "GL",
+      "icon": "🔔",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "kerze",
+      "name": "Kerze",
+      "color": "#e0b040",
+      "abbr": "KE",
+      "icon": "🕯️",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    },
+    {
+      "id": "wald",
+      "name": "Wald",
+      "color": "#2f6b3a",
+      "abbr": "WA",
+      "icon": "🌲",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "markt",
+      "haus",
+      "brunnen",
+      "eule",
+      "kobold",
+      "glocke",
+      "kerze",
+      "feld",
+      "wald"
+    ],
+    [
+      "glocke",
+      "wald",
+      "eule",
+      "feld",
+      "brunnen",
+      "kerze",
+      "haus",
+      "markt",
+      "kobold"
+    ],
+    [
+      "feld",
+      "kerze",
+      "kobold",
+      "haus",
+      "markt",
+      "wald",
+      "glocke",
+      "brunnen",
+      "eule"
+    ],
+    [
+      "brunnen",
+      "feld",
+      "kerze",
+      "glocke",
+      "wald",
+      "markt",
+      "eule",
+      "kobold",
+      "haus"
+    ],
+    [
+      "kobold",
+      "glocke",
+      "wald",
+      "brunnen",
+      "haus",
+      "eule",
+      "markt",
+      "kerze",
+      "feld"
+    ],
+    [
+      "haus",
+      "eule",
+      "markt",
+      "kerze",
+      "feld",
+      "kobold",
+      "brunnen",
+      "wald",
+      "glocke"
+    ],
+    [
+      "eule",
+      "kobold",
+      "haus",
+      "markt",
+      "kerze",
+      "feld",
+      "wald",
+      "glocke",
+      "brunnen"
+    ],
+    [
+      "wald",
+      "markt",
+      "glocke",
+      "kobold",
+      "eule",
+      "brunnen",
+      "feld",
+      "haus",
+      "kerze"
+    ],
+    [
+      "kerze",
+      "brunnen",
+      "feld",
+      "wald",
+      "glocke",
+      "haus",
+      "kobold",
+      "eule",
+      "markt"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      3
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "eule",
+        "glocke"
+      ],
+      "target_count": 3
+    },
+    {
+      "chain": [
+        "kerze",
+        "haus"
+      ],
+      "target_count": 3
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "kobold",
+        "wald"
+      ],
+      "max_count": 2
+    }
+  ],
+  "story_intro": "Die Glocke läutet jetzt jede Nacht, immer zur selben Stunde. Ilses Eule sitzt auf dem Dachfirst und lauscht, als warte sie auf eine Antwort. Du folgst dem Klang und findest ihn im Boden, tief unter dem Hof.\n\nDie Eule gehört zur Glocke, die Kerze zum Haus. Und die Kobolde sollen dem Wald fernbleiben, dort ist es ihnen zu still.",
+  "story_outro": "Die Eule fliegt los, ohne sich umzusehen, nach Osten über die Hügel. Als sie zurückkehrt, trägt sie einen Brief im Schnabel. Der Absender: Eichenfeld, ein Hof, von dem du nie gehört hast. Die Schrift ist zittrig, die Tinte frisch: Hilf uns, bevor die Stille uns verschluckt.",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

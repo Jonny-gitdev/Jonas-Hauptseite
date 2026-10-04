@@ -1,0 +1,310 @@
+{
+  "id": "level_34",
+  "title": "Odile",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "hexe",
+      "name": "Wanderin",
+      "color": "#6a4a8a",
+      "abbr": "HX",
+      "icon": "🧙",
+      "image": null
+    },
+    {
+      "id": "mond",
+      "name": "Mondstein",
+      "color": "#7a8fc4",
+      "abbr": "MO",
+      "icon": "🌙",
+      "image": null
+    },
+    {
+      "id": "turm",
+      "name": "Mondturm",
+      "color": "#5a6a9a",
+      "abbr": "TU",
+      "icon": "🗼",
+      "image": null
+    },
+    {
+      "id": "schluessel",
+      "name": "Schlüssel",
+      "color": "#b8a040",
+      "abbr": "SL",
+      "icon": "🔑",
+      "image": null
+    },
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "kristall",
+      "name": "Kristall",
+      "color": "#5a4a9a",
+      "abbr": "KI",
+      "icon": "🔮",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "drache",
+      "name": "Drache",
+      "color": "#8a2a2a",
+      "abbr": "DR",
+      "icon": "🐉",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "drache",
+      "eule",
+      "krieger",
+      "haus",
+      "kristall",
+      "turm",
+      "hexe",
+      "schluessel",
+      "mond"
+    ],
+    [
+      "haus",
+      "hexe",
+      "turm",
+      "krieger",
+      "schluessel",
+      "mond",
+      "eule",
+      "kristall",
+      "drache"
+    ],
+    [
+      "kristall",
+      "schluessel",
+      "mond",
+      "eule",
+      "hexe",
+      "drache",
+      "krieger",
+      "turm",
+      "haus"
+    ],
+    [
+      "mond",
+      "turm",
+      "schluessel",
+      "drache",
+      "krieger",
+      "eule",
+      "kristall",
+      "haus",
+      "hexe"
+    ],
+    [
+      "krieger",
+      "haus",
+      "hexe",
+      "schluessel",
+      "turm",
+      "kristall",
+      "mond",
+      "drache",
+      "eule"
+    ],
+    [
+      "eule",
+      "kristall",
+      "drache",
+      "mond",
+      "haus",
+      "hexe",
+      "schluessel",
+      "krieger",
+      "turm"
+    ],
+    [
+      "hexe",
+      "drache",
+      "haus",
+      "kristall",
+      "mond",
+      "schluessel",
+      "turm",
+      "eule",
+      "krieger"
+    ],
+    [
+      "schluessel",
+      "mond",
+      "eule",
+      "turm",
+      "drache",
+      "krieger",
+      "haus",
+      "hexe",
+      "kristall"
+    ],
+    [
+      "turm",
+      "krieger",
+      "kristall",
+      "hexe",
+      "eule",
+      "haus",
+      "drache",
+      "mond",
+      "schluessel"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      5
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "schluessel",
+        "turm"
+      ],
+      "target_count": 6
+    },
+    {
+      "chain": [
+        "eule",
+        "hexe",
+        "mond"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "drache",
+        "turm"
+      ],
+      "max_count": 1
+    },
+    {
+      "symbols": [
+        "krieger",
+        "hexe"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Der Schlüssel passt in ein Tor am Ende des Dorfes, hinter dem ein Turm aus Mondlicht steht. Dort wartet sie, die Wanderin, Ilses jüngere Schwester. Odile. Sie hat die andere Seite der Grenze gehütet, bis man sie vergaß.\n\nSchlüssel öffnen den Turm, die Eule führt die Wanderin zum Mond. Der Drache darf dem Turm nicht zu nahe kommen, und Krieger nicht der Wanderin.",
+  "story_outro": "Odile erzählt, und es klingt weniger wie eine Beichte als wie ein Vorwurf an die Welt. Sie hat jahrzehntelang auf Ilses Antwort gewartet. Die Glocke war ihr Ruf. Die Stille war Ilses Tod. Sie weint nicht. Sie fragt nur: Warst du da, als sie ging?",
+  "difficulty": "medium",
+  "requires_goal_logic": true,
+  "verified_unique": true
+}

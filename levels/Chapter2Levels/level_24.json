@@ -1,0 +1,299 @@
+{
+  "id": "level_24",
+  "title": "Der Brief aus Eichenfeld",
+  "size": 9,
+  "region_rows": 3,
+  "region_cols": 3,
+  "symbols": [
+    {
+      "id": "eule",
+      "name": "Eule",
+      "color": "#8a6a4a",
+      "abbr": "EU",
+      "icon": "🦉",
+      "image": null
+    },
+    {
+      "id": "haus",
+      "name": "Haus",
+      "color": "#6b4a2f",
+      "abbr": "HA",
+      "icon": "🏠",
+      "image": null
+    },
+    {
+      "id": "markt",
+      "name": "Markt",
+      "color": "#b8563a",
+      "abbr": "MA",
+      "icon": "🧺",
+      "image": null
+    },
+    {
+      "id": "baeckerei",
+      "name": "Bäckerei",
+      "color": "#d98c3f",
+      "abbr": "BA",
+      "icon": "🥖",
+      "image": null
+    },
+    {
+      "id": "bienenstock",
+      "name": "Bienenstock",
+      "color": "#e0a82e",
+      "abbr": "BI",
+      "icon": "🐝",
+      "image": null
+    },
+    {
+      "id": "feld",
+      "name": "Feld",
+      "color": "#c9a227",
+      "abbr": "FE",
+      "icon": "🌾",
+      "image": null
+    },
+    {
+      "id": "kobold",
+      "name": "Kobold",
+      "color": "#7a9a3a",
+      "abbr": "KO",
+      "icon": "👺",
+      "image": null
+    },
+    {
+      "id": "krieger",
+      "name": "Krieger",
+      "color": "#5a6a7a",
+      "abbr": "KR",
+      "icon": "🛡️",
+      "image": null
+    },
+    {
+      "id": "brunnen",
+      "name": "Brunnen",
+      "color": "#3d7a91",
+      "abbr": "BR",
+      "icon": "💧",
+      "image": null
+    }
+  ],
+  "solution": [
+    [
+      "brunnen",
+      "kobold",
+      "eule",
+      "krieger",
+      "baeckerei",
+      "bienenstock",
+      "markt",
+      "feld",
+      "haus"
+    ],
+    [
+      "baeckerei",
+      "markt",
+      "haus",
+      "brunnen",
+      "feld",
+      "kobold",
+      "krieger",
+      "eule",
+      "bienenstock"
+    ],
+    [
+      "bienenstock",
+      "krieger",
+      "feld",
+      "markt",
+      "eule",
+      "haus",
+      "brunnen",
+      "kobold",
+      "baeckerei"
+    ],
+    [
+      "haus",
+      "bienenstock",
+      "brunnen",
+      "baeckerei",
+      "krieger",
+      "eule",
+      "feld",
+      "markt",
+      "kobold"
+    ],
+    [
+      "kobold",
+      "eule",
+      "krieger",
+      "haus",
+      "markt",
+      "feld",
+      "baeckerei",
+      "bienenstock",
+      "brunnen"
+    ],
+    [
+      "feld",
+      "baeckerei",
+      "markt",
+      "bienenstock",
+      "kobold",
+      "brunnen",
+      "haus",
+      "krieger",
+      "eule"
+    ],
+    [
+      "eule",
+      "haus",
+      "kobold",
+      "feld",
+      "brunnen",
+      "krieger",
+      "bienenstock",
+      "baeckerei",
+      "markt"
+    ],
+    [
+      "markt",
+      "feld",
+      "bienenstock",
+      "kobold",
+      "haus",
+      "baeckerei",
+      "eule",
+      "brunnen",
+      "krieger"
+    ],
+    [
+      "krieger",
+      "brunnen",
+      "baeckerei",
+      "eule",
+      "bienenstock",
+      "markt",
+      "kobold",
+      "haus",
+      "feld"
+    ]
+  ],
+  "givens": [
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      8,
+      7
+    ],
+    [
+      8,
+      8
+    ]
+  ],
+  "goals": [
+    {
+      "chain": [
+        "baeckerei",
+        "markt"
+      ],
+      "target_count": 5
+    },
+    {
+      "chain": [
+        "feld",
+        "bienenstock",
+        "baeckerei"
+      ],
+      "target_count": 1
+    }
+  ],
+  "negative_goals": [
+    {
+      "symbols": [
+        "krieger",
+        "kobold"
+      ],
+      "max_count": 1
+    }
+  ],
+  "story_intro": "Du liest den Brief ein drittes Mal. Eichenfeld liegt am Grenzweg, einen Tagesmarsch entfernt, und sein Hüter Magnus hat seit Wochen kein Licht mehr angezündet. Bevor du aufbrichst, soll Birkenhain für sich sorgen können.\n\nBrot, Honig und Markt müssen laufen. Krieger und Kobolde bleiben getrennt, ihr alter Streit darf nicht wieder aufleben.",
+  "story_outro": "Der Hof ist versorgt, die Kobolde versprechen, Wache zu halten. Beim Abschied drückt dir die Eule einen kleinen Beutel in die Hand: darin ein Splitter vom Kristall, noch warm. Er soll dir den Weg zeigen. Er zeigt nach Osten, und er zittert.",
+  "difficulty": "medium",
+  "requires_goal_logic": false,
+  "verified_unique": true
+}
