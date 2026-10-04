@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Doppelkopf-Poker</title>
+  <meta name="description" content="Doppelkopf-Poker – Kartenspiel gegen Bots im Browser">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>&#10022; Doppelkopf-Poker</h1>
+    <div class="topbar-right">
+      <a href="../index.html" class="btn small ghost back-link">Portfolio</a>
+      <span id="roundInfo" class="round-info"></span>
+      <label class="speed">Tempo
+        <select id="speedSel">
+          <option value="900">Langsam</option>
+          <option value="500" selected>Normal</option>
+          <option value="150">Schnell</option>
+          <option value="0">Sofort</option>
+        </select>
+      </label>
+      <button id="btnRules" class="btn small">Regeln</button>
+      <button id="btnMenu" class="btn small">Men&uuml;</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <section id="setup" class="panel"></section>
+
+    <section id="table" class="hidden">
+      <div id="opponents" class="opponents"></div>
+
+      <div class="center">
+        <div class="pile-wrap">
+          <button id="drawPile" class="pile" aria-label="Nachziehstapel"></button>
+          <div class="pile-label">Nachziehstapel</div>
+        </div>
+        <div class="center-info">
+          <div id="ticker" class="ticker"></div>
+          <div id="status" class="status"></div>
+        </div>
+        <div class="pile-wrap">
+          <button id="discardPile" class="pile" aria-label="Ablagestapel"></button>
+          <div class="pile-label">Ablagestapel</div>
+        </div>
+      </div>
+
+      <div id="controls" class="controls"></div>
+
+      <div class="me">
+        <div id="meBar" class="me-bar"></div>
+        <div id="pendingArea" class="pending-area"></div>
+        <div id="hand" class="hand"></div>
+        <div id="handIdx" class="hand-idx"></div>
+      </div>
+
+      <details class="logbox" id="logBox">
+        <summary>Spielverlauf</summary>
+        <ol id="log" class="log"></ol>
+      </details>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+
+  <script src="js/cards.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/bots.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

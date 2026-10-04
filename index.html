@@ -456,6 +456,39 @@
       line-height: 1.5;
     }
 
+    .poker-preview {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: radial-gradient(ellipse at center, #2c6644, #12301f 76%);
+    }
+
+    .poker-preview-card {
+      width: clamp(64px, 8vw, 92px);
+      aspect-ratio: 0.68;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.45rem;
+      border: 3px solid #f4efe2;
+      border-radius: 8px;
+      background: #fbf8ef;
+      color: #1b1b1f;
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .poker-preview-card:nth-child(1) { transform: rotate(-15deg) translateX(14px); }
+    .poker-preview-card:nth-child(2) { transform: translateY(-8px); z-index: 1; }
+    .poker-preview-card:nth-child(3) { transform: rotate(15deg) translateX(-14px); }
+    .poker-preview-card.red { color: #c4262e; }
+    .poker-preview-card strong { align-self: flex-end; font-size: 1.8rem; }
+
     .bento-card .card-arrow {
       position: absolute;
       top: 1rem; right: 1rem;
@@ -668,7 +701,7 @@
           <div class="stat-label">Android App</div>
         </div>
         <div class="stat">
-          <div class="stat-number" data-count="1">0</div>
+          <div class="stat-number" data-count="2">0</div>
           <div class="stat-label">Spiel</div>
         </div>
       </div>
@@ -735,6 +768,24 @@
           <p class="card-desc">Meine eigene Sudoku-Variante mit Sonderregeln und Story.</p>
         </div>
       </a>
+
+      <a href="dkp/Pokergame.html" class="bento-card wide reveal reveal-delay-3">
+        <div class="card-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </div>
+        <div class="card-image">
+          <div class="poker-preview" aria-hidden="true">
+            <div class="poker-preview-card red"><span>Q</span><strong>&#9829;</strong></div>
+            <div class="poker-preview-card"><span>A</span><strong>&#9824;</strong></div>
+            <div class="poker-preview-card red"><span>K</span><strong>&#9830;</strong></div>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-tag tag-game">Spiel</span>
+          <h3 class="card-title">Doppelkopf-Poker</h3>
+          <p class="card-desc">Meine eigene Pokervariante mit individuellen Karten, Regeln und Bots.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -744,10 +795,12 @@
       <span class="marquee-item">StudyDesk<span class="dot">.</span></span>
       <span class="marquee-item">TrinkApp<span class="dot">.</span></span>
       <span class="marquee-item">Jodoku<span class="dot">.</span></span>
+      <span class="marquee-item">Doppelkopf-Poker<span class="dot">.</span></span>
       <span class="marquee-item">Android<span class="dot">.</span></span>
       <span class="marquee-item">StudyDesk<span class="dot">.</span></span>
       <span class="marquee-item">TrinkApp<span class="dot">.</span></span>
       <span class="marquee-item">Jodoku<span class="dot">.</span></span>
+      <span class="marquee-item">Doppelkopf-Poker<span class="dot">.</span></span>
       <span class="marquee-item">Android<span class="dot">.</span></span>
     </div>
   </div>
@@ -799,6 +852,7 @@
       <a href="https://studydesk-dqs.pages.dev/" target="_blank" rel="noopener">StudyDesk</a>
       <a href="https://trinkapp.pages.dev" target="_blank" rel="noopener">TrinkApp</a>
       <a href="jodoku.html">Jodoku</a>
+      <a href="dkp/Pokergame.html">Doppelkopf-Poker</a>
       <a href="https://github.com/Jonny-gitdev" target="_blank" rel="noopener">GitHub</a>
     </div>
     <p class="footer-copy">&copy; <span id="year"></span> Jonas.</p>

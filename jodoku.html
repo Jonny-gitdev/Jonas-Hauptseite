@@ -248,6 +248,11 @@
     background: #f3d2c9;
   }
 
+  .cell.incorrect {
+    background: #f3d2c9;
+    box-shadow: inset 0 0 0 2px #c46b57;
+  }
+
   .cell.hint-target {
     background: #c9e7b8;
     box-shadow: inset 0 0 0 3px #4b8d45;
@@ -805,6 +810,8 @@ let outroShown = false;
 let availableLevels = [];
 const LEVEL_PROGRESS_KEY = 'jodoku-unlocked-level-count';
 let hintedCell = null;
+let showIncorrectCells = false;
+let incorrectCellsHintCounted = false;
 
 let grid = [];
 let selected = null;
@@ -1039,6 +1046,8 @@ function applyLevel(levelData) {
   notesMode = false;
   highlightSymbol = null;
   hintedCell = null;
+  showIncorrectCells = false;
+  incorrectCellsHintCounted = false;
   const notesBtnEl = document.getElementById('notesBtn');
   if (notesBtnEl) notesBtnEl.classList.remove('active');
   selected = null;
@@ -1154,6 +1163,7 @@ function refreshCells() {
     cellEl.classList.toggle('selected', selected && selected.r === r && selected.c === c);
     cellEl.classList.toggle('same-symbol', highlightSymbol !== null && val === highlightSymbol);
     cellEl.classList.toggle('hint-target', hintedCell && hintedCell.r === r && hintedCell.c === c);
+    cellEl.classList.toggle('incorrect', showIncorrectCells && val !== null && val !== SOLUTION[r][c]);
   });
   markConflicts();
   updatePickerHighlights();
@@ -1945,7 +1955,17 @@ function updateAll() {
 }
 
 function findHintForUser() {
+  const hasIncorrectCells = grid.some((row, r) =>
+    row.some((value, c) => value !== null && value !== SOLUTION[r][c])
+  );
+  const countIncorrectCells = hasIncorrectCells && !incorrectCellsHintCounted;
+  if (countIncorrectCells) incorrectCellsHintCounted = true;
+  showIncorrectCells = true;
   refreshCells();
+  if (countIncorrectCells) {
+    hintsUsed++;
+    updateHintCountDisplay();
+  }
   if (isFull() && !hasAnyConflict()) {
     alert('Das Feld ist bereits komplett gefüllt.');
     return null;
@@ -1964,8 +1984,10 @@ function findHintForUser() {
     );
     return null;
   }
-  hintsUsed++;
-  updateHintCountDisplay();
+  if (!countIncorrectCells) {
+    hintsUsed++;
+    updateHintCountDisplay();
+  }
   return hint;
 }
 
